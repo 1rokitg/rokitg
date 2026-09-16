@@ -1,4 +1,4 @@
-import { Badge, Column, Heading, Icon, Row, Text } from "@once-ui-system/core";
+import { Badge, Button, Column, Heading, Icon, Row, Text } from "@once-ui-system/core";
 import { VisitorAvatar } from "@/components/VisitorAvatar";
 import { PrivyWaitlist } from "@/components/PrivyWaitlist";
 
@@ -34,6 +34,7 @@ export default function AppPreviewPage() {
   return (
     <Column maxWidth="m" fillWidth gap="xl" paddingY="12" horizontal="center">
       <Column maxWidth="s" horizontal="center" align="center" gap="m">
+        <Button href="/app/courses" variant="secondary">Explorar cursos →</Button>
         <Badge
           background="brand-alpha-weak"
           border="brand-alpha-medium"

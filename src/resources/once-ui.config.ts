@@ -24,6 +24,7 @@ const routes: RoutesConfig = {
   "/whop": false,
   "/links": true,
   "/app": true,
+  "/app/courses": true,
   "/sponsors/bb": true,
   "/sponsors/fomo": true,
 };

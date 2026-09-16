@@ -23,6 +23,13 @@
   transition: box-shadow 180ms ease, transform 180ms ease;
 }
 
+@media (max-width: 760px) {
+  .platformShell {
+    margin-inline: 0;
+    width: 100%;
+  }
+}
+
 .platformShell :global(button:hover:not([data-disabled])) {
   box-shadow: 0 0 24px color-mix(in srgb, var(--platform-blue) 35%, transparent);
   transform: translateY(-1px);
