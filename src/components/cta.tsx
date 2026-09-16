@@ -28,16 +28,18 @@ export const CallToAction: React.FC<CallToActionProps> = ({
   const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
   const handleVideoClick = () => {
-    trackWhopEvent(WHOP_EVENTS.videoClicked, {
-      videoId,
-      destination: "youtube_channel",
+    trackWhopEvent(WHOP_EVENTS.youtubeClicked, {
+      source: "home_cta", content_id: videoId, interaction: "open",
+      link_label: "Ver la clase gratis en YouTube",
+      destination: "https://www.youtube.com/watch?v=" + videoId,
     });
 
     window.location.assign("https://www.youtube.com/watch?v=" + videoId);
   };
 
   const handleCommunityClick = () => {
-    trackWhopEvent(WHOP_EVENTS.freeCheckout, {
+    trackWhopEvent(WHOP_EVENTS.freeCheckoutClicked, {
+      source: "home_cta",
       offer: WHOP_OFFERS.freeCommunity.name,
       plan_id: WHOP_OFFERS.freeCommunity.planId,
       payment_type: WHOP_OFFERS.freeCommunity.paymentType,
@@ -48,15 +50,17 @@ export const CallToAction: React.FC<CallToActionProps> = ({
   };
 
   const handleYoutubeClick = () => {
-    trackWhopEvent(WHOP_EVENTS.youtubeSubscribeClicked, {
-      destination: "youtube_channel",
+    trackWhopEvent(WHOP_EVENTS.youtubeClicked, {
+      source: "home_cta", interaction: "subscribe", link_label: "Suscribirme en YouTube",
+      destination: YOUTUBE_CHANNEL_URL,
     });
 
     window.location.assign(YOUTUBE_CHANNEL_URL);
   };
 
   const handlePurchaseClick = () => {
-    trackWhopEvent(WHOP_EVENTS.paidCheckout, {
+    trackWhopEvent(WHOP_EVENTS.paidCheckoutClicked, {
+      source: "home_cta",
       offer: WHOP_OFFERS.paidProgram.name,
       plan_id: WHOP_OFFERS.paidProgram.planId,
       payment_type: WHOP_OFFERS.paidProgram.paymentType,

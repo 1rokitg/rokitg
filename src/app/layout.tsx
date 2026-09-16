@@ -27,7 +27,7 @@ import {
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { headers } from "next/headers";
-import { ReferralClickTracker } from "@/components/ReferralClickTracker";
+import { InteractionTracker } from "@/components/InteractionTracker";
 
 function getRequestIp(requestHeaders: Headers) {
   const forwardedFor = requestHeaders.get("x-forwarded-for");
@@ -61,9 +61,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const requestHeaders = await headers();
-  const loadWhop = shouldLoadWhop(requestHeaders);
+  const analyticsEnabled = shouldLoadWhop(requestHeaders);
+  const analyticsLive = process.env.VERCEL_ENV === "production";
+  const loadWhop = analyticsEnabled && analyticsLive;
   const whopContext = {
     country: requestHeaders.get("x-vercel-ip-country") ?? undefined,
+    enabled: analyticsEnabled,
+    live: analyticsLive,
   };
   const siteUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -154,13 +158,13 @@ export default async function RootLayout({
             `,
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.__whopContext = ${JSON.stringify(whopContext)};`,
+          }}
+        />
         {loadWhop && (
           <>
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.__whopContext = ${JSON.stringify(whopContext)};`,
-              }}
-            />
             <script
               dangerouslySetInnerHTML={{
                 __html: `
@@ -234,7 +238,7 @@ export default async function RootLayout({
           </RevealFx>
           <Flex fillWidth minHeight="16" s={{ hide: true }} />
           <Header />
-          {loadWhop && <ReferralClickTracker />}
+          {(analyticsEnabled || !analyticsLive) && <InteractionTracker />}
           <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
             <Flex horizontal="center" fillWidth minHeight="0">
               <RouteGuard>{children}</RouteGuard>

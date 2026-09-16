@@ -24,7 +24,11 @@ const routes: RoutesConfig = {
   "/whop": false,
   "/links": true,
   "/app": true,
+<<<<<<< HEAD
   "/app/courses": true,
+=======
+  "/retention": true,
+>>>>>>> 7cff145c758ef762a66746eb45901df7f9127cc7
   "/sponsors/bb": true,
   "/sponsors/fomo": true,
 };

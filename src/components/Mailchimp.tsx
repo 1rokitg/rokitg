@@ -204,7 +204,9 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
        * This survives the React re-render caused by setIsCheckingOut().
        */
       setVisitorData(newVisitorData);
-      trackWhopEvent(WHOP_EVENTS.leadSubmitted, { source: "newsletter" });
+      trackWhopEvent(WHOP_EVENTS.newsletterSubmitted, {
+        source: "newsletter", submission_id: newVisitorData.identifier, interaction: "submit",
+      });
 
       setIsCheckingOut(true);
     } catch (err) {
