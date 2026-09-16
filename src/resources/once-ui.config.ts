@@ -19,6 +19,7 @@ const baseURL: string = "https://rokitg.com";
 const routes: RoutesConfig = {
   "/": true,
   "/about": true,
+  "/welcome": true,
   "/work": false,
   "/blog": true,
   "/whop": false,
