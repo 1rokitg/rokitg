@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Downloaded reference repositories (see docs/project-references.md)
+/references/Learning-Platform-NextJS/
+/.worktrees/
