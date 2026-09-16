@@ -28,8 +28,9 @@ export function CourseCheckout({ courseSlug, offer }: { courseSlug: string; offe
         <button
           className={styles.button}
           onClick={() => {
-            trackWhopEvent(WHOP_EVENTS.freeCheckout, {
+            trackWhopEvent(WHOP_EVENTS.freeCheckoutClicked, {
               source: "course_placeholder",
+              offer: offer.label,
               course_id: courseSlug,
               plan_id: offer.planId,
               product_id: offer.productId,

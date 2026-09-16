@@ -21,7 +21,14 @@ type Outbound = Base & {
   interaction: "open" | "subscribe";
   content_id?: string;
 };
-type Checkout = Base & { offer: string; plan_id: string; payment_type: string; amount?: number };
+type Checkout = Base & {
+  offer: string;
+  plan_id: string;
+  payment_type: string;
+  amount?: number;
+  course_id?: string;
+  product_id?: string;
+};
 export type OutboundEvent =
   | "Discord Click"
   | "Telegram Click"
