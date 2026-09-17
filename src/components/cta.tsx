@@ -68,6 +68,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
       offer: WHOP_OFFERS.paidProgram.name,
       plan_id: WHOP_OFFERS.paidProgram.planId,
       payment_type: WHOP_OFFERS.paidProgram.paymentType,
+      amount: WHOP_OFFERS.paidProgram.amount,
     });
 
     onCheckout?.();

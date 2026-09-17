@@ -7,7 +7,8 @@ export const WHOP_OFFERS = {
   },
   paidProgram: {
     name: "paid_program",
-    planId: "plan_PgzidF1TD8ASv",
+    planId: "plan_iKZZy75Zb7JlR",
     paymentType: "paid",
+    amount: 97,
   },
 } as const;

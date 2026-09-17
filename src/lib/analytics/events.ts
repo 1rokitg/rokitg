@@ -57,6 +57,24 @@ export function eventCategory(name: EventName) {
   if (name === EVENTS.newsletterSubmitted) return "submission";
   return "interaction";
 }
+/** Whop's standard pixel taxonomy (docs.whop.com/developer/ads/pixel) — never include "purchase" here, Whop tracks its own checkouts automatically. */
+export const STANDARD_EVENTS = {
+  lead: "lead",
+  schedule: "schedule",
+  submitApplication: "submit_application",
+  contact: "contact",
+  completeRegistration: "complete_registration",
+  viewContent: "view_content",
+  addToCart: "add_to_cart",
+} as const;
+export type StandardEventName = (typeof STANDARD_EVENTS)[keyof typeof STANDARD_EVENTS];
+/** Maps our custom event names onto Whop's standard taxonomy so the ads funnel view (Leads, Schedules, Add to carts, etc.) reflects real site activity instead of staying empty. */
+export function standardEventFor(name: EventName): StandardEventName | undefined {
+  if (name === EVENTS.newsletterSubmitted) return STANDARD_EVENTS.lead;
+  if (name === EVENTS.calendarBooked) return STANDARD_EVENTS.schedule;
+  if (name === EVENTS.freeCheckoutClicked || name === EVENTS.paidCheckoutClicked)
+    return STANDARD_EVENTS.addToCart;
+}
 export function classifyOutbound(url: URL): OutboundEvent | undefined {
   if (!/^https?:$/.test(url.protocol)) return;
   const host = url.hostname.toLowerCase().replace(/^www\./, "");

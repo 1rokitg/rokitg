@@ -1,6 +1,7 @@
 import {
   attributionFromUrl,
   eventCategory,
+  standardEventFor,
   EVENTS,
   type EventName,
   type EventPayloads,
@@ -70,6 +71,14 @@ export function trackWhopEvent<E extends EventName>(name: E, properties: EventPa
     if (live && category !== "retention") {
       if (!window.whop?.track) return;
       window.whop.track(name, payload);
+      const standardName = standardEventFor(name);
+      if (standardName) {
+        const amount = (properties as { amount?: number }).amount;
+        window.whop.track(
+          standardName,
+          amount !== undefined ? { value: amount, currency: "USD" } : {},
+        );
+      }
     }
     if (live && category === "retention") {
       const analyticsWindow = window as Window & { dataLayer?: unknown[] };
