@@ -1,12 +1,33 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { captureAttribution, trackWhopEvent, WHOP_EVENTS } from "@/lib/whop";
-import { classifyOutbound, returnVisit, utcDay } from "@/lib/analytics/events";
+import { classifyOutbound, isKeyPage, returnVisit, utcDay } from "@/lib/analytics/events";
 export function InteractionTracker() {
   const pathname = usePathname();
+  const isFirstRender = useRef(true);
+  // Tracks the last pathname we already fired (or intentionally skipped) for, so any
+  // re-invocation of this effect for the same transition — e.g. React's dev-mode
+  // double-invoke — never produces a second event for one real navigation.
+  const lastTrackedPath = useRef<string | null>(null);
   useEffect(() => {
     captureAttribution();
+  }, [pathname]);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      // Skip the initial load — Whop's own pixel already counts that page view.
+      // Only a client-side route change (no full reload) needs an explicit view_content here.
+      isFirstRender.current = false;
+      lastTrackedPath.current = pathname;
+      return;
+    }
+    if (lastTrackedPath.current === pathname) return;
+    lastTrackedPath.current = pathname;
+    if (!isKeyPage(pathname)) return;
+    trackWhopEvent(WHOP_EVENTS.pageViewed, {
+      source: "spa_navigation",
+      path: pathname,
+    });
   }, [pathname]);
   useEffect(() => {
     try {

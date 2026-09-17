@@ -11,6 +11,7 @@ export const EVENTS = {
   fomoReferralClicked: "Fomo Referral Click",
   returnVisit: "Return Visit",
   toolInteracted: "Tool Interaction",
+  pageViewed: "Page View",
   freeCheckoutClicked: "Checkout - Free Community",
   paidCheckoutClicked: "Checkout - Social Capital",
 } as const;
@@ -47,6 +48,8 @@ export type EventPayloads = Record<OutboundEvent, Outbound> & {
     item_id?: string;
   };
   "Return Visit": Base & { days_since_last_visit: number; visit_day: string };
+  /** Only fire this for a client-side route change (not the initial page load) — the initial load is already counted by Whop's own pixel auto-tracking, and firing it again here would double-count. */
+  "Page View": Base & { path: string };
   "Checkout - Free Community": Checkout;
   "Checkout - Social Capital": Checkout;
 };
@@ -74,6 +77,12 @@ export function standardEventFor(name: EventName): StandardEventName | undefined
   if (name === EVENTS.calendarBooked) return STANDARD_EVENTS.schedule;
   if (name === EVENTS.freeCheckoutClicked || name === EVENTS.paidCheckoutClicked)
     return STANDARD_EVENTS.addToCart;
+  if (name === EVENTS.pageViewed) return STANDARD_EVENTS.viewContent;
+}
+/** The pages that count as a "key page" for view_content — matches what ads actually point to. Keep in sync with the ad destinations in memory/project_rokitg_ads_naming.md. */
+export const KEY_PAGES = ["/", "/sponsors/fomo", "/sponsors/bb", "/about", "/app", "/welcome"] as const;
+export function isKeyPage(pathname: string): boolean {
+  return (KEY_PAGES as readonly string[]).includes(pathname);
 }
 export function classifyOutbound(url: URL): OutboundEvent | undefined {
   if (!/^https?:$/.test(url.protocol)) return;
