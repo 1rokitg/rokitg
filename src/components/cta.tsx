@@ -33,10 +33,10 @@ export const CallToAction: React.FC<CallToActionProps> = ({
       content_id: videoId,
       interaction: "open",
       link_label: "Ver la clase gratis en YouTube",
-      destination: "https://www.whop.com/rokitg/join-the-circle",
+      destination: "https://whop.com/rokitg/join-the-circle",
     });
 
-    window.location.assign("https://www.youtube.com/watch?v=" + videoId);
+    window.location.assign("https://whop.com/rokitg/join-the-circle");
   };
 
   const handleCommunityClick = () => {
