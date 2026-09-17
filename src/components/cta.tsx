@@ -29,9 +29,11 @@ export const CallToAction: React.FC<CallToActionProps> = ({
 
   const handleVideoClick = () => {
     trackWhopEvent(WHOP_EVENTS.youtubeClicked, {
-      source: "home_cta", content_id: videoId, interaction: "open",
+      source: "home_cta",
+      content_id: videoId,
+      interaction: "open",
       link_label: "Ver la clase gratis en YouTube",
-      destination: "https://www.youtube.com/watch?v=" + videoId,
+      destination: "https://www.whop.com/rokitg/join-the-circle",
     });
 
     window.location.assign("https://www.youtube.com/watch?v=" + videoId);
@@ -51,7 +53,9 @@ export const CallToAction: React.FC<CallToActionProps> = ({
 
   const handleYoutubeClick = () => {
     trackWhopEvent(WHOP_EVENTS.youtubeClicked, {
-      source: "home_cta", interaction: "subscribe", link_label: "Suscribirme en YouTube",
+      source: "home_cta",
+      interaction: "subscribe",
+      link_label: "Suscribirme en YouTube",
       destination: YOUTUBE_CHANNEL_URL,
     });
 
