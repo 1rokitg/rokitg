@@ -1,38 +1,75 @@
-// Ported from the "designbyte" tweakcn theme (https://tweakcn.com/themes/cmcup07dt000104l4hj4eferh):
-// near-black base, teal primary, generous rounding — kept as plain CSS vars rather than
-// pulling in Tailwind/shadcn, since this project doesn't use Tailwind anywhere else.
+// Exact "designbyte" tweakcn theme tokens (https://tweakcn.com/themes/cmcup07dt000104l4hj4eferh),
+// ported as plain CSS vars rather than pulling in Tailwind/shadcn, since this
+// project doesn't use Tailwind anywhere else. Names kept 1:1 with the source
+// globals.css so this stays a straight port, not a reinterpretation.
 .shell {
   --academy-bg: oklch(0 0 0);
-  --academy-surface: oklch(0.1448 0 0);
-  --academy-line: oklch(0.2138 0.0019 286.2347);
   --academy-ink: oklch(0.9551 0 0);
-  --academy-muted: oklch(0.6 0 0);
+  --academy-surface: oklch(0.1448 0 0);
+  --academy-surface-ink: oklch(0.9551 0 0);
+  --academy-popover: oklch(0.221 0.0015 197.0452);
   --academy-brand: oklch(0.8545 0.1675 159.6564);
+  --academy-brand-ink: oklch(0 0 0);
+  --academy-secondary: oklch(0.47 0.09 160.0079);
+  --academy-secondary-ink: oklch(0.9551 0 0);
+  --academy-muted: oklch(0.2653 0.0037 286.1465);
+  --academy-muted-ink: oklch(0.6731 0 0);
   --academy-accent: oklch(0.3004 0.0609 159.8938);
+  --academy-accent-ink: oklch(0.997 0 0);
   --academy-destructive: oklch(0.7425 0.1696 1.0847);
+  --academy-destructive-ink: oklch(1 0 0);
+  --academy-line: oklch(0.2138 0.0019 286.2347);
+  --academy-input: oklch(0.3523 0 0);
+  --academy-ring: oklch(0.8545 0.1675 159.6564);
+  --academy-sidebar-bg: oklch(0.1448 0 0);
+  --academy-sidebar-ink: oklch(0.9551 0 0);
+  --academy-sidebar-brand: oklch(0.8545 0.1675 159.6564);
+  --academy-sidebar-brand-ink: oklch(1 0 0);
+  --academy-sidebar-accent: oklch(0.2824 0.0678 156.5634);
+  --academy-sidebar-accent-ink: oklch(0.8545 0.1675 159.6564);
+  --academy-sidebar-line: oklch(0.3452 0.0098 241.941);
   --academy-radius-lg: 1.4rem;
-  --academy-radius-md: 0.9rem;
-  --academy-radius-sm: 0.6rem;
+  --academy-radius-md: 1.275rem;
+  --academy-radius-sm: 1.15rem;
+  --academy-radius-xl: 1.65rem;
+  --academy-shadow-sm: 0 1px 3px 0px rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   display: grid;
   grid-template-columns: 264px minmax(0, 1fr);
   min-height: 100vh;
   width: 100%;
   background: var(--academy-bg);
   color: var(--academy-ink);
-  font-family: var(--font-body), Arial, sans-serif;
+  font-family: var(--font-sans), Arial, sans-serif;
 }
 
 :global([data-theme="light"]) .shell {
   --academy-bg: oklch(0.994 0 0);
-  --academy-surface: oklch(0.994 0 0);
-  --academy-line: oklch(0.9722 0.0034 247.8581);
   --academy-ink: oklch(0 0 0);
-  --academy-muted: oklch(0.5 0 0);
+  --academy-surface: oklch(0.994 0 0);
+  --academy-surface-ink: oklch(0 0 0);
+  --academy-popover: oklch(0.9911 0 0);
+  --academy-brand-ink: oklch(0 0 0);
+  --academy-secondary: oklch(0.9933 0.0011 197.139);
+  --academy-secondary-ink: oklch(0.1344 0 0);
+  --academy-muted: oklch(0.9702 0 0);
+  --academy-muted-ink: oklch(0.4386 0 0);
   --academy-accent: oklch(0.9947 0.0074 164.9465);
+  --academy-accent-ink: oklch(0.6184 0.1489 155.4444);
+  --academy-line: oklch(0.9722 0.0034 247.8581);
+  --academy-input: oklch(0.9401 0 0);
+  --academy-sidebar-bg: oklch(1 0 0);
+  --academy-sidebar-ink: oklch(0 0 0);
+  --academy-sidebar-brand: oklch(0 0 0);
+  --academy-sidebar-brand-ink: oklch(1 0 0);
+  --academy-sidebar-accent: oklch(0.9752 0.0307 168.3924);
+  --academy-sidebar-accent-ink: oklch(0 0 0);
+  --academy-sidebar-line: oklch(0.9401 0 0);
 }
 
 .sidebar {
-  border-right: 1px solid var(--academy-line);
+  border-right: 1px solid var(--academy-sidebar-line);
+  background: var(--academy-sidebar-bg);
+  color: var(--academy-sidebar-ink);
   padding: 24px 18px;
   display: flex;
   flex-direction: column;
@@ -58,9 +95,9 @@
   place-items: center;
   width: 32px;
   height: 32px;
-  border-radius: var(--academy-radius-sm);
-  background: var(--academy-brand);
-  color: #06090d;
+  border-radius: var(--academy-radius-md);
+  background: var(--academy-sidebar-brand);
+  color: var(--academy-sidebar-brand-ink);
   font-size: 15px;
 }
 
@@ -68,14 +105,15 @@
   display: block;
   font-size: 9px;
   letter-spacing: 0.14em;
-  color: var(--academy-muted);
+  color: var(--academy-muted-ink);
   font-weight: 700;
 }
 
 .profileCard {
-  border: 1px solid var(--academy-line);
-  background: var(--academy-surface);
+  border: 1px solid var(--academy-sidebar-line);
+  background: color-mix(in srgb, var(--academy-sidebar-ink) 4%, transparent);
   border-radius: var(--academy-radius-md);
+  box-shadow: var(--academy-shadow-sm);
   padding: 14px;
   display: flex;
   flex-direction: column;
@@ -92,8 +130,8 @@
   width: 36px;
   height: 36px;
   border-radius: 999px;
-  background: var(--academy-brand);
-  color: #06090d;
+  background: var(--academy-sidebar-brand);
+  color: var(--academy-sidebar-brand-ink);
   display: grid;
   place-items: center;
   font-weight: 800;
@@ -104,7 +142,7 @@
 .profileName {
   font-size: 13px;
   font-weight: 700;
-  color: var(--academy-ink);
+  color: var(--academy-sidebar-ink);
   max-width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -113,7 +151,7 @@
 
 .profileLevel {
   font-size: 11px;
-  color: var(--academy-muted);
+  color: var(--academy-muted-ink);
 }
 
 .xpRow {
@@ -121,25 +159,25 @@
   align-items: center;
   justify-content: space-between;
   font-size: 11px;
-  color: var(--academy-muted);
+  color: var(--academy-muted-ink);
 }
 
 .portalSelect {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid var(--academy-line);
-  background: var(--academy-surface);
-  border-radius: var(--academy-radius-sm);
+  border: 1px solid var(--academy-sidebar-line);
+  background: color-mix(in srgb, var(--academy-sidebar-ink) 4%, transparent);
+  border-radius: var(--academy-radius-md);
   padding: 10px 12px;
   font-size: 12px;
   font-weight: 700;
-  color: var(--academy-ink);
+  color: var(--academy-sidebar-ink);
 }
 
 .progressSummary {
   font-size: 11px;
-  color: var(--academy-muted);
+  color: var(--academy-muted-ink);
   padding: 0 2px;
 }
 
@@ -147,27 +185,27 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  color: var(--academy-brand);
+  color: var(--academy-sidebar-brand);
   font-weight: 700;
 }
 
 .progressTrack {
   height: 6px;
   border-radius: 99px;
-  background: var(--academy-line);
+  background: var(--academy-sidebar-line);
   overflow: hidden;
 }
 
 .progressFill {
   height: 100%;
   border-radius: 99px;
-  background: var(--academy-brand);
+  background: var(--academy-sidebar-brand);
   transition: width 300ms ease;
 }
 
 .progressLabel {
   font-size: 11px;
-  color: var(--academy-muted);
+  color: var(--academy-muted-ink);
 }
 
 .nav {
@@ -181,22 +219,26 @@
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
-  border-radius: var(--academy-radius-sm);
+  border-radius: var(--academy-radius-md);
   font-size: 13px;
   font-weight: 600;
-  color: var(--academy-muted);
+  color: var(--academy-muted-ink);
   text-decoration: none;
 }
 
 .navLink:hover {
-  background: var(--academy-surface);
-  color: var(--academy-ink);
+  background: color-mix(in srgb, var(--academy-sidebar-ink) 6%, transparent);
+  color: var(--academy-sidebar-ink);
 }
 
 .navLinkActive {
-  background: color-mix(in srgb, var(--academy-brand) 18%, transparent);
-  color: var(--academy-ink);
-  border: 1px solid color-mix(in srgb, var(--academy-brand) 45%, transparent);
+  background: var(--academy-sidebar-accent);
+  color: var(--academy-sidebar-accent-ink);
+}
+
+.navLinkActive:hover {
+  background: var(--academy-sidebar-accent);
+  color: var(--academy-sidebar-accent-ink);
 }
 
 .sidebarFooter {
@@ -208,19 +250,23 @@
 
 .loginButton {
   border: 0;
-  border-radius: var(--academy-radius-sm);
+  border-radius: 999px;
   padding: 10px 14px;
   font: inherit;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
-  background: var(--academy-brand);
-  color: #06090d;
+  background: var(--academy-sidebar-brand);
+  color: var(--academy-sidebar-brand-ink);
+}
+
+.loginButton:hover {
+  filter: brightness(1.06);
 }
 
 .backToSite {
   font-size: 11px;
-  color: var(--academy-muted);
+  color: var(--academy-muted-ink);
   text-decoration: none;
 }
 
@@ -237,7 +283,7 @@
     position: static;
     height: auto;
     border-right: 0;
-    border-bottom: 1px solid var(--academy-line);
+    border-bottom: 1px solid var(--academy-sidebar-line);
     flex-direction: row;
     flex-wrap: wrap;
   }

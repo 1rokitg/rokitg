@@ -17,7 +17,7 @@ const NAV_ITEMS = [
   { href: "/app", label: "Calendar", icon: "📅", real: false },
   { href: "/app", label: "Progress", icon: "📈", real: false },
   { href: "/app", label: "Certificates", icon: "🏅", real: false },
-  { href: "/app", label: "Achievements", icon: "🏆", real: false, forceActive: true },
+  { href: "/app", label: "Achievements", icon: "🏆", real: false },
   { href: "/app", label: "Leaderboard", icon: "🥇", real: false },
   { href: "/app", label: "Bookmarks", icon: "🔖", real: false },
   { href: "/app", label: "Notes", icon: "📝", real: false },
@@ -78,9 +78,8 @@ export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
 
       <nav className={styles.nav}>
         {NAV_ITEMS.map((item, index) => {
-          const isActive = item.forceActive
-            ? true
-            : item.real && (item.href === "/app" ? pathname === "/app" : pathname.startsWith(item.href));
+          const isActive =
+            item.real && (item.href === "/app" ? pathname === "/app" : pathname.startsWith(item.href));
           return (
             <Link
               key={`${item.href}-${item.label}-${index}`}
