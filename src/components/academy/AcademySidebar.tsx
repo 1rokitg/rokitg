@@ -20,7 +20,7 @@ import {
   FiMessageCircle,
   FiChevronDown,
 } from "react-icons/fi";
-import { recordVisitAndGetStreak, getCompletedLessons } from "@/lib/academy-progress";
+import { recordVisitAndGetStreak, getCompletedLessons, getVisitorId } from "@/lib/academy-progress";
 import styles from "./AcademySidebar.module.scss";
 
 // Real pages first; the rest are visual-reference stubs until they exist —
@@ -47,14 +47,24 @@ export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
   const { login } = useLogin();
   const [streakDays, setStreakDays] = useState<number | null>(null);
   const [completedCount, setCompletedCount] = useState(0);
+  const [visitorId, setVisitorId] = useState<string | null>(null);
 
   useEffect(() => {
     setStreakDays(recordVisitAndGetStreak().days);
     setCompletedCount(getCompletedLessons().length);
+    setVisitorId(getVisitorId());
   }, []);
 
   const progressPct = totalLessons > 0 ? Math.min(100, (completedCount / totalLessons) * 100) : 0;
   const displayName = authenticated ? (user?.email?.address ?? "Cuenta conectada") : "Invitado";
+
+  // A Privy user id is permanent per account (across browsers/devices); a
+  // guest falls back to a per-browser id, so everyone gets a stable
+  // avatar.vercel.sh avatar that never changes once assigned.
+  const avatarSeed = authenticated && user?.id ? user.id : visitorId;
+  const avatarUrl = avatarSeed
+    ? `https://avatar.vercel.sh/${encodeURIComponent(avatarSeed)}.svg?text=${encodeURIComponent(displayName.slice(0, 1).toUpperCase())}`
+    : null;
 
   return (
     <aside className={styles.sidebar}>
@@ -68,9 +78,14 @@ export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
 
       <div className={styles.profileCard}>
         <div className={styles.profileRow}>
-          <div className={styles.avatar} aria-hidden="true">
-            {displayName.slice(0, 1).toUpperCase()}
-          </div>
+          {avatarUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element -- external, deterministic avatar service
+            <img className={styles.avatar} src={avatarUrl} alt="" aria-hidden="true" width={36} height={36} />
+          ) : (
+            <div className={styles.avatar} aria-hidden="true">
+              {displayName.slice(0, 1).toUpperCase()}
+            </div>
+          )}
           <div>
             <div className={styles.profileName}>{displayName}</div>
             <div className={styles.profileLevel}>Level 1</div>
@@ -130,9 +145,6 @@ export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
         >
           {authenticated ? "Cerrar sesión" : "Iniciar sesión"}
         </button>
-        <a className={styles.backToSite} href="https://rokitg.com">
-          ← Volver a rokitg.com
-        </a>
       </div>
     </aside>
   );

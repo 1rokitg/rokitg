@@ -6,6 +6,22 @@
 
 const STREAK_KEY = "rokitg:academy:streak:v1";
 const COMPLETED_KEY = "rokitg:academy:completed-lessons:v1";
+const VISITOR_ID_KEY = "rokitg:academy:visitor-id:v1";
+
+// A stable per-browser id for guests, so their avatar.vercel.sh avatar stays
+// the same across visits even before they log in with Privy.
+export function getVisitorId(): string {
+  if (typeof window === "undefined") return "guest";
+  try {
+    const existing = window.localStorage.getItem(VISITOR_ID_KEY);
+    if (existing) return existing;
+    const id = crypto.randomUUID();
+    window.localStorage.setItem(VISITOR_ID_KEY, id);
+    return id;
+  } catch {
+    return "guest";
+  }
+}
 
 function utcDay(date: Date) {
   return date.toISOString().slice(0, 10);

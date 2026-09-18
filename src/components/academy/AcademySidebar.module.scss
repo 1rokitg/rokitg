@@ -188,6 +188,7 @@
   font-weight: 800;
   font-size: 14px;
   flex-shrink: 0;
+  object-fit: cover;
 }
 
 .profileName {
@@ -271,7 +272,9 @@
   gap: 2px;
 }
 
-.navLink {
+// Scoped under .nav so these beat once-ui's global `a:not(.button)` rules,
+// which otherwise win on specificity and silently override the link color.
+.nav .navLink {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -279,7 +282,7 @@
   border-radius: var(--academy-radius-md);
   font-size: 13px;
   font-weight: 600;
-  color: var(--academy-muted-ink);
+  color: var(--academy-sidebar-ink);
   text-decoration: none;
 
   svg {
@@ -289,17 +292,17 @@
   }
 }
 
-.navLink:hover {
-  background: color-mix(in srgb, var(--academy-sidebar-ink) 6%, transparent);
+.nav .navLink:hover {
+  background: color-mix(in srgb, var(--academy-muted-ink) 16%, transparent);
   color: var(--academy-sidebar-ink);
 }
 
-.navLinkActive {
+.nav .navLinkActive {
   background: var(--academy-sidebar-accent);
   color: var(--academy-sidebar-accent-ink);
 }
 
-.navLinkActive:hover {
+.nav .navLinkActive:hover {
   background: var(--academy-sidebar-accent);
   color: var(--academy-sidebar-accent-ink);
 }
@@ -325,12 +328,6 @@
 
 .loginButton:hover {
   filter: brightness(1.06);
-}
-
-.backToSite {
-  font-size: 11px;
-  color: var(--academy-muted-ink);
-  text-decoration: none;
 }
 
 .main {
