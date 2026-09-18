@@ -8,6 +8,7 @@ import { Providers } from "@/components/Providers";
 import { AppAuthProvider } from "@/components/AppAuthProvider";
 import { AcademySidebar } from "@/components/academy/AcademySidebar";
 import { UnderDevelopmentNotice } from "@/components/academy/UnderDevelopmentNotice";
+import { OnboardingModal } from "@/components/academy/OnboardingModal";
 import { InteractionTracker } from "@/components/InteractionTracker";
 import { WhopPixelScripts } from "@/components/WhopPixelScripts";
 import { MetaPixelScripts } from "@/components/MetaPixelScripts";
@@ -87,6 +88,7 @@ export default async function AcademyRootLayout({
             {shouldTrack && <InteractionTracker />}
             {shouldTrack && <MetaCapiBridge />}
             <UnderDevelopmentNotice />
+            <OnboardingModal />
             <div className={styles.shell}>
               <AcademySidebar totalLessons={totalLessons} />
               <main className={styles.main}>{children}</main>
