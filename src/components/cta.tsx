@@ -23,21 +23,23 @@ export const CallToAction: React.FC<CallToActionProps> = ({
   ...flex
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const videoId = "b4vnWgUmAa8";
   const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
   const handleVideoClick = () => {
-    trackWhopEvent(WHOP_EVENTS.youtubeClicked, {
+    trackWhopEvent(WHOP_EVENTS.videoPlayed, {
       source: "home_cta",
       content_id: videoId,
-      interaction: "open",
-      link_label: "Ver la clase gratis en YouTube",
-      destination: "https://whop.com/rokitg/join-the-circle",
+      content_type: "video",
+      interaction: "play",
     });
 
-    window.location.assign("https://whop.com/rokitg/join-the-circle");
+    setIsVideoOpen(true);
   };
+
+  const closeVideo = () => setIsVideoOpen(false);
 
   const handleCommunityClick = () => {
     trackWhopEvent(WHOP_EVENTS.freeCheckoutClicked, {
@@ -331,6 +333,66 @@ export const CallToAction: React.FC<CallToActionProps> = ({
             </div>
           </div>
         </button>
+
+        {isVideoOpen && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Cómo empecé desde cero"
+            onClick={closeVideo}
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 1000,
+              background: "rgba(0,0,0,0.85)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 24,
+            }}
+          >
+            <div
+              onClick={(event) => event.stopPropagation()}
+              style={{
+                position: "relative",
+                width: "100%",
+                maxWidth: 950,
+                aspectRatio: "16 / 9",
+                borderRadius: 16,
+                overflow: "hidden",
+                boxShadow: "0 24px 70px rgba(0,0,0,0.55)",
+              }}
+            >
+              <button
+                type="button"
+                onClick={closeVideo}
+                aria-label="Cerrar video"
+                style={{
+                  position: "absolute",
+                  top: -44,
+                  right: 0,
+                  width: 36,
+                  height: 36,
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  background: "rgba(0,0,0,0.5)",
+                  color: "#fff",
+                  fontSize: 18,
+                  cursor: "pointer",
+                }}
+              >
+                ✕
+              </button>
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+                title="Cómo empecé desde cero"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+                style={{ width: "100%", height: "100%", border: 0 }}
+              />
+            </div>
+          </div>
+        )}
 
         {/* =========================================================
             CTA
