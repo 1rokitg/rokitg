@@ -3,7 +3,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import type { CourseOffer } from "@/lib/course-offers";
 import { trackWhopEvent, WHOP_EVENTS } from "@/lib/whop";
-import styles from "@/app/app/courses/courses.module.scss";
+import styles from "@/app/(academy)/app/courses/courses.module.scss";
 
 const Checkout = dynamic(() => import("./CourseCheckoutEmbed"), {
   ssr: false,

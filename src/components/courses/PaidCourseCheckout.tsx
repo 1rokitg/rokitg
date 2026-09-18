@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { usePrivy, useLogin } from "@privy-io/react-auth";
 import type { CourseOffer } from "@/lib/course-offers";
-import styles from "@/app/app/courses/courses.module.scss";
+import styles from "@/app/(academy)/app/courses/courses.module.scss";
 
 function formatOfferPrice(offer: CourseOffer) {
   return new Intl.NumberFormat("es-ES", {

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { formatCoursePrice, type CourseSummary } from "@/lib/course-catalog";
-import styles from "@/app/app/courses/courses.module.scss";
+import styles from "@/app/(academy)/app/courses/courses.module.scss";
 
 export function CourseCatalog({ courses }: { courses: CourseSummary[] }) {
   const [query, setQuery] = useState("");
