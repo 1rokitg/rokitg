@@ -28,6 +28,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { InteractionTracker } from "@/components/InteractionTracker";
 import { WhopPixelScripts } from "@/components/WhopPixelScripts";
+import { MetaPixelScripts } from "@/components/MetaPixelScripts";
+import { MetaCapiBridge } from "@/components/MetaCapiBridge";
 import { getWhopPixelContext } from "@/lib/whop-pixel";
 
 export async function generateMetadata() {
@@ -136,6 +138,7 @@ export default async function RootLayout({
           }}
         />
         <WhopPixelScripts loadWhop={loadWhop} whopContext={whopContext} />
+        <MetaPixelScripts loadMeta={loadWhop} pixelId={process.env.META_PIXEL_ID} />
         <meta name="og:title" content={home.title} />
         <meta name="og:description" content={home.description} />
         <meta name="og:image" content={ogImageUrl} />
@@ -202,6 +205,7 @@ export default async function RootLayout({
           <Flex fillWidth minHeight="16" s={{ hide: true }} />
           <Header />
           {shouldTrack && <InteractionTracker />}
+          {shouldTrack && <MetaCapiBridge />}
           <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
             <Flex horizontal="center" fillWidth minHeight="0">
               <RouteGuard>{children}</RouteGuard>

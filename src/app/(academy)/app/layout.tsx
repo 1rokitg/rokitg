@@ -10,6 +10,8 @@ import { AcademySidebar } from "@/components/academy/AcademySidebar";
 import { UnderDevelopmentNotice } from "@/components/academy/UnderDevelopmentNotice";
 import { InteractionTracker } from "@/components/InteractionTracker";
 import { WhopPixelScripts } from "@/components/WhopPixelScripts";
+import { MetaPixelScripts } from "@/components/MetaPixelScripts";
+import { MetaCapiBridge } from "@/components/MetaCapiBridge";
 import { getWhopPixelContext } from "@/lib/whop-pixel";
 import { courses } from "@/lib/courses";
 import { style, dataStyle } from "@/resources";
@@ -77,11 +79,13 @@ export default async function AcademyRootLayout({
           }}
         />
         <WhopPixelScripts loadWhop={loadWhop} whopContext={whopContext} />
+        <MetaPixelScripts loadMeta={loadWhop} pixelId={process.env.META_PIXEL_ID} />
       </head>
       <body style={{ margin: 0 }}>
         <Providers>
           <AppAuthProvider>
             {shouldTrack && <InteractionTracker />}
+            {shouldTrack && <MetaCapiBridge />}
             <UnderDevelopmentNotice />
             <div className={styles.shell}>
               <AcademySidebar totalLessons={totalLessons} />

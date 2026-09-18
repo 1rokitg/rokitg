@@ -79,6 +79,20 @@ export function standardEventFor(name: EventName): StandardEventName | undefined
     return STANDARD_EVENTS.addToCart;
   if (name === EVENTS.pageViewed) return STANDARD_EVENTS.viewContent;
 }
+/**
+ * Maps our event names onto Meta's own Standard Events for the Conversions API —
+ * independent of Whop's taxonomy above, this is the user's own Meta Business
+ * account, not Whop's ad stack. Only the highest-signal conversion events get a
+ * standard name (so Meta can optimize delivery toward them); everything else is
+ * sent to Meta as a custom event instead, still usable for audiences/retargeting.
+ */
+export function metaEventFor(name: EventName): string | undefined {
+  if (name === EVENTS.newsletterSubmitted) return "Lead";
+  if (name === EVENTS.calendarBooked) return "Schedule";
+  if (name === EVENTS.freeCheckoutClicked) return "Lead";
+  if (name === EVENTS.paidCheckoutClicked) return "InitiateCheckout";
+  if (name === EVENTS.pageViewed) return "PageView";
+}
 /** The pages that count as a "key page" for view_content — matches what ads actually point to. Keep in sync with the ad destinations in memory/project_rokitg_ads_naming.md. */
 export const KEY_PAGES = ["/", "/sponsors/fomo", "/sponsors/bb", "/about", "/app", "/welcome"] as const;
 export function isKeyPage(pathname: string): boolean {
