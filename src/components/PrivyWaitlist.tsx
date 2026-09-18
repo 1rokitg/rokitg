@@ -1,6 +1,6 @@
 "use client";
 
-import { PrivyProvider, usePrivy, useLogin } from "@privy-io/react-auth";
+import { usePrivy, useLogin } from "@privy-io/react-auth";
 import { Button, Column, Text } from "@once-ui-system/core";
 
 const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
@@ -53,9 +53,5 @@ export function PrivyWaitlist() {
     );
   }
 
-  return (
-    <PrivyProvider appId={appId} config={{ loginMethods: ["email"] }}>
-      <WaitlistButton />
-    </PrivyProvider>
-  );
+  return <WaitlistButton />;
 }
