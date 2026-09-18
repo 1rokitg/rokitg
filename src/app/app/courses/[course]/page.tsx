@@ -3,14 +3,24 @@ import { notFound } from "next/navigation";
 import { courseMinutes, getCourse } from "@/lib/courses";
 import styles from "../courses.module.scss";
 import { CourseCheckout } from "@/components/courses/CourseCheckout";
+import { PaidCourseCheckout } from "@/components/courses/PaidCourseCheckout";
 import { getCourseOffer } from "@/lib/course-offers";
 import { formatCoursePrice } from "@/lib/course-catalog";
+import { hasCourseAccess } from "@/lib/entitlements";
+import { getPrivyUserId } from "@/lib/privy-server";
 
 export default async function CoursePage({ params }: { params: Promise<{ course: string }> }) {
   const { course: slug } = await params;
   const course = getCourse(slug);
   const offer = getCourseOffer(slug);
   if (!course) notFound();
+
+  const privyUserId = course.status === "on-sale" ? await getPrivyUserId() : null;
+  const owns =
+    course.status === "on-sale" && privyUserId
+      ? await hasCourseAccess(privyUserId, slug)
+      : false;
+
   return (
     <>
       <Link className={styles.back} href="/app/courses">
@@ -42,23 +52,43 @@ export default async function CoursePage({ params }: { params: Promise<{ course:
         </div>
         <aside className={styles.purchase}>
           <span className={styles.badge}>
-            {course.status === "demo" ? "Acceso de muestra" : "Próximamente"}
-          </span>
-          <h2>{course.status === "demo" ? "Conoce el aula" : "Estamos preparando este curso"}</h2>
-          <p>
             {course.status === "demo"
-              ? `${course.lessons.length} lecciones de lectura · ${courseMinutes(course)} minutos aproximados`
+              ? "Acceso de muestra"
+              : course.status === "on-sale"
+                ? owns
+                  ? "Ya es tuyo"
+                  : "Disponible ahora"
+                : "Próximamente"}
+          </span>
+          <h2>
+            {course.status === "demo"
+              ? "Conoce el aula"
+              : course.status === "on-sale"
+                ? owns
+                  ? "Continúa donde lo dejaste"
+                  : "Compra el curso completo"
+                : "Estamos preparando este curso"}
+          </h2>
+          <p>
+            {course.status === "demo" || course.status === "on-sale"
+              ? `${course.lessons.length} lecciones · ${courseMinutes(course)} minutos aproximados`
               : "La fecha de apertura y el temario se anunciarán aquí."}
           </p>
-          {course.lessons[0] && (
-            <Link
-              className={styles.button}
-              href={`/app/courses/${course.slug}/${course.lessons[0].slug}`}
-            >
-              Empezar la muestra →
-            </Link>
+          {course.status === "on-sale" && !owns && offer ? (
+            <PaidCourseCheckout courseSlug={course.slug} offer={offer} />
+          ) : (
+            course.lessons[0] && (
+              <Link
+                className={styles.button}
+                href={`/app/courses/${course.slug}/${course.lessons[0].slug}`}
+              >
+                {course.status === "on-sale" ? "Ir a la primera lección →" : "Empezar la muestra →"}
+              </Link>
+            )
           )}
-          <p className={styles.muted}>Inscripciones de pago aún no disponibles.</p>
+          {course.status === "placeholder" && (
+            <p className={styles.muted}>Inscripciones de pago aún no disponibles.</p>
+          )}
         </aside>
       </section>
       {course.status === "placeholder" && (
@@ -86,7 +116,10 @@ export default async function CoursePage({ params }: { params: Promise<{ course:
             >
               <span className={styles.number}>{String(index + 1).padStart(2, "0")}</span>
               <strong>{lesson.title}</strong>
-              <span>{lesson.minutes} min · Muestra ↗</span>
+              <span>
+                {lesson.minutes} min ·{" "}
+                {lesson.preview || course.status === "demo" || owns ? "Muestra ↗" : "🔒 Bloqueada"}
+              </span>
             </Link>
           ))
         ) : (

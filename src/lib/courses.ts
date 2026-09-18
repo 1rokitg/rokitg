@@ -17,7 +17,7 @@ export type Course = {
   level: string;
   description: string;
   outcomes: string[];
-  status: "demo" | "coming-soon" | "placeholder";
+  status: "demo" | "coming-soon" | "placeholder" | "on-sale";
   plannedPrice?: { amountMinor: number; currency: "EUR" };
   lessons: Lesson[];
 };
