@@ -1,14 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { usePrivy } from "@privy-io/react-auth";
 import { useCourseProgress } from "@/components/courses/progress";
 import { recordVisitAndGetStreak } from "@/lib/academy-progress";
 import { formatCoursePrice, type CourseSummary } from "@/lib/course-catalog";
+import { SkeletonBlock } from "./SkeletonBlock";
 import courseStyles from "@/app/(academy)/app/courses/courses.module.scss";
 import styles from "./AcademyHome.module.scss";
 import { useEffect, useState } from "react";
 
 export function AcademyHome({ courses }: { courses: CourseSummary[] }) {
+  const { authenticated } = usePrivy();
   const { progress, ready } = useCourseProgress();
   const [streakDays, setStreakDays] = useState<number | null>(null);
 
@@ -56,24 +59,36 @@ export function AcademyHome({ courses }: { courses: CourseSummary[] }) {
           <span className={courseStyles.orbit}>R</span>
           <div>
             <small>APRENDE → PRACTICA → AVANZA</small>
-            <strong>
-              {streakDays !== null && streakDays > 0
-                ? `${streakDays} ${streakDays === 1 ? "día seguido" : "días seguidos"}.`
-                : "Empieza hoy tu racha."}
-            </strong>
+            {authenticated ? (
+              <strong>
+                {streakDays !== null && streakDays > 0
+                  ? `${streakDays} ${streakDays === 1 ? "día seguido" : "días seguidos"}.`
+                  : "Empieza hoy tu racha."}
+              </strong>
+            ) : (
+              <SkeletonBlock width={160} height={22} className={styles.heroSkeleton} />
+            )}
           </div>
         </div>
       </section>
 
       <div className={styles.statsRow}>
         <div className={styles.statCard}>
-          <span className={styles.statValue}>{streakDays ?? 0}</span>
+          {authenticated ? (
+            <span className={styles.statValue}>{streakDays ?? 0}</span>
+          ) : (
+            <SkeletonBlock width={36} height={26} className={styles.statSkeleton} />
+          )}
           <span className={styles.statLabel}>Racha actual (días)</span>
         </div>
         <div className={styles.statCard}>
-          <span className={styles.statValue}>
-            {completedLessons}/{totalLessons}
-          </span>
+          {authenticated ? (
+            <span className={styles.statValue}>
+              {completedLessons}/{totalLessons}
+            </span>
+          ) : (
+            <SkeletonBlock width={48} height={26} className={styles.statSkeleton} />
+          )}
           <span className={styles.statLabel}>Lecciones completadas</span>
         </div>
         <div className={styles.statCard}>

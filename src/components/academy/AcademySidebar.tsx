@@ -19,8 +19,10 @@ import {
   FiMessageSquare,
   FiMessageCircle,
   FiChevronDown,
+  FiLock,
 } from "react-icons/fi";
-import { recordVisitAndGetStreak, getCompletedLessons, getVisitorId } from "@/lib/academy-progress";
+import { recordVisitAndGetStreak, getCompletedLessons } from "@/lib/academy-progress";
+import { SkeletonBlock } from "./SkeletonBlock";
 import styles from "./AcademySidebar.module.scss";
 
 // Real pages first; the rest are visual-reference stubs until they exist —
@@ -47,24 +49,22 @@ export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
   const { login } = useLogin();
   const [streakDays, setStreakDays] = useState<number | null>(null);
   const [completedCount, setCompletedCount] = useState(0);
-  const [visitorId, setVisitorId] = useState<string | null>(null);
 
   useEffect(() => {
     setStreakDays(recordVisitAndGetStreak().days);
     setCompletedCount(getCompletedLessons().length);
-    setVisitorId(getVisitorId());
   }, []);
 
   const progressPct = totalLessons > 0 ? Math.min(100, (completedCount / totalLessons) * 100) : 0;
   const displayName = authenticated ? (user?.email?.address ?? "Cuenta conectada") : "Invitado";
 
-  // A Privy user id is permanent per account (across browsers/devices); a
-  // guest falls back to a per-browser id, so everyone gets a stable
-  // avatar.vercel.sh avatar that never changes once assigned.
-  const avatarSeed = authenticated && user?.id ? user.id : visitorId;
-  const avatarUrl = avatarSeed
-    ? `https://avatar.vercel.sh/${encodeURIComponent(avatarSeed)}.svg?text=${encodeURIComponent(displayName.slice(0, 1).toUpperCase())}`
-    : null;
+  // Identity/progress only render once there's a real Privy account behind
+  // them — a guest sees locked placeholders instead of a real (if empty)
+  // avatar or streak, so signing up visibly "turns on" the dashboard.
+  const avatarUrl =
+    authenticated && user?.id
+      ? `https://avatar.vercel.sh/${encodeURIComponent(user.id)}.svg?text=${encodeURIComponent(displayName.slice(0, 1).toUpperCase())}`
+      : null;
 
   return (
     <aside className={styles.sidebar}>
@@ -82,25 +82,38 @@ export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
             // eslint-disable-next-line @next/next/no-img-element -- external, deterministic avatar service
             <img className={styles.avatar} src={avatarUrl} alt="" aria-hidden="true" width={36} height={36} />
           ) : (
-            <div className={styles.avatar} aria-hidden="true">
-              {displayName.slice(0, 1).toUpperCase()}
+            <div className={`${styles.avatar} ${styles.avatarLocked}`} aria-hidden="true">
+              <FiLock />
             </div>
           )}
           <div>
             <div className={styles.profileName}>{displayName}</div>
-            <div className={styles.profileLevel}>Level 1</div>
+            {authenticated ? (
+              <div className={styles.profileLevel}>Level 1</div>
+            ) : (
+              <SkeletonBlock width={48} height={11} />
+            )}
           </div>
         </div>
         <div className={styles.xpRow}>
-          <span>0 XP</span>
-          {streakDays !== null && streakDays > 0 && (
-            <span className={styles.streak}>
-              <FiTrendingUp aria-hidden="true" /> {streakDays}d streak
-            </span>
+          {authenticated ? (
+            <>
+              <span>0 XP</span>
+              {streakDays !== null && streakDays > 0 && (
+                <span className={styles.streak}>
+                  <FiTrendingUp aria-hidden="true" /> {streakDays}d streak
+                </span>
+              )}
+            </>
+          ) : (
+            <>
+              <SkeletonBlock width={40} height={12} />
+              <SkeletonBlock width={64} height={12} />
+            </>
           )}
         </div>
-        <div className={styles.progressTrack}>
-          <div className={styles.progressFill} style={{ width: "0%" }} />
+        <div className={`${styles.progressTrack} ${!authenticated ? styles.progressTrackLocked : ""}`}>
+          <div className={styles.progressFill} style={{ width: authenticated ? `${progressPct}%` : "0%" }} />
         </div>
       </div>
 

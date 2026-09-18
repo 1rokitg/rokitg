@@ -191,6 +191,12 @@
   object-fit: cover;
 }
 
+.avatarLocked {
+  background: var(--academy-muted);
+  color: var(--academy-muted-ink);
+  font-size: 15px;
+}
+
 .profileName {
   font-size: 13px;
   font-weight: 700;
@@ -252,6 +258,10 @@
   border-radius: 99px;
   background: var(--academy-sidebar-line);
   overflow: hidden;
+}
+
+.progressTrackLocked {
+  opacity: 0.5;
 }
 
 .progressFill {

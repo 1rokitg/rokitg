@@ -26,6 +26,14 @@
   color: var(--academy-muted-ink);
 }
 
+.statSkeleton {
+  margin-bottom: 4px;
+}
+
+.heroSkeleton {
+  margin-top: 16px;
+}
+
 @media (max-width: 760px) {
   .statsRow {
     grid-template-columns: 1fr;
