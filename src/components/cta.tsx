@@ -25,7 +25,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
   const [isHovered, setIsHovered] = useState(false);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
-  const videoId = "b4vnWgUmAa8";
+  const videoId = "kZjEPUCnZ80";
   const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
   const handleVideoClick = () => {
