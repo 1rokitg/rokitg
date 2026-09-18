@@ -1,16 +1,21 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
 import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
 import { routes, display, work, whop } from "@/resources";
+import { usePathname, localeHref } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const locale = useLocale() as AppLocale;
+  const href = (path: string) => localeHref(locale, path);
+  const t = useTranslations("Header");
 
   return (
     <>
@@ -53,7 +58,7 @@ export const Header = () => {
         >
           <ToggleButton
             prefixIcon="person"
-            href="/about"
+            href={href("/about")}
             aria-label="Open the RokitG About Me Page"
             selected={pathname.startsWith("/about")}
           />
@@ -83,8 +88,8 @@ export const Header = () => {
                 <ToggleButton
                   className={styles.compactItem}
                   prefixIcon="home"
-                  href="/"
-                  label="Home"
+                  href={href("/")}
+                  label={t("home")}
                   selected={pathname === "/"}
                 />
               )}
@@ -93,7 +98,7 @@ export const Header = () => {
                 <Row s={{ hide: true }}>
                   <ToggleButton
                     className={styles.compactItem}
-                    href="/sponsors/fomo"
+                    href={href("/sponsors/fomo")}
                     label={
                       <Row gap="4" vertical="center">
                         <Image
@@ -103,7 +108,7 @@ export const Header = () => {
                           height={16}
                           style={{ borderRadius: "4px" }}
                         />
-                        Fomo
+                        {t("fomo")}
                       </Row>
                     }
                     selected={pathname.startsWith("/sponsors/fomo")}
@@ -111,7 +116,7 @@ export const Header = () => {
                 </Row>
                 <Row hide s={{ hide: false }}>
                   <ToggleButton
-                    href="/sponsors/fomo"
+                    href={href("/sponsors/fomo")}
                     label={
                       <Image
                         src="/images/fomo-logo.png"
@@ -129,7 +134,7 @@ export const Header = () => {
                 <Row s={{ hide: true }}>
                   <ToggleButton
                     className={styles.compactItem}
-                    href="/sponsors/bb"
+                    href={href("/sponsors/bb")}
                     label={
                       <Row gap="4" vertical="center">
                         <Image
@@ -139,7 +144,7 @@ export const Header = () => {
                           height={16}
                           style={{ borderRadius: "4px", background: "#fff" }}
                         />
-                        Trading Bot
+                        {t("tradingBot")}
                       </Row>
                     }
                     selected={pathname.startsWith("/sponsors/bb")}
@@ -147,7 +152,7 @@ export const Header = () => {
                 </Row>
                 <Row hide s={{ hide: false }}>
                   <ToggleButton
-                    href="/sponsors/bb"
+                    href={href("/sponsors/bb")}
                     label={
                       <Image
                         src="/images/basedbot-logo.png"
@@ -167,7 +172,7 @@ export const Header = () => {
                     <ToggleButton
                       className={styles.compactItem}
                       prefixIcon="grid"
-                      href="/work"
+                      href={href("/work")}
                       label={work.label}
                       selected={pathname.startsWith("/work")}
                     />
@@ -175,7 +180,7 @@ export const Header = () => {
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="grid"
-                      href="/work"
+                      href={href("/work")}
                       selected={pathname.startsWith("/work")}
                     />
                   </Row>
@@ -187,7 +192,7 @@ export const Header = () => {
                     <ToggleButton
                       className={styles.compactItem}
                       prefixIcon="whop"
-                      href="/whop"
+                      href={href("/whop")}
                       label={whop.label}
                       selected={pathname.startsWith("/whop")}
                     />
@@ -195,7 +200,7 @@ export const Header = () => {
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="whop"
-                      href="/whop"
+                      href={href("/whop")}
                       selected={pathname.startsWith("/whop")}
                     />
                   </Row>
@@ -219,7 +224,7 @@ export const Header = () => {
           >
             <ToggleButton
               href="/app"
-              label="Log in"
+              label={t("login")}
               selected={pathname.startsWith("/app")}
             />
           </Flex>

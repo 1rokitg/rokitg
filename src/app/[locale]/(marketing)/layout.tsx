@@ -3,6 +3,10 @@ import "@once-ui-system/core/css/tokens.css";
 import "@/resources/custom.css";
 
 import classNames from "classnames";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, setRequestLocale } from "next-intl/server";
+import { routing, type AppLocale } from "@/i18n/routing";
 
 import {
   Background,
@@ -21,7 +25,6 @@ import {
   style,
   dataStyle,
   home,
-  person,
 } from "@/resources";
 
 import { Analytics } from "@vercel/analytics/next";
@@ -31,6 +34,10 @@ import { WhopPixelScripts } from "@/components/WhopPixelScripts";
 import { MetaPixelScripts } from "@/components/MetaPixelScripts";
 import { MetaCapiBridge } from "@/components/MetaCapiBridge";
 import { getWhopPixelContext } from "@/lib/whop-pixel";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -44,9 +51,16 @@ export async function generateMetadata() {
 
 export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  if (!(routing.locales as readonly string[]).includes(locale)) notFound();
+  setRequestLocale(locale as AppLocale);
+  const messages = await getMessages();
+
   const { loadWhop, shouldTrack, whopContext } = await getWhopPixelContext();
   const siteUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -58,7 +72,7 @@ export default async function RootLayout({
     <Flex
       suppressHydrationWarning
       as="html"
-      lang={person.locale ?? "en"}
+      lang={locale}
       fillWidth
       className={classNames(
         fonts.heading.variable,
@@ -150,6 +164,7 @@ export default async function RootLayout({
         <meta name="twitter:card" content="summary_large_image" />
       </head>
 
+      <NextIntlClientProvider messages={messages}>
       <Providers>
         <Column
           as="body"
@@ -214,6 +229,7 @@ export default async function RootLayout({
           <Footer />
         </Column>
       </Providers>
+      </NextIntlClientProvider>
 
       <Analytics />
       <SpeedInsights />

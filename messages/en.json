@@ -1,0 +1,36 @@
+{
+  "Header": {
+    "home": "Home",
+    "fomo": "Fomo",
+    "tradingBot": "Trading Bot",
+    "login": "Log in"
+  },
+  "FomoSponsorPage": {
+    "metaTitle": "Download Fomo | RokitG",
+    "metaDescription": "Discover tokens, follow other traders, and carry Fomo on your phone. Get the download with RokitG's link.",
+    "brandTag": "FOMO × ROKITG",
+    "eyebrow": "YOUR NEXT CRYPTO APP",
+    "heroTitleLine1": "The market moves.",
+    "heroTitleLine2": "Take it with you.",
+    "intro": "Discover tokens, follow other traders, and trade from your phone. All in Fomo, a trading app with a community one tap away.",
+    "downloadCta": "Download Fomo",
+    "note": "Continue on Fomo to download the app.",
+    "noteCode": "Use creator code <b>{code}</b> when you sign up.",
+    "secondaryCta": "How to get started",
+    "visualAlt": "Fomo app view: tokens, trader activity, and portfolio on mobile",
+    "visualCaption": "Illustrative view of the app.",
+    "featuresAriaLabel": "Discover Fomo",
+    "feature1Tag": "01 / DISCOVER",
+    "feature1Title": "Explore new tokens",
+    "feature1Body": "Follow market trends right from the app.",
+    "feature2Tag": "02 / CONNECT",
+    "feature2Title": "Follow other traders",
+    "feature2Body": "See their activity in Fomo's social feed.",
+    "feature3Tag": "03 / MOVE",
+    "feature3Title": "From mobile to desktop",
+    "feature3Body": "Access it from the web too, whenever you prefer.",
+    "finishEyebrow": "START HERE",
+    "finishTitle": "Your first step: get the app.",
+    "finishBody": "Open RokitG's link, download Fomo, and use creator code <b>{code}</b> when you create your account."
+  }
+}
