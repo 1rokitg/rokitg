@@ -1,9 +1,9 @@
-import { Badge, Button, Column, Heading, Icon, Row, Text } from "@once-ui-system/core";
+import { Column, Heading, Icon, Row, Text } from "@once-ui-system/core";
 import { VisitorAvatar } from "@/components/VisitorAvatar";
 import { PrivyWaitlist } from "@/components/PrivyWaitlist";
 
 export const metadata = {
-  title: "Platform Login | RokitG",
+  title: "Dashboard | RokitG Academy",
   description: "A focused learning space for beginner traders.",
 };
 
@@ -34,17 +34,6 @@ export default function AppPreviewPage() {
   return (
     <Column maxWidth="m" fillWidth gap="xl" paddingY="12" horizontal="center">
       <Column maxWidth="s" horizontal="center" align="center" gap="m">
-        <Button href="/app/courses" variant="secondary">Explorar cursos →</Button>
-        <Badge
-          background="brand-alpha-weak"
-          border="brand-alpha-medium"
-          onBackground="brand-strong"
-          radius="full"
-          paddingX="8"
-          paddingY="4"
-        >
-          Platform Login
-        </Badge>
         <Heading wrap="balance" variant="display-strong-l">
           Your next chapter.
         </Heading>

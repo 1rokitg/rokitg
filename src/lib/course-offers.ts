@@ -5,7 +5,7 @@ export type CourseOffer = {
   planId: string;
   productId: string;
   billing: "one_time";
-  purpose: "free_placeholder";
+  purpose: "free_placeholder" | "paid";
   amountMinor: number;
   currency: "USD" | "EUR";
   label: string;

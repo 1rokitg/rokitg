@@ -1,0 +1,198 @@
+// Ported from the "designbyte" tweakcn theme (https://tweakcn.com/themes/cmcup07dt000104l4hj4eferh):
+// near-black base, teal primary, generous rounding — kept as plain CSS vars rather than
+// pulling in Tailwind/shadcn, since this project doesn't use Tailwind anywhere else.
+.shell {
+  --academy-bg: oklch(0 0 0);
+  --academy-surface: oklch(0.1448 0 0);
+  --academy-line: oklch(0.2138 0.0019 286.2347);
+  --academy-ink: oklch(0.9551 0 0);
+  --academy-muted: oklch(0.6 0 0);
+  --academy-brand: oklch(0.8545 0.1675 159.6564);
+  --academy-accent: oklch(0.3004 0.0609 159.8938);
+  --academy-destructive: oklch(0.7425 0.1696 1.0847);
+  --academy-radius-lg: 1.4rem;
+  --academy-radius-md: 0.9rem;
+  --academy-radius-sm: 0.6rem;
+  display: grid;
+  grid-template-columns: 264px minmax(0, 1fr);
+  min-height: 100vh;
+  width: 100%;
+  background: var(--academy-bg);
+  color: var(--academy-ink);
+  font-family: var(--font-body), Arial, sans-serif;
+}
+
+:global([data-theme="light"]) .shell {
+  --academy-bg: oklch(0.994 0 0);
+  --academy-surface: oklch(0.994 0 0);
+  --academy-line: oklch(0.9722 0.0034 247.8581);
+  --academy-ink: oklch(0 0 0);
+  --academy-muted: oklch(0.5 0 0);
+  --academy-accent: oklch(0.9947 0.0074 164.9465);
+}
+
+.sidebar {
+  border-right: 1px solid var(--academy-line);
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 17px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--academy-radius-sm);
+  background: var(--academy-brand);
+  color: #06090d;
+  font-size: 15px;
+}
+
+.brandLabel small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--academy-muted);
+  font-weight: 700;
+}
+
+.identity {
+  border: 1px solid var(--academy-line);
+  background: var(--academy-surface);
+  border-radius: var(--academy-radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.identityRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--academy-muted);
+}
+
+.streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--academy-brand);
+  font-weight: 700;
+}
+
+.progressTrack {
+  height: 6px;
+  border-radius: 99px;
+  background: var(--academy-line);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--academy-brand);
+  transition: width 300ms ease;
+}
+
+.progressLabel {
+  font-size: 11px;
+  color: var(--academy-muted);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--academy-radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--academy-muted);
+  text-decoration: none;
+}
+
+.navLink:hover {
+  background: var(--academy-surface);
+  color: var(--academy-ink);
+}
+
+.navLinkActive {
+  background: color-mix(in srgb, var(--academy-brand) 18%, transparent);
+  color: var(--academy-ink);
+  border: 1px solid color-mix(in srgb, var(--academy-brand) 45%, transparent);
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loginButton {
+  border: 0;
+  border-radius: var(--academy-radius-sm);
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--academy-brand);
+  color: #06090d;
+}
+
+.backToSite {
+  font-size: 11px;
+  color: var(--academy-muted);
+  text-decoration: none;
+}
+
+.main {
+  min-width: 0;
+  padding: 28px clamp(20px, 4vw, 48px) 64px;
+}
+
+@media (max-width: 860px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--academy-line);
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .sidebarFooter {
+    margin-top: 0;
+  }
+}

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import type { Course } from "@/lib/courses";
 import { useCourseProgress } from "./progress";
-import styles from "@/app/app/courses/courses.module.scss";
+import styles from "@/app/(academy)/app/courses/courses.module.scss";
 
 export function CourseLibrary({ courses }: { courses: Course[] }) {
   const { progress, ready } = useCourseProgress();
