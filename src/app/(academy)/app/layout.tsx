@@ -7,6 +7,7 @@ import { Plus_Jakarta_Sans, Lora, IBM_Plex_Mono } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { AppAuthProvider } from "@/components/AppAuthProvider";
 import { AcademySidebar } from "@/components/academy/AcademySidebar";
+import { UnderDevelopmentNotice } from "@/components/academy/UnderDevelopmentNotice";
 import { InteractionTracker } from "@/components/InteractionTracker";
 import { WhopPixelScripts } from "@/components/WhopPixelScripts";
 import { getWhopPixelContext } from "@/lib/whop-pixel";
@@ -81,6 +82,7 @@ export default async function AcademyRootLayout({
         <Providers>
           <AppAuthProvider>
             {shouldTrack && <InteractionTracker />}
+            <UnderDevelopmentNotice />
             <div className={styles.shell}>
               <AcademySidebar totalLessons={totalLessons} />
               <main className={styles.main}>{children}</main>
