@@ -42,6 +42,57 @@
   font-family: var(--font-sans), Arial, sans-serif;
 }
 
+// Reset link/scrollbar defaults for the whole academy shell — without this,
+// browser default link-blue and the OS scrollbar chrome leak through anywhere
+// a raw <a> or overflow container isn't individually styled.
+// This module only ever loads inside the academy's own <html>/<body> (its own
+// root layout, never shared with marketing), so styling the document
+// scrollbar directly here is safe and covers it, not just .shell's subtree.
+:global(html),
+:global(body) {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.2138 0.0019 286.2347) transparent;
+}
+
+:global(html)::-webkit-scrollbar,
+:global(body)::-webkit-scrollbar {
+  width: 8px;
+}
+
+:global(html)::-webkit-scrollbar-thumb,
+:global(body)::-webkit-scrollbar-thumb {
+  background: oklch(0.2138 0.0019 286.2347);
+  border-radius: 999px;
+}
+
+.shell :global(:where(a)) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.shell :global(:where(*)) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--academy-line) transparent;
+}
+
+.shell :global(:where(*))::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.shell :global(:where(*))::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.shell :global(:where(*))::-webkit-scrollbar-thumb {
+  background: var(--academy-line);
+  border-radius: 999px;
+}
+
+.shell :global(:where(*))::-webkit-scrollbar-thumb:hover {
+  background: var(--academy-muted-ink);
+}
+
 :global([data-theme="light"]) .shell {
   --academy-bg: oklch(0.994 0 0);
   --academy-ink: oklch(0 0 0);
@@ -175,6 +226,12 @@
   color: var(--academy-sidebar-ink);
 }
 
+.portalSelectLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .progressSummary {
   font-size: 11px;
   color: var(--academy-muted-ink);
@@ -224,6 +281,12 @@
   font-weight: 600;
   color: var(--academy-muted-ink);
   text-decoration: none;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
 }
 
 .navLink:hover {

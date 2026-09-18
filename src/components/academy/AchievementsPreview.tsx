@@ -1,10 +1,21 @@
+import {
+  FiFlag,
+  FiZap,
+  FiAward,
+  FiHelpCircle,
+  FiTrendingUp,
+  FiHeart,
+  FiTarget,
+  FiLock,
+} from "react-icons/fi";
+import type { IconType } from "react-icons";
 import styles from "./AchievementsPreview.module.scss";
 
 // Visual-reference mock only — replicates a screenshot the user provided of the
 // dashboard/gamification style they want, not real data. Swap for real XP/badge
 // state once the underlying tracking exists (see project_rokitg_academy memory).
 type Badge = {
-  icon: string;
+  icon: IconType;
   title: string;
   rarity: "Common" | "Rare" | "Epic";
   description: string;
@@ -13,15 +24,15 @@ type Badge = {
 };
 
 const BADGES: Badge[] = [
-  { icon: "👣", title: "First Steps", rarity: "Common", description: "Complete your first lesson", earned: "Sep 16, 2025" },
-  { icon: "🔥", title: "Week Warrior", rarity: "Common", description: "Maintain a 7-day learning streak", earned: "Sep 22, 2025" },
-  { icon: "🏆", title: "Course Conqueror", rarity: "Rare", description: "Complete your first course", earned: "Jan 15, 2026" },
-  { icon: "🧠", title: "Quiz Whiz", rarity: "Rare", description: "Score 100% on any quiz", earned: "Feb 10, 2026" },
-  { icon: "⚡", title: "Two-Week Streak", rarity: "Rare", description: "Maintain a 14-day streak", earned: "Mar 5, 2026" },
-  { icon: "💛", title: "Helpful Hand", rarity: "Rare", description: "Get 10 upvotes on forum answers", earned: "Mar 20, 2026" },
-  { icon: "🎖️", title: "Triple Threat", rarity: "Epic", description: "Complete 3 courses", earned: "Apr 10, 2026" },
-  { icon: "🔒", title: "Month Master", rarity: "Epic", description: "Maintain a 30-day streak", earned: null, requirement: "30-day streak" },
-  { icon: "🔒", title: "Knowledge Guru", rarity: "Epic", description: "Complete 5 courses", earned: null, requirement: "Complete 5 courses" },
+  { icon: FiFlag, title: "First Steps", rarity: "Common", description: "Complete your first lesson", earned: "Sep 16, 2025" },
+  { icon: FiZap, title: "Week Warrior", rarity: "Common", description: "Maintain a 7-day learning streak", earned: "Sep 22, 2025" },
+  { icon: FiAward, title: "Course Conqueror", rarity: "Rare", description: "Complete your first course", earned: "Jan 15, 2026" },
+  { icon: FiHelpCircle, title: "Quiz Whiz", rarity: "Rare", description: "Score 100% on any quiz", earned: "Feb 10, 2026" },
+  { icon: FiTrendingUp, title: "Two-Week Streak", rarity: "Rare", description: "Maintain a 14-day streak", earned: "Mar 5, 2026" },
+  { icon: FiHeart, title: "Helpful Hand", rarity: "Rare", description: "Get 10 upvotes on forum answers", earned: "Mar 20, 2026" },
+  { icon: FiTarget, title: "Triple Threat", rarity: "Epic", description: "Complete 3 courses", earned: "Apr 10, 2026" },
+  { icon: FiLock, title: "Month Master", rarity: "Epic", description: "Maintain a 30-day streak", earned: null, requirement: "30-day streak" },
+  { icon: FiLock, title: "Knowledge Guru", rarity: "Epic", description: "Complete 5 courses", earned: null, requirement: "Complete 5 courses" },
 ];
 
 function rarityClass(rarity: Badge["rarity"]) {
@@ -41,7 +52,7 @@ export function AchievementsPreview() {
       <div className={styles.levelCard}>
         <div className={styles.levelLeft}>
           <div className={styles.trophyIcon} aria-hidden="true">
-            🏆
+            <FiAward />
           </div>
           <div>
             <div className={styles.levelName}>Level 12</div>
@@ -70,23 +81,26 @@ export function AchievementsPreview() {
       </div>
 
       <div className={styles.grid}>
-        {BADGES.map((badge) => (
-          <div key={badge.title} className={`${styles.badge} ${!badge.earned ? styles.badgeLocked : ""}`}>
-            <div className={styles.badgeIcon} aria-hidden="true">
-              {badge.icon}
-            </div>
-            <div>
-              <div className={styles.badgeTitleRow}>
-                {badge.title}
-                <span className={`${styles.rarity} ${rarityClass(badge.rarity)}`}>{badge.rarity}</span>
+        {BADGES.map((badge) => {
+          const Icon = badge.icon;
+          return (
+            <div key={badge.title} className={`${styles.badge} ${!badge.earned ? styles.badgeLocked : ""}`}>
+              <div className={styles.badgeIcon} aria-hidden="true">
+                <Icon />
               </div>
-              <p className={styles.badgeDesc}>{badge.description}</p>
-              <div className={styles.badgeMeta}>
-                {badge.earned ? `Earned ${badge.earned}` : `Requirement: ${badge.requirement}`}
+              <div>
+                <div className={styles.badgeTitleRow}>
+                  {badge.title}
+                  <span className={`${styles.rarity} ${rarityClass(badge.rarity)}`}>{badge.rarity}</span>
+                </div>
+                <p className={styles.badgeDesc}>{badge.description}</p>
+                <div className={styles.badgeMeta}>
+                  {badge.earned ? `Earned ${badge.earned}` : `Requirement: ${badge.requirement}`}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

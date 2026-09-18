@@ -1,13 +1,18 @@
+import { DesignbyteShowcase } from "@/components/academy/DesignbyteShowcase";
 import { AchievementsPreview } from "@/components/academy/AchievementsPreview";
 
 export const metadata = {
-  title: "Achievements | RokitG Academy",
+  title: "Dashboard | RokitG Academy",
   description: "A focused learning space for beginner traders.",
 };
 
-// Temporary: showing the Achievements mock at /app root so the visual
-// direction can be reviewed in place. Swap back to a real dashboard once
-// the sidebar/gamification direction is confirmed.
+// Temporary: showing the tweakcn "designbyte" card gallery + the Achievements
+// mock at /app root so the visual direction can be reviewed in place.
 export default function AppPreviewPage() {
-  return <AchievementsPreview />;
+  return (
+    <>
+      <DesignbyteShowcase />
+      <AchievementsPreview />
+    </>
+  );
 }

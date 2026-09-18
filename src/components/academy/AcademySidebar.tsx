@@ -4,25 +4,41 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { usePrivy, useLogin } from "@privy-io/react-auth";
+import {
+  FiHome,
+  FiBookOpen,
+  FiPlayCircle,
+  FiClipboard,
+  FiCalendar,
+  FiTrendingUp,
+  FiAward,
+  FiStar,
+  FiBarChart2,
+  FiBookmark,
+  FiFileText,
+  FiMessageSquare,
+  FiMessageCircle,
+  FiChevronDown,
+} from "react-icons/fi";
 import { recordVisitAndGetStreak, getCompletedLessons } from "@/lib/academy-progress";
 import styles from "./AcademySidebar.module.scss";
 
 // Real pages first; the rest are visual-reference stubs until they exist —
-// see project_rokitg memory for the "replicate the reference dashboard" ask.
+// see project_rokitg_academy memory for the "replicate the reference dashboard" ask.
 const NAV_ITEMS = [
-  { href: "/app", label: "Dashboard", icon: "🏠", real: true },
-  { href: "/app/courses", label: "Browse Courses", icon: "📚", real: true },
-  { href: "/app/courses/library", label: "My Learning", icon: "🎓", real: true },
-  { href: "/app", label: "Assignments", icon: "📋", real: false },
-  { href: "/app", label: "Calendar", icon: "📅", real: false },
-  { href: "/app", label: "Progress", icon: "📈", real: false },
-  { href: "/app", label: "Certificates", icon: "🏅", real: false },
-  { href: "/app", label: "Achievements", icon: "🏆", real: false },
-  { href: "/app", label: "Leaderboard", icon: "🥇", real: false },
-  { href: "/app", label: "Bookmarks", icon: "🔖", real: false },
-  { href: "/app", label: "Notes", icon: "📝", real: false },
-  { href: "/app", label: "Messages", icon: "💬", real: false },
-  { href: "/app", label: "Discussions", icon: "🗣️", real: false },
+  { href: "/app", label: "Dashboard", icon: FiHome, real: true },
+  { href: "/app/courses", label: "Browse Courses", icon: FiBookOpen, real: true },
+  { href: "/app/courses/library", label: "My Learning", icon: FiPlayCircle, real: true },
+  { href: "/app", label: "Assignments", icon: FiClipboard, real: false },
+  { href: "/app", label: "Calendar", icon: FiCalendar, real: false },
+  { href: "/app", label: "Progress", icon: FiTrendingUp, real: false },
+  { href: "/app", label: "Certificates", icon: FiAward, real: false },
+  { href: "/app", label: "Achievements", icon: FiStar, real: false },
+  { href: "/app", label: "Leaderboard", icon: FiBarChart2, real: false },
+  { href: "/app", label: "Bookmarks", icon: FiBookmark, real: false },
+  { href: "/app", label: "Notes", icon: FiFileText, real: false },
+  { href: "/app", label: "Messages", icon: FiMessageSquare, real: false },
+  { href: "/app", label: "Discussions", icon: FiMessageCircle, real: false },
 ];
 
 export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
@@ -63,7 +79,9 @@ export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
         <div className={styles.xpRow}>
           <span>0 XP</span>
           {streakDays !== null && streakDays > 0 && (
-            <span className={styles.streak}>🔥 {streakDays}d streak</span>
+            <span className={styles.streak}>
+              <FiTrendingUp aria-hidden="true" /> {streakDays}d streak
+            </span>
           )}
         </div>
         <div className={styles.progressTrack}>
@@ -72,14 +90,17 @@ export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
       </div>
 
       <div className={styles.portalSelect}>
-        <span>🎓 Student Portal</span>
-        <span aria-hidden="true">⌄</span>
+        <span className={styles.portalSelectLabel}>
+          <FiAward aria-hidden="true" /> Student Portal
+        </span>
+        <FiChevronDown aria-hidden="true" />
       </div>
 
       <nav className={styles.nav}>
         {NAV_ITEMS.map((item, index) => {
           const isActive =
             item.real && (item.href === "/app" ? pathname === "/app" : pathname.startsWith(item.href));
+          const Icon = item.icon;
           return (
             <Link
               key={`${item.href}-${item.label}-${index}`}
@@ -87,7 +108,7 @@ export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
               className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
               aria-disabled={!item.real}
             >
-              <span aria-hidden="true">{item.icon}</span>
+              <Icon aria-hidden="true" />
               {item.label}
             </Link>
           );
