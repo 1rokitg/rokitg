@@ -1,0 +1,203 @@
+// Visual reference mock — see project_rokitg_academy memory. Uses the same
+// --academy-* tokens set by AcademySidebar's .shell ancestor, no new palette.
+.page {
+  max-width: 1080px;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 800;
+  margin: 0 0 4px;
+  color: var(--academy-ink, #fff);
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--academy-muted-ink, #9b9b96);
+  margin: 0 0 24px;
+}
+
+.levelCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  border: 1px solid var(--academy-line, #383838);
+  background: var(--academy-surface, #262626);
+  border-radius: var(--academy-radius-lg, 1.4rem);
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.levelLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.trophyIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--academy-brand, #2dd4a7) 20%, transparent);
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  color: var(--academy-brand, #2dd4a7);
+  flex-shrink: 0;
+}
+
+.levelName {
+  font-size: 13px;
+  color: var(--academy-muted-ink, #9b9b96);
+}
+
+.levelXp {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--academy-ink, #fff);
+}
+
+.levelRight {
+  flex: 1;
+  min-width: 220px;
+}
+
+.levelRightHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--academy-muted-ink, #9b9b96);
+  margin-bottom: 8px;
+}
+
+.levelTrack {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--academy-line, #383838);
+  overflow: hidden;
+}
+
+.levelFill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--academy-brand, #2dd4a7);
+}
+
+.levelFootnote {
+  font-size: 12px;
+  color: var(--academy-muted-ink, #9b9b96);
+  margin-top: 8px;
+}
+
+.tabs {
+  display: inline-flex;
+  gap: 4px;
+  border: 1px solid var(--academy-line, #383838);
+  border-radius: var(--academy-radius-sm, 1.15rem);
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  border: 0;
+  background: transparent;
+  color: var(--academy-muted-ink, #9b9b96);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: calc(var(--academy-radius-sm, 1.15rem) - 2px);
+  cursor: pointer;
+}
+
+.tabActive {
+  background: var(--academy-line, #383838);
+  color: var(--academy-ink, #fff);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.badge {
+  border: 1px solid var(--academy-line, #383838);
+  background: var(--academy-surface, #262626);
+  border-radius: var(--academy-radius-lg, 1.4rem);
+  padding: 22px;
+  display: flex;
+  gap: 14px;
+}
+
+.badgeLocked {
+  opacity: 0.55;
+}
+
+.badgeIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--academy-radius-sm, 1.15rem);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--academy-brand, #2dd4a7) 16%, transparent);
+}
+
+.badgeTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--academy-ink, #fff);
+}
+
+.rarity {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--academy-line, #383838);
+  color: var(--academy-muted-ink, #9b9b96);
+}
+
+.rarityRare {
+  color: var(--academy-brand, #2dd4a7);
+  border-color: color-mix(in srgb, var(--academy-brand, #2dd4a7) 50%, transparent);
+}
+
+.rarityEpic {
+  color: #c084fc;
+  border-color: rgba(192, 132, 252, 0.4);
+}
+
+.badgeDesc {
+  font-size: 12px;
+  color: var(--academy-muted-ink, #9b9b96);
+  margin: 4px 0 8px;
+}
+
+.badgeMeta {
+  font-size: 11px;
+  color: var(--academy-muted-ink, #9b9b96);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .levelCard {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
