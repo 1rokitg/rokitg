@@ -317,6 +317,16 @@
   color: var(--academy-sidebar-accent-ink);
 }
 
+.nav .navLinkDisabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.nav .navLinkDisabled:hover {
+  background: none;
+  color: var(--academy-sidebar-ink);
+}
+
 .sidebarFooter {
   margin-top: auto;
   display: flex;

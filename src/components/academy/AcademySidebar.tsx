@@ -37,8 +37,8 @@ const NAV_ITEMS = [
   { href: "/app", label: "Certificates", icon: FiAward, real: false },
   { href: "/app", label: "Achievements", icon: FiStar, real: false },
   { href: "/app", label: "Leaderboard", icon: FiBarChart2, real: false },
-  { href: "/app", label: "Bookmarks", icon: FiBookmark, real: false },
-  { href: "/app", label: "Notes", icon: FiFileText, real: false },
+  { href: "/app/bookmarks", label: "Bookmarks", icon: FiBookmark, real: true },
+  { href: "/app/notes", label: "Notes", icon: FiFileText, real: true },
   { href: "/app", label: "Messages", icon: FiMessageSquare, real: false },
   { href: "/app", label: "Discussions", icon: FiMessageCircle, real: false },
 ];
@@ -133,8 +133,12 @@ export function AcademySidebar({ totalLessons }: { totalLessons: number }) {
             <Link
               key={`${item.href}-${item.label}-${index}`}
               href={item.href}
-              className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
+              className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""} ${!item.real ? styles.navLinkDisabled : ""}`}
               aria-disabled={!item.real}
+              tabIndex={item.real ? undefined : -1}
+              onClick={(event) => {
+                if (!item.real) event.preventDefault();
+              }}
             >
               <Icon aria-hidden="true" />
               {item.label}
