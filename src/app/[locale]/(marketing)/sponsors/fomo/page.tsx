@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { FiLock, FiCheckCircle, FiSmartphone } from "react-icons/fi";
 import styles from "./page.module.scss";
 const FOMO_URL = "https://fomo.family/r/rokitg";
 const CREATOR_CODE = "ROKITG";
@@ -32,6 +33,17 @@ export default async function FomoSponsorPage() {
           <a className={styles.cta} href={FOMO_URL} data-analytics-source="fomo_hero">
             {t("downloadCta")} <span aria-hidden="true">↗</span>
           </a>
+          <div className={styles.trustRow}>
+            <span>
+              <FiLock aria-hidden="true" /> {t("trustVerified")}
+            </span>
+            <span>
+              <FiCheckCircle aria-hidden="true" /> {t("trustCode")}
+            </span>
+            <span>
+              <FiSmartphone aria-hidden="true" /> {t("trustPlatform")}
+            </span>
+          </div>
           <p className={styles.note}>
             {t("note")}
             <br />

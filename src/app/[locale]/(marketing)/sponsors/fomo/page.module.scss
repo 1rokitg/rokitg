@@ -7,6 +7,7 @@
 .copy h1 { font-size: clamp(36px, 4.5vw, 56px); line-height: 1.07; letter-spacing: -.055em; margin: 0 0 24px; text-wrap: balance; span { color: #aaa3ff; } }
 .intro { color: #c0becd; font-size: 17px; line-height: 1.65; max-width: 420px; margin: 0 0 28px; }
 .cta { display: inline-flex; align-items: center; justify-content: center; gap: 32px; background: #7970ff; color: #fff; padding: 17px 24px; border-radius: 12px; font-weight: 700; text-decoration: none; min-height: 54px; transition: background .15s; white-space: nowrap; &:hover { background: #655be8; } &:focus-visible { outline: 3px solid white; outline-offset: 4px; } }
+.trustRow { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 4px; span { display: inline-flex; align-items: center; gap: 6px; color: #a8a5b9; font-size: 12px; font-weight: 600; svg { width: 14px; height: 14px; color: #aaa3ff; flex-shrink: 0; } } }
 .note { color: #a8a5b9; font-size: 12px; line-height: 1.6; margin: 12px 0 24px; }
 .secondary { color: #d6d2ed; font-size: 13px; text-decoration: none; &:hover { text-decoration: underline; } }
 .visual { margin: 0; align-self: stretch; display: flex; flex-direction: column; justify-content: center; position: relative; img { width: 115%; max-width: none; height: auto; margin-left: -7%; } figcaption { text-align: center; color: #8e8a9f; font-size: 10px; margin: -36px 0 24px; z-index: 1; } }
