@@ -75,7 +75,11 @@ export type StandardEventName = (typeof STANDARD_EVENTS)[keyof typeof STANDARD_E
 export function standardEventFor(name: EventName): StandardEventName | undefined {
   if (name === EVENTS.newsletterSubmitted) return STANDARD_EVENTS.lead;
   if (name === EVENTS.calendarBooked) return STANDARD_EVENTS.schedule;
-  if (name === EVENTS.freeCheckoutClicked || name === EVENTS.paidCheckoutClicked)
+  if (
+    name === EVENTS.freeCheckoutClicked ||
+    name === EVENTS.paidCheckoutClicked ||
+    name === EVENTS.fomoReferralClicked
+  )
     return STANDARD_EVENTS.addToCart;
   if (name === EVENTS.pageViewed) return STANDARD_EVENTS.viewContent;
 }
@@ -91,6 +95,7 @@ export function metaEventFor(name: EventName): string | undefined {
   if (name === EVENTS.calendarBooked) return "Schedule";
   if (name === EVENTS.freeCheckoutClicked) return "Lead";
   if (name === EVENTS.paidCheckoutClicked) return "InitiateCheckout";
+  if (name === EVENTS.fomoReferralClicked) return "AddToCart";
   if (name === EVENTS.pageViewed) return "PageView";
 }
 /** The pages that count as a "key page" for view_content — matches what ads actually point to. Keep in sync with the ad destinations in memory/project_rokitg_ads_naming.md. */

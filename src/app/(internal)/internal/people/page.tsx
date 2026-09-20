@@ -1,9 +1,9 @@
 import { mintTrackingAccessToken } from "@/lib/whop-api";
-import { EventsTerminalClient } from "@/components/internal/EventsTerminalClient";
+import { PeopleTerminalClient } from "@/components/internal/PeopleTerminalClient";
 
 export const dynamic = "force-dynamic";
 
-export default async function InternalEventsPage() {
+export default async function InternalPeoplePage() {
   if (!process.env.WHOP_API_KEY) {
     return (
       <div style={{ padding: 40, color: "#fff", fontFamily: "Arial, sans-serif" }}>
@@ -17,5 +17,5 @@ export default async function InternalEventsPage() {
 
   const { token } = await mintTrackingAccessToken();
 
-  return <EventsTerminalClient accessToken={token} />;
+  return <PeopleTerminalClient accessToken={token} />;
 }

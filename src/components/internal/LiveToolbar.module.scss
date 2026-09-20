@@ -1,0 +1,98 @@
+.bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+
+.titleText {
+  font-size: 13px;
+  font-weight: 700;
+  color: #e4e4e0;
+  white-space: nowrap;
+}
+
+.status {
+  font-size: 11.5px;
+  color: #6f6f6a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.iconButton {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #9b9b96;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 11.5px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  color: #e4e4e0;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.liveButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(45, 212, 167, 0.4);
+  background: rgba(45, 212, 167, 0.1);
+  color: #2dd4a7;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.liveButton:hover {
+  background: rgba(45, 212, 167, 0.18);
+}
+
+.liveButton.paused {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: transparent;
+  color: #9b9b96;
+}
+
+.pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.paused .pulse {
+  animation: none;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.75); }
+}

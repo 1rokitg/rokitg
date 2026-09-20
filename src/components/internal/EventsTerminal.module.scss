@@ -1,0 +1,37 @@
+.page {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+ * The SDK renders <wrapper div><relative div><iframe>, and the two outer
+ * divs are unstyled (no class to hook) with `flex: 0 1 auto` — inside a flex
+ * container that shrinks them to the iframe's default 300px intrinsic width
+ * instead of filling it (a % width on the iframe can't resolve against an
+ * auto-sized flex item). Block layout + width:100% down every level avoids
+ * that ambiguity entirely.
+ */
+.elementWrap {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  /* The SDK auto-resizes its iframe to full content height (not its own
+     internal scroll region) and expects the host to scroll — this is that
+     scroll region, so the toolbar above stays pinned while rows scroll. */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.elementWrap > :global(div),
+.elementWrap > :global(div) > :global(div) {
+  width: 100%;
+}
+
+.elementWrap :global(iframe) {
+  display: block;
+  width: 100%;
+  border: none;
+}
