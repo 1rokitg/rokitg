@@ -18,11 +18,18 @@
   min-height: 0;
   min-width: 0;
   width: 100%;
+  padding-top: 16px;
+  /* Matches the SDK's own --color-background (Radix gray-1, dark theme) so
+     the gap between our toolbar and its content reads as one surface. */
+  background: #111111;
   /* The SDK auto-resizes its iframe to full content height (not its own
      internal scroll region) and expects the host to scroll — this is that
      scroll region, so the toolbar above stays pinned while rows scroll. */
   overflow-y: auto;
-  overflow-x: hidden;
+  /* Was `hidden` — that clipped the table's rightmost column (Time) whenever
+     its natural width ran past the viewport. Let it scroll horizontally
+     instead of cutting content off. */
+  overflow-x: auto;
 }
 
 .elementWrap > :global(div),
