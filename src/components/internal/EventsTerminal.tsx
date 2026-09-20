@@ -13,6 +13,12 @@ const TICK_MS = 3000;
 // chat/log UIs (e.g. j7tracker) auto-follow: scroll away to inspect history
 // pauses the tail, scrolling back to the top resumes it.
 const TOP_THRESHOLD = 4;
+// Live mode backfills this far on entry so the first thing you see is real
+// recent history, not an empty "from now" window — then `to` ticks forward
+// from there, so new events get appended on top of that backlog instead of
+// only showing whatever fires after the page loaded.
+const BACKFILL_MS = 24 * 60 * 60 * 1000;
+const backfillFrom = () => new Date(Date.now() - BACKFILL_MS).toISOString();
 
 type Period =
   | "today"
@@ -27,12 +33,12 @@ type CustomRange = { from: string; to: string } | null;
 
 export function EventsTerminal({ accessToken }: { accessToken: string }) {
   const [live, setLive] = useState(true);
-  const [liveFrom, setLiveFrom] = useState(() => new Date().toISOString());
+  const [liveFrom, setLiveFrom] = useState(backfillFrom);
   const [elapsed, setElapsed] = useState(0);
   const [period, setPeriod] = useState<Period>("last_30_days");
   const [customRange, setCustomRange] = useState<CustomRange>(null);
   const [openPerson, setOpenPerson] = useState<string | null>(null);
-  const [liveTo, setLiveTo] = useState(liveFrom);
+  const [liveTo, setLiveTo] = useState(() => new Date().toISOString());
   const liveStartRef = useRef(Date.now());
   const wrapRef = useRef<HTMLDivElement>(null);
   const suppressScrollRef = useRef(false);
@@ -62,9 +68,8 @@ export function EventsTerminal({ accessToken }: { accessToken: string }) {
   }, []);
 
   const restart = useCallback(() => {
-    const now = new Date().toISOString();
-    setLiveFrom(now);
-    setLiveTo(now);
+    setLiveFrom(backfillFrom());
+    setLiveTo(new Date().toISOString());
     liveStartRef.current = Date.now();
     setElapsed(0);
     setLive(true);
@@ -96,7 +101,7 @@ export function EventsTerminal({ accessToken }: { accessToken: string }) {
   }, []);
 
   const status = live
-    ? `tailing since ${new Date(liveFrom).toLocaleTimeString()} · ${elapsed}s`
+    ? `showing last 24h, live for ${elapsed}s`
     : "paused — scroll back to the top to resume";
 
   return (
