@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "multi-upload-tool": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://api.multi-upload-tool.com/mcp",
+        "--header",
+        "x-api-key:${MULTI_UPLOAD_API_KEY}"
+      ]
+    }
+  }
+}
