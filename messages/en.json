@@ -35,5 +35,15 @@
     "finishEyebrow": "START HERE",
     "finishTitle": "Your first step: get the app.",
     "finishBody": "Open RokitG's link, download Fomo, and use creator code <b>{code}</b> when you create your account."
+  },
+  "TradingBotSponsorPage": {
+    "brandLabel": "Based Bot",
+    "metaTitle": "Trading Bot Overview | RokitG",
+    "metaDescription": "Watch the Based Bot trading bot overview and see the platform in action.",
+    "title": "Trading Bot",
+    "subtitle": "Watch the trading bot overview to see the platform in action.",
+    "watchAriaLabel": "Watch the trading bot overview on YouTube",
+    "videoAlt": "Trading bot YouTube overview",
+    "watchCta": "WATCH THE TRADING BOT OVERVIEW"
   }
 }

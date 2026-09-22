@@ -1,22 +1,36 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { FiLock, FiCheckCircle, FiSmartphone } from "react-icons/fi";
+import { Meta, Schema } from "@once-ui-system/core";
+import { baseURL } from "@/resources";
 import styles from "./page.module.scss";
 const FOMO_URL = "https://fomo.family/r/rokitg";
 const CREATOR_CODE = "ROKITG";
+const SPONSOR_PATH = "/sponsors/fomo";
 
 export async function generateMetadata() {
   const t = await getTranslations("FomoSponsorPage");
-  return {
+  return Meta.generate({
     title: t("metaTitle"),
     description: t("metaDescription"),
-  };
+    baseURL: baseURL,
+    path: SPONSOR_PATH,
+    image: `/api/og/generate?title=${encodeURIComponent(t("metaTitle"))}`,
+  });
 }
 
 export default async function FomoSponsorPage() {
   const t = await getTranslations("FomoSponsorPage");
   return (
     <article className={styles.page}>
+      <Schema
+        as="webPage"
+        baseURL={baseURL}
+        title={t("metaTitle")}
+        description={t("metaDescription")}
+        path={SPONSOR_PATH}
+        image={`/api/og/generate?title=${encodeURIComponent(t("metaTitle"))}`}
+      />
       <section className={styles.hero}>
         <div className={styles.copy}>
           <div className={styles.brand}>
