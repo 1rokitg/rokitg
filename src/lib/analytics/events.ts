@@ -14,6 +14,9 @@ export const EVENTS = {
   pageViewed: "Page View",
   freeCheckoutClicked: "Checkout - Free Community",
   paidCheckoutClicked: "Checkout - Social Capital",
+  instagramClicked: "Instagram Click",
+  tiktokClicked: "TikTok Click",
+  xClicked: "X Click",
 } as const;
 type Base = { source: string; event_id?: string };
 type Outbound = Base & {
@@ -36,7 +39,10 @@ export type OutboundEvent =
   | "YouTube Click"
   | "Whop Click"
   | "Calendar Click"
-  | "Fomo Referral Click";
+  | "Fomo Referral Click"
+  | "Instagram Click"
+  | "TikTok Click"
+  | "X Click";
 export type EventPayloads = Record<OutboundEvent, Outbound> & {
   "Video Play": Base & { content_id: string; content_type: "video"; interaction: "play" };
   "Newsletter Submitted": Base & { submission_id: string; interaction: "submit" };
@@ -99,7 +105,7 @@ export function metaEventFor(name: EventName): string | undefined {
   if (name === EVENTS.pageViewed) return "PageView";
 }
 /** The pages that count as a "key page" for view_content — matches what ads actually point to. Keep in sync with the ad destinations in memory/project_rokitg_ads_naming.md. */
-export const KEY_PAGES = ["/", "/sponsors/fomo", "/sponsors/bb", "/about", "/app", "/welcome"] as const;
+export const KEY_PAGES = ["/", "/sponsors/fomo", "/sponsors/bb", "/about", "/app", "/welcome", "/links"] as const;
 export function isKeyPage(pathname: string): boolean {
   return (KEY_PAGES as readonly string[]).includes(pathname);
 }
@@ -113,6 +119,9 @@ export function classifyOutbound(url: URL): OutboundEvent | undefined {
   if (host === "cal.com" || host === "calendly.com") return EVENTS.calendarClicked;
   if (host === "whop.com") return EVENTS.whopClicked;
   if (host === "fomo.family" && /^\/r\/[^/]+/.test(url.pathname)) return EVENTS.fomoReferralClicked;
+  if (host === "instagram.com") return EVENTS.instagramClicked;
+  if (host === "tiktok.com") return EVENTS.tiktokClicked;
+  if (host === "x.com" || host === "twitter.com") return EVENTS.xClicked;
 }
 export const ATTRIBUTION_KEYS = [
   "utm_meta_ad_id",

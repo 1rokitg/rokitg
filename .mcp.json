@@ -9,6 +9,9 @@
         "--header",
         "x-api-key:${MULTI_UPLOAD_API_KEY}"
       ]
+    },
+    "discord-mcp": {
+      "url": "http://localhost:8085/mcp"
     }
   }
 }

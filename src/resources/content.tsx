@@ -53,6 +53,18 @@ const social: Social = [
     essential: false,
   },
   {
+    name: "TikTok",
+    icon: "tiktok",
+    link: "https://www.tiktok.com/@rokitg",
+    essential: false,
+  },
+  {
+    name: "YouTube",
+    icon: "youtube",
+    link: "https://www.youtube.com/@1rokitg",
+    essential: false,
+  },
+  {
     name: "Twitter",
     icon: "twitter",
     link: "https://x.com/1rokitg",

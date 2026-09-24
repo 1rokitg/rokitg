@@ -1,0 +1,112 @@
+.auraButton {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 24px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fdf1c8 0%, #f0c869 22%, #d9a441 50%, #f0c869 78%, #fdf1c8 100%);
+  background-size: 220% 220%;
+  box-shadow:
+    0 0 0 1px rgba(255, 231, 168, 0.5) inset,
+    0 6px 20px rgba(217, 164, 65, 0.35),
+    0 0 40px rgba(217, 164, 65, 0.25),
+    0 0 70px rgba(170, 120, 255, 0.18);
+  animation: aura-drift 6s ease-in-out infinite, aura-pulse 3.2s ease-in-out infinite;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+
+  &:hover {
+    transform: translateY(-1px) scale(1.01);
+    box-shadow:
+      0 0 0 1px rgba(255, 231, 168, 0.65) inset,
+      0 8px 26px rgba(217, 164, 65, 0.45),
+      0 0 55px rgba(217, 164, 65, 0.35),
+      0 0 90px rgba(170, 120, 255, 0.26);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.85);
+    outline-offset: 3px;
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.995);
+  }
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: #2c1c05;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.75) 45%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  animation: shine-sweep 3.6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@keyframes aura-drift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes aura-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(255, 231, 168, 0.5) inset,
+      0 6px 20px rgba(217, 164, 65, 0.35),
+      0 0 40px rgba(217, 164, 65, 0.25),
+      0 0 70px rgba(170, 120, 255, 0.18);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(255, 231, 168, 0.6) inset,
+      0 6px 24px rgba(217, 164, 65, 0.42),
+      0 0 50px rgba(217, 164, 65, 0.32),
+      0 0 85px rgba(170, 120, 255, 0.28);
+  }
+}
+
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  40%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auraButton {
+    animation: none;
+  }
+  .shine {
+    display: none;
+  }
+}
