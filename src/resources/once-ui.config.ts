@@ -23,7 +23,7 @@ const routes: RoutesConfig = {
   "/work": false,
   "/blog": true,
   "/whop": false,
-  "/links": true,
+  "/linktree": true,
   "/app": true,
   "/app/courses": true,
   "/retention": true,

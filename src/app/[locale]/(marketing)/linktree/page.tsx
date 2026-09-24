@@ -15,7 +15,7 @@ import { baseURL, person, social } from "@/resources";
 import { links as tools } from "@/resources/links";
 import { SocialCapitalButton } from "@/components/SocialCapitalButton";
 
-const LINKS_PATH = "/links";
+const LINKS_PATH = "/linktree";
 const TITLE = `Links – ${person.name}`;
 const DESCRIPTION = `Every place to find ${person.name} — main socials, the community, and the tools I actually use.`;
 
@@ -40,7 +40,7 @@ export default function LinksPage() {
   const toolList = Object.values(tools);
 
   return (
-    <Column maxWidth="xs" gap="40" paddingY="24" horizontal="center" data-analytics-source="links_page">
+    <Column maxWidth="xs" gap="40" paddingY="24" horizontal="center" data-analytics-source="linktree_page">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -64,7 +64,7 @@ export default function LinksPage() {
       </Column>
 
       <Column fillWidth gap="8">
-        <SocialCapitalButton source="links_page" />
+        <SocialCapitalButton source="linktree_page" />
         <Text align="center" onBackground="neutral-weak" variant="body-default-xs">
           Real ROI breakdowns, live trade reviews, and the exact system I run.
         </Text>
@@ -85,7 +85,7 @@ export default function LinksPage() {
               fillWidth
               size="l"
               variant="secondary"
-              data-analytics-source="links_page_socials"
+              data-analytics-source="linktree_page_socials"
               style={{ justifyContent: "flex-start", paddingLeft: "20px" }}
             />
           ))}
@@ -103,7 +103,7 @@ export default function LinksPage() {
               href={tool.sponsorPath}
               unstyled
               style={{ width: "100%" }}
-              data-analytics-source="links_page_tools"
+              data-analytics-source="linktree_page_tools"
             >
               <Row
                 fillWidth
