@@ -38,7 +38,6 @@ export default async function DiscordPage() {
         >
           <FaDiscord aria-hidden="true" /> {t("cta")} <FiArrowUpRight aria-hidden="true" />
         </a>
-        <p className={styles.warning}>{t("warning")}</p>
       </section>
 
       <ol className={styles.steps}>
