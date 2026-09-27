@@ -24,6 +24,7 @@ const routes: RoutesConfig = {
   "/blog": true,
   "/whop": false,
   "/linktree": true,
+  "/discord": true,
   "/app": true,
   "/app/courses": true,
   "/retention": true,

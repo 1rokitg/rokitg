@@ -45,5 +45,22 @@
     "watchAriaLabel": "Watch the trading bot overview on YouTube",
     "videoAlt": "Trading bot YouTube overview",
     "watchCta": "WATCH THE TRADING BOT OVERVIEW"
+  },
+  "DiscordPage": {
+    "metaTitle": "Connect Discord | RokitG",
+    "metaDescription": "Connect your Discord through Whop to access the RokitG community — Claim Access, not an invite link.",
+    "eyebrow": "STEP 1 · DISCORD ACCESS",
+    "title": "Connect your Discord to get in.",
+    "intro": "Your Free Community access lives on Whop, not on a random invite link. Claim your access below and connect Discord from there — that's what actually grants your role in the server.",
+    "cta": "Claim Access on Whop",
+    "warning": "Joined through a public invite link instead? That won't give you real access — come back here and claim it through Whop.",
+    "step1Title": "Open your access on Whop",
+    "step1Body": "Log in with the account you used to join.",
+    "step2Title": "Connect your Discord",
+    "step2Body": "Pick the Discord account you want to use in the community.",
+    "step3Title": "Claim Access and you're in",
+    "step3Body": "Whop links your plan to Discord and drops you straight into the server.",
+    "helpText": "Stuck connecting?",
+    "helpLink": "Email me"
   }
 }
