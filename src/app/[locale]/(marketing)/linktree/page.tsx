@@ -66,7 +66,7 @@ export default function LinksPage() {
       <Column fillWidth gap="8">
         <SocialCapitalButton source="linktree_page" />
         <Text align="center" onBackground="neutral-weak" variant="body-default-xs">
-          Real ROI breakdowns, live trade reviews, and the exact system I run.
+          Verified public calls, real PnL, and the system behind them — built for traders who already have the basics down, not a beginner course.
         </Text>
       </Column>
 

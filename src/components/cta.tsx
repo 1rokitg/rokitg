@@ -468,8 +468,8 @@ export const CallToAction: React.FC<CallToActionProps> = ({
               opacity: 0.75,
             }}
           >
-            Empieza gratis en la comunidad o suscríbete para seguir aprendiendo
-            en YouTube.
+            ¿Recién empiezas? Comunidad gratis. ¿Ya operas y quieres el
+            sistema completo? Social Capital — no es para empezar de cero.
           </Text>
         </Column>
       </Column>
