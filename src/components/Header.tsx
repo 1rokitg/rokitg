@@ -55,14 +55,8 @@ export const Header = () => {
           fillWidth
           vertical="center"
           textVariant="body-default-s"
-        >
-          <ToggleButton
-            prefixIcon="person"
-            href={href("/about")}
-            aria-label="Open the RokitG About Me Page"
-            selected={pathname.startsWith("/about")}
-          />
-        </Row>
+        />
+        {/* Profile icon hidden while the e-learning platform (/app) is still WIP. */}
         <Row fillWidth horizontal="center">
           <Row
             background="page"
@@ -215,20 +209,8 @@ export const Header = () => {
             </Row>
           </Row>
         </Row>
-        <Flex fillWidth horizontal="end" vertical="center">
-          <Flex
-            paddingRight="12"
-            horizontal="end"
-            vertical="center"
-            textVariant="body-default-s"
-          >
-            <ToggleButton
-              href="/app"
-              label={t("login")}
-              selected={pathname.startsWith("/app")}
-            />
-          </Flex>
-        </Flex>
+        {/* Login button hidden while the e-learning platform (/app) is still WIP. */}
+        <Flex fillWidth horizontal="end" vertical="center" />
       </Row>
     </>
   );
