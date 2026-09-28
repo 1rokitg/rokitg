@@ -1,4 +1,9 @@
 {
+  "HomePage": {
+    "headline": "Cómo los traders no rentables se están convirtiendo en el top 2%",
+    "sublineLine1": "Soy {name}, un ingeniero de software convertido en <b>trader.</b>",
+    "sublineLine2": "Ahora he decidido compartir lo que sé con todos."
+  },
   "Header": {
     "home": "Inicio",
     "fomo": "Fomo",
@@ -14,11 +19,8 @@
     "heroTitleLine2": "siempre contigo.",
     "intro": "Como creador de contenido, comparto las apps que realmente uso. La app Fomo es una de ellas — fácil, rápida y con una comunidad genial, todo desde tu móvil.",
     "downloadCta": "Descargar Fomo para iOS",
-    "trustVerified": "Enlace de descarga verificado",
     "trustCode": "Código de creador oficial",
     "trustPlatform": "Disponible para iOS",
-    "note": "Continúa en Fomo para descargar la app.",
-    "noteCode": "Usa el código de creador de Fomo <b>{code}</b> al registrarte.",
     "secondaryCta": "Cómo empezar con Fomo",
     "visualAlt": "Captura de la app Fomo mostrando el feed social en el móvil",
     "visualCaption": "Así se ve la app Fomo por dentro.",
@@ -32,9 +34,10 @@
     "feature3Tag": "03 / MUÉVETE",
     "feature3Title": "De la app Fomo al ordenador",
     "feature3Body": "Accede a Fomo también desde la web cuando lo prefieras.",
-    "finishEyebrow": "EMPIEZA POR AQUÍ",
-    "finishTitle": "Tu primer paso: descargar la app Fomo.",
-    "finishBody": "Abre el enlace de RokitG, descarga Fomo y usa el código de creador <b>{code}</b> al crear tu cuenta."
+    "finishEyebrow": "TU GUÍA COMPLETA",
+    "finishTitle": "¿No sabes por dónde empezar?",
+    "finishBody": "Tengo la guía completa de cómo uso Fomo en mi canal de YouTube — todo explicado paso a paso.",
+    "finishCta": "Ver la guía en YouTube"
   },
   "TradingBotSponsorPage": {
     "brandLabel": "Based Bot",

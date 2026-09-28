@@ -84,7 +84,6 @@ const home: Home = {
   label: "Home",
   title: "ROKITG.COM",
   description: `Learn how unprofitable traders are becoming the top 2%`,
-  headline: <> How unprofitable traders are becoming the top 2%</>,
   featured: {
     display: true,
     title: (
@@ -107,16 +106,6 @@ const home: Home = {
     ),
     href: "https://fomo.family/r/rokitg",
   },
-  subline: (
-    <>
-      I'm {person.firstName}, a {person.role.toLowerCase()} turned{" "}
-      <Text as="span" size="xl" weight="strong">
-        trader.{" "}
-      </Text>
-      <br />
-      Now I've decided to share my knowledge with everyone.
-    </>
-  ),
 };
 
 const about: About = {

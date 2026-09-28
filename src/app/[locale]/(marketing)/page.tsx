@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { home, about, person, baseURL } from "@/resources";
 
 import {
@@ -23,6 +24,7 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
+  const t = await getTranslations("HomePage");
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
@@ -68,7 +70,7 @@ export default async function Home() {
             paddingBottom="16"
           >
             <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
+              {t("headline")}
             </Heading>
           </RevealFx>
           <RevealFx
@@ -83,7 +85,16 @@ export default async function Home() {
               onBackground="neutral-weak"
               variant="heading-default-xl"
             >
-              {home.subline}
+              {t.rich("sublineLine1", {
+                name: person.firstName,
+                b: (chunks) => (
+                  <Text as="span" size="xl" weight="strong">
+                    {chunks}
+                  </Text>
+                ),
+              })}
+              <br />
+              {t("sublineLine2")}
             </Text>
           </RevealFx>
         </Column>

@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { FiLock, FiCheckCircle, FiSmartphone } from "react-icons/fi";
+import { FiCheckCircle, FiSmartphone } from "react-icons/fi";
 import { Meta, Schema } from "@once-ui-system/core";
 import { baseURL } from "@/resources";
 import styles from "./page.module.scss";
 const FOMO_URL = "https://fomo.family/r/rokitg";
-const CREATOR_CODE = "ROKITG";
 const SPONSOR_PATH = "/sponsors/fomo";
+const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@1rokitg";
 
 export async function generateMetadata() {
   const t = await getTranslations("FomoSponsorPage");
@@ -49,20 +49,12 @@ export default async function FomoSponsorPage() {
           </a>
           <div className={styles.trustRow}>
             <span>
-              <FiLock aria-hidden="true" /> {t("trustVerified")}
-            </span>
-            <span>
               <FiCheckCircle aria-hidden="true" /> {t("trustCode")}
             </span>
             <span>
               <FiSmartphone aria-hidden="true" /> {t("trustPlatform")}
             </span>
           </div>
-          <p className={styles.note}>
-            {t("note")}
-            <br />
-            {t.rich("noteCode", { code: CREATOR_CODE, b: (chunks) => <strong>{chunks}</strong> })}
-          </p>
           <a className={styles.secondary} href="#como-empezar">
             {t("secondaryCta")} ↓
           </a>
@@ -100,10 +92,10 @@ export default async function FomoSponsorPage() {
         <div>
           <p className={styles.eyebrow}>{t("finishEyebrow")}</p>
           <h2>{t("finishTitle")}</h2>
-          <p>{t.rich("finishBody", { code: CREATOR_CODE, b: (chunks) => <strong>{chunks}</strong> })}</p>
+          <p>{t("finishBody")}</p>
         </div>
-        <a className={styles.cta} href={FOMO_URL} data-analytics-source="fomo_footer">
-          {t("downloadCta")} <span aria-hidden="true">↗</span>
+        <a className={styles.cta} href={YOUTUBE_CHANNEL_URL} data-analytics-source="fomo_youtube_guide">
+          {t("finishCta")} <span aria-hidden="true">↗</span>
         </a>
       </section>
     </article>

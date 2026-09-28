@@ -1,4 +1,9 @@
 {
+  "HomePage": {
+    "headline": "How unprofitable traders are becoming the top 2%",
+    "sublineLine1": "I'm {name}, a software engineer turned <b>trader.</b>",
+    "sublineLine2": "Now I've decided to share my knowledge with everyone."
+  },
   "Header": {
     "home": "Home",
     "fomo": "Fomo",
@@ -14,11 +19,8 @@
     "heroTitleLine2": "Take it with you.",
     "intro": "As a content creator, I share the apps I actually use. Fomo is one of them — easy, fast, and with a great community, all from your phone.",
     "downloadCta": "Download for iOS",
-    "trustVerified": "Verified link",
     "trustCode": "Official creator code",
     "trustPlatform": "Available on iOS",
-    "note": "Continue on Fomo to download the app.",
-    "noteCode": "Use creator code <b>{code}</b> when you sign up.",
     "secondaryCta": "How to get started",
     "visualAlt": "Fomo app view on mobile",
     "visualCaption": "Illustrative view of the app.",
@@ -32,9 +34,10 @@
     "feature3Tag": "03 / MOVE",
     "feature3Title": "From mobile to desktop",
     "feature3Body": "Access it from the web too, whenever you prefer.",
-    "finishEyebrow": "START HERE",
-    "finishTitle": "Your first step: get the app.",
-    "finishBody": "Open RokitG's link, download Fomo, and use creator code <b>{code}</b> when you create your account."
+    "finishEyebrow": "YOUR FULL GUIDE",
+    "finishTitle": "Not sure where to start?",
+    "finishBody": "I've got the full walkthrough of how I use Fomo on my YouTube channel — everything explained step by step.",
+    "finishCta": "Watch the guide on YouTube"
   },
   "TradingBotSponsorPage": {
     "brandLabel": "Based Bot",

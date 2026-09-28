@@ -97,16 +97,12 @@ export interface Home extends BasePageConfig {
    * The image needs to be put inside `/public/images/` directory
    */
   image: `/images/${string}` | string;
-  /** The headline of the home page */
-  headline: React.ReactNode;
   /** Featured badge, which appears above the headline */
   featured: {
     display: boolean;
     title: React.ReactNode;
     href: string;
   };
-  /** The sub text which appears below the headline */
-  subline: React.ReactNode;
 }
 
 /**
