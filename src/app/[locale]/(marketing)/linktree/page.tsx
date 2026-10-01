@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import {
   Avatar,
   Column,
@@ -16,38 +17,49 @@ import { links as tools } from "@/resources/links";
 import { SocialCapitalButton } from "@/components/SocialCapitalButton";
 
 const LINKS_PATH = "/linktree";
-const TITLE = `Links – ${person.name}`;
-const DESCRIPTION = `Every place to find ${person.name} — main socials, the community, and the tools I actually use.`;
 
 // Curated order for the linktree — pulled from the single social-links source of
 // truth (src/resources/content.tsx) so this page never drifts from the footer/about page.
 const SOCIAL_ORDER = ["Instagram", "TikTok", "YouTube", "Twitter", "Discord", "Telegram"];
 
+// Tool captions live in translations (keyed by this resource's own keys) rather
+// than in src/resources/links.ts, since that file isn't locale-aware.
+const TOOL_CAPTION_KEYS: Record<string, string> = {
+  fomo: "toolCaptionFomo",
+  basedbot: "toolCaptionBasedbot",
+};
+
 export async function generateMetadata() {
+  const t = await getTranslations("LinktreePage");
+  const title = `${t("metaTitlePrefix")} – ${person.name}`;
+  const description = t("metaDescription", { name: person.name });
   return Meta.generate({
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     baseURL: baseURL,
     path: LINKS_PATH,
-    image: `/api/og/generate?title=${encodeURIComponent(TITLE)}`,
+    image: `/api/og/generate?title=${encodeURIComponent(title)}`,
   });
 }
 
-export default function LinksPage() {
+export default async function LinksPage() {
+  const t = await getTranslations("LinktreePage");
+  const title = `${t("metaTitlePrefix")} – ${person.name}`;
+  const description = t("metaDescription", { name: person.name });
   const orderedSocial = SOCIAL_ORDER.map((name) => social.find((item) => item.name === name)).filter(
     (item): item is (typeof social)[number] => Boolean(item?.link),
   );
-  const toolList = Object.values(tools);
+  const toolList = Object.entries(tools);
 
   return (
     <Column maxWidth="xs" gap="40" paddingY="24" horizontal="center" data-analytics-source="linktree_page">
       <Schema
         as="webPage"
         baseURL={baseURL}
-        title={TITLE}
-        description={DESCRIPTION}
+        title={title}
+        description={description}
         path={LINKS_PATH}
-        image={`/api/og/generate?title=${encodeURIComponent(TITLE)}`}
+        image={`/api/og/generate?title=${encodeURIComponent(title)}`}
         author={{
           name: person.name,
           url: `${baseURL}/about`,
@@ -59,20 +71,20 @@ export default function LinksPage() {
         <Avatar src={person.avatar} size="xl" />
         <Heading variant="display-strong-m">{person.name}</Heading>
         <Text wrap="balance" align="center" onBackground="neutral-weak" variant="body-default-m">
-          Trading, creator tools, and every place to find me — all in one spot.
+          {t("intro")}
         </Text>
       </Column>
 
       <Column fillWidth gap="8">
         <SocialCapitalButton source="linktree_page" />
         <Text align="center" onBackground="neutral-weak" variant="body-default-xs">
-          Verified public calls, real PnL, and the system behind them — built for traders who already have the basics down, not a beginner course.
+          {t("socialCapitalCaption")}
         </Text>
       </Column>
 
       <Column fillWidth gap="12">
         <Text variant="label-default-s" onBackground="neutral-weak" marginLeft="4">
-          MAIN SOCIALS
+          {t("mainSocials")}
         </Text>
         <Column fillWidth gap="8">
           {orderedSocial.map((item) => (
@@ -94,10 +106,10 @@ export default function LinksPage() {
 
       <Column fillWidth gap="12">
         <Text variant="label-default-s" onBackground="neutral-weak" marginLeft="4">
-          RECOMMENDED TOOLS
+          {t("recommendedTools")}
         </Text>
         <Column fillWidth gap="8">
-          {toolList.map((tool) => (
+          {toolList.map(([key, tool]) => (
             <SmartLink
               key={tool.name}
               href={tool.sponsorPath}
@@ -125,7 +137,7 @@ export default function LinksPage() {
                 <Column gap="2" flex={1}>
                   <Text variant="body-strong-m">{tool.name}</Text>
                   <Text variant="body-default-s" onBackground="neutral-weak">
-                    {tool.caption}
+                    {t(TOOL_CAPTION_KEYS[key])}
                   </Text>
                 </Column>
                 <Icon name="arrowRight" onBackground="neutral-weak" />

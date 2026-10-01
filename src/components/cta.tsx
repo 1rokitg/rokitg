@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { newsletter } from "@/resources";
 import { trackWhopEvent, WHOP_EVENTS } from "@/lib/whop";
 import { WHOP_OFFERS } from "@/lib/whop-offers";
@@ -22,6 +23,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
   onCommunityCheckout,
   ...flex
 }) => {
+  const t = useTranslations("HomeCta");
   const [isHovered, setIsHovered] = useState(false);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
@@ -124,7 +126,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
           onMouseLeave={() => setIsHovered(false)}
           onFocus={() => setIsHovered(true)}
           onBlur={() => setIsHovered(false)}
-          aria-label="Ver la clase gratis en YouTube"
+          aria-label={t("videoAriaLabel")}
           style={{
             position: "relative",
             width: "100%",
@@ -145,7 +147,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
           {/* Thumbnail */}
           <img
             src={thumbnail}
-            alt="Clase gratuita de ecommerce"
+            alt={t("videoThumbnailAlt")}
             draggable={false}
             style={{
               position: "absolute",
@@ -213,7 +215,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
                   boxShadow: "0 0 12px rgba(237,18,56,0.9)",
                 }}
               />
-              CLASE GRATIS
+              {t("videoBadge")}
             </div>
 
             {/* Duration */}
@@ -318,7 +320,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
                   textShadow: "0 2px 8px rgba(0,0,0,0.5)",
                 }}
               >
-                Cómo empecé desde cero
+                {t("videoTitle")}
               </span>
 
               <span
@@ -328,7 +330,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
                   whiteSpace: "nowrap",
                 }}
               >
-                ▶ Ver ahora
+                ▶ {t("watchNow")}
               </span>
             </div>
           </div>
@@ -338,7 +340,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
           <div
             role="dialog"
             aria-modal="true"
-            aria-label="Cómo empecé desde cero"
+            aria-label={t("videoTitle")}
             onClick={closeVideo}
             style={{
               position: "fixed",
@@ -366,7 +368,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
               <button
                 type="button"
                 onClick={closeVideo}
-                aria-label="Cerrar video"
+                aria-label={t("closeVideo")}
                 style={{
                   position: "absolute",
                   top: -44,
@@ -385,7 +387,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
               </button>
               <iframe
                 src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
-                title="Cómo empecé desde cero"
+                title={t("videoTitle")}
                 allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen
                 style={{ width: "100%", height: "100%", border: 0 }}
@@ -423,7 +425,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
               transition: "transform 180ms ease, box-shadow 180ms ease",
             }}
           >
-            UNIRME A LA COMUNIDAD GRATIS ↓
+            {t("joinFreeCta")} ↓
           </Button>
 
           <Button
@@ -439,7 +441,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
               fontWeight: 700,
             }}
           >
-            YA ESTOY LISTO — QUIERO ENTRAR
+            {t("paidCta")}
           </Button>
           <Button
             type="button"
@@ -457,7 +459,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
               fontWeight: 700,
             }}
           >
-            SUSCRIBIRME EN YOUTUBE
+            {t("youtubeCta")}
           </Button>
 
           <Text
@@ -468,8 +470,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
               opacity: 0.75,
             }}
           >
-            ¿Recién empiezas? Comunidad gratis. ¿Ya operas y quieres el
-            sistema completo? Social Capital — no es para empezar de cero.
+            {t("footerNote")}
           </Text>
         </Column>
       </Column>
