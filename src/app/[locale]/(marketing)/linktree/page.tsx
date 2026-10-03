@@ -26,7 +26,6 @@ const SOCIAL_ORDER = ["Instagram", "TikTok", "YouTube", "Twitter", "Discord", "T
 // than in src/resources/links.ts, since that file isn't locale-aware.
 const TOOL_CAPTION_KEYS: Record<string, string> = {
   fomo: "toolCaptionFomo",
-  basedbot: "toolCaptionBasedbot",
 };
 
 export async function generateMetadata() {

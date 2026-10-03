@@ -9,14 +9,4 @@ export const links = {
     refLink: "https://fomo.family/r/rokitg",
     sponsorPath: "/sponsors/fomo",
   },
-  basedbot: {
-    name: "Based Bot",
-    description: "The trading bot I use to automate my own strategy.",
-    url: "",
-    icon: "/images/basedbot-logo.png",
-    color: "#5b87cc",
-    caption: "Watch it in action before you set it up.",
-    refLink: "",
-    sponsorPath: "/sponsors/bb",
-  },
 };
