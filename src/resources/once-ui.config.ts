@@ -30,6 +30,7 @@ const routes: RoutesConfig = {
   "/retention": true,
   "/sponsors/bb": true,
   "/sponsors/fomo": true,
+  "/sponsors/propr": true,
 };
 
 const display: DisplayConfig = {

@@ -19,6 +19,7 @@
   "Header": {
     "home": "Inicio",
     "fomo": "Fomo",
+    "propr": "Propr",
     "tradingBot": "Bot de Trading",
     "login": "Iniciar sesión"
   },
@@ -51,6 +52,21 @@
     "finishBody": "Tengo la guía completa de cómo uso Fomo en mi canal de YouTube — todo explicado paso a paso.",
     "finishCta": "Ver la guía en YouTube"
   },
+  "ProprSponsorPage": {
+    "brandLabel": "Propr × RokitG",
+    "metaTitle": "Propr: Trading con Fondeo | RokitG",
+    "metaDescription": "Supera tu desafío de trading, consigue fondeo y quédate con el 80% de los beneficios con Propr. Regístrate con el enlace de RokitG.",
+    "title": "Opera con su capital, quédate con el beneficio",
+    "subtitle": "Supera tu desafío de trading. Consigue fondeo. Quédate con el 80% de los beneficios.",
+    "cta": "Empezar con Propr",
+    "disclosure": "Este es mi enlace de referido.",
+    "step1Tag": "01",
+    "step1Title": "Supera el desafío de trading",
+    "step2Tag": "02",
+    "step2Title": "Consigue fondeo",
+    "step3Tag": "03",
+    "step3Title": "Quédate con el 80% de los beneficios"
+  },
   "TradingBotSponsorPage": {
     "brandLabel": "Based Bot",
     "metaTitle": "Bot de Trading BasedBot | Video Resumen",
@@ -69,7 +85,8 @@
     "mainSocials": "REDES PRINCIPALES",
     "recommendedTools": "HERRAMIENTAS RECOMENDADAS",
     "toolCaptionFomo": "Usa el código ROKITG al registrarte.",
-    "toolCaptionBasedbot": "Míralo en acción antes de configurarlo."
+    "toolCaptionBasedbot": "Míralo en acción antes de configurarlo.",
+    "toolCaptionPropr": "Supera el desafío, consigue fondeo, quédate con el 80%."
   },
   "SocialCapitalButton": {
     "label": "Unirme al grupo"

@@ -124,6 +124,42 @@ export const Header = () => {
                   />
                 </Row>
               </>
+              <>
+                <Row s={{ hide: true }}>
+                  <ToggleButton
+                    className={styles.compactItem}
+                    href={href("/sponsors/propr")}
+                    label={
+                      <Row gap="4" vertical="center">
+                        <Image
+                          src="/images/propr-logo.svg"
+                          alt=""
+                          width={16}
+                          height={16}
+                          style={{ borderRadius: "4px" }}
+                        />
+                        {t("propr")}
+                      </Row>
+                    }
+                    selected={pathname.startsWith("/sponsors/propr")}
+                  />
+                </Row>
+                <Row hide s={{ hide: false }}>
+                  <ToggleButton
+                    href={href("/sponsors/propr")}
+                    label={
+                      <Image
+                        src="/images/propr-logo.svg"
+                        alt="Propr"
+                        width={16}
+                        height={16}
+                        style={{ borderRadius: "4px" }}
+                      />
+                    }
+                    selected={pathname.startsWith("/sponsors/propr")}
+                  />
+                </Row>
+              </>
               {routes["/work"] && (
                 <>
                   <Row s={{ hide: true }}>

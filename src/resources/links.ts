@@ -9,4 +9,14 @@ export const links = {
     refLink: "https://fomo.family/r/rokitg",
     sponsorPath: "/sponsors/fomo",
   },
+  propr: {
+    name: "Propr",
+    description: "Prop trading firm: pass the challenge, get funded, keep 80% of profits.",
+    url: "https://app.propr.xyz",
+    icon: "/images/propr-logo.svg",
+    color: "#71717a",
+    caption: "Pass the challenge, get funded.",
+    refLink: "https://app.propr.xyz/r/ROKIT",
+    sponsorPath: "/sponsors/propr",
+  },
 };

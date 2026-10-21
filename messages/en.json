@@ -19,6 +19,7 @@
   "Header": {
     "home": "Home",
     "fomo": "Fomo",
+    "propr": "Propr",
     "tradingBot": "Trading Bot",
     "login": "Log in"
   },
@@ -51,6 +52,21 @@
     "finishBody": "I've got the full walkthrough of how I use Fomo on my YouTube channel — everything explained step by step.",
     "finishCta": "Watch the guide on YouTube"
   },
+  "ProprSponsorPage": {
+    "brandLabel": "Propr × RokitG",
+    "metaTitle": "Propr Funded Trading | RokitG",
+    "metaDescription": "Pass your trading challenge, get funded and keep 80% of profits with Propr. Sign up with RokitG's link.",
+    "title": "Trade their capital, keep the upside",
+    "subtitle": "Pass your trading challenge. Get funded. Keep 80% of profits.",
+    "cta": "Get started with Propr",
+    "disclosure": "This is my referral link.",
+    "step1Tag": "01",
+    "step1Title": "Pass the trading challenge",
+    "step2Tag": "02",
+    "step2Title": "Get funded",
+    "step3Tag": "03",
+    "step3Title": "Keep 80% of profits"
+  },
   "TradingBotSponsorPage": {
     "brandLabel": "Based Bot",
     "metaTitle": "Trading Bot Overview | RokitG",
@@ -69,7 +85,8 @@
     "mainSocials": "MAIN SOCIALS",
     "recommendedTools": "RECOMMENDED TOOLS",
     "toolCaptionFomo": "Use code ROKITG when you sign up.",
-    "toolCaptionBasedbot": "Watch it in action before you set it up."
+    "toolCaptionBasedbot": "Watch it in action before you set it up.",
+    "toolCaptionPropr": "Pass the challenge, get funded, keep 80% of profits."
   },
   "SocialCapitalButton": {
     "label": "Join Social Capital"
