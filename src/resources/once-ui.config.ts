@@ -28,6 +28,7 @@ const routes: RoutesConfig = {
   "/app": true,
   "/app/courses": true,
   "/retention": true,
+  "/sponsors": true,
   "/sponsors/bb": true,
   "/sponsors/fomo": true,
   "/sponsors/propr": true,

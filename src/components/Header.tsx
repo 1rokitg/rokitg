@@ -1,7 +1,6 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import Image from "next/image";
 
 import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
@@ -88,114 +87,26 @@ export const Header = () => {
                 />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
-              <>
-                <Row s={{ hide: true }}>
-                  <ToggleButton
-                    className={styles.compactItem}
-                    href={href("/sponsors/fomo")}
-                    label={
-                      <Row gap="4" vertical="center">
-                        <Image
-                          src="/images/fomo-logo.png"
-                          alt=""
-                          width={16}
-                          height={16}
-                          style={{ borderRadius: "4px" }}
-                        />
-                        {t("fomo")}
-                      </Row>
-                    }
-                    selected={pathname.startsWith("/sponsors/fomo")}
-                  />
-                </Row>
-                <Row hide s={{ hide: false }}>
-                  <ToggleButton
-                    href={href("/sponsors/fomo")}
-                    label={
-                      <Image
-                        src="/images/fomo-logo.png"
-                        alt="Fomo"
-                        width={16}
-                        height={16}
-                        style={{ borderRadius: "4px" }}
-                      />
-                    }
-                    selected={pathname.startsWith("/sponsors/fomo")}
-                  />
-                </Row>
-              </>
-              <>
-                <Row s={{ hide: true }}>
-                  <ToggleButton
-                    className={styles.compactItem}
-                    href={href("/sponsors/propr")}
-                    label={
-                      <Row gap="4" vertical="center">
-                        <Image
-                          src="/images/propr-logo.svg"
-                          alt=""
-                          width={16}
-                          height={16}
-                          style={{ borderRadius: "4px" }}
-                        />
-                        {t("propr")}
-                      </Row>
-                    }
-                    selected={pathname.startsWith("/sponsors/propr")}
-                  />
-                </Row>
-                <Row hide s={{ hide: false }}>
-                  <ToggleButton
-                    href={href("/sponsors/propr")}
-                    label={
-                      <Image
-                        src="/images/propr-logo.svg"
-                        alt="Propr"
-                        width={16}
-                        height={16}
-                        style={{ borderRadius: "4px" }}
-                      />
-                    }
-                    selected={pathname.startsWith("/sponsors/propr")}
-                  />
-                </Row>
-              </>
-              <>
-                <Row s={{ hide: true }}>
-                  <ToggleButton
-                    className={styles.compactItem}
-                    href={href("/sponsors/hyperdash")}
-                    label={
-                      <Row gap="4" vertical="center">
-                        <Image
-                          src="/images/hyperdash-logo.png"
-                          alt=""
-                          width={16}
-                          height={16}
-                          style={{ borderRadius: "4px" }}
-                        />
-                        {t("hyperdash")}
-                      </Row>
-                    }
-                    selected={pathname.startsWith("/sponsors/hyperdash")}
-                  />
-                </Row>
-                <Row hide s={{ hide: false }}>
-                  <ToggleButton
-                    href={href("/sponsors/hyperdash")}
-                    label={
-                      <Image
-                        src="/images/hyperdash-logo.png"
-                        alt="Hyperdash"
-                        width={16}
-                        height={16}
-                        style={{ borderRadius: "4px" }}
-                      />
-                    }
-                    selected={pathname.startsWith("/sponsors/hyperdash")}
-                  />
-                </Row>
-              </>
+              {routes["/sponsors"] && (
+                <>
+                  <Row s={{ hide: true }}>
+                    <ToggleButton
+                      className={styles.compactItem}
+                      prefixIcon="gift"
+                      href={href("/sponsors")}
+                      label={t("sponsors")}
+                      selected={pathname.startsWith("/sponsors")}
+                    />
+                  </Row>
+                  <Row hide s={{ hide: false }}>
+                    <ToggleButton
+                      prefixIcon="gift"
+                      href={href("/sponsors")}
+                      selected={pathname.startsWith("/sponsors")}
+                    />
+                  </Row>
+                </>
+              )}
               {routes["/work"] && (
                 <>
                   <Row s={{ hide: true }}>

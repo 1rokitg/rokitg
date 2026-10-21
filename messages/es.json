@@ -22,7 +22,8 @@
     "propr": "Propr",
     "hyperdash": "Hyperdash",
     "tradingBot": "Bot de Trading",
-    "login": "Iniciar sesión"
+    "login": "Iniciar sesión",
+    "sponsors": "Patrocinadores"
   },
   "FomoSponsorPage": {
     "metaTitle": "Descargar Fomo App | Código de Creador ROKITG",
@@ -173,5 +174,15 @@
     "step3Body": "Whop vincula tu plan y te añade al servidor.",
     "helpText": "¿Necesitas ayuda?",
     "helpLink": "Escríbeme"
+  },
+  "SponsorsPage": {
+    "metaTitle": "Patrocinadores | RokitG",
+    "metaDescription": "Las plataformas y herramientas que uso y recomiendo, con mis enlaces de referido.",
+    "title": "Patrocinadores",
+    "subtitle": "Las plataformas y herramientas que uso de verdad.",
+    "disclosure": "Algunos enlaces son enlaces de referido."
+  },
+  "SponsorsCarousel": {
+    "title": "Más patrocinadores"
   }
 }

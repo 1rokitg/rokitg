@@ -22,14 +22,6 @@ const LINKS_PATH = "/linktree";
 // truth (src/resources/content.tsx) so this page never drifts from the footer/about page.
 const SOCIAL_ORDER = ["Instagram", "TikTok", "YouTube", "Twitter", "Discord", "Telegram"];
 
-// Tool captions live in translations (keyed by this resource's own keys) rather
-// than in src/resources/links.ts, since that file isn't locale-aware.
-const TOOL_CAPTION_KEYS: Record<string, string> = {
-  fomo: "toolCaptionFomo",
-  propr: "toolCaptionPropr",
-  hyperdash: "toolCaptionHyperdash",
-};
-
 export async function generateMetadata() {
   const t = await getTranslations("LinktreePage");
   const title = `${t("metaTitlePrefix")} – ${person.name}`;
@@ -110,7 +102,7 @@ export default async function LinksPage() {
           {t("recommendedTools")}
         </Text>
         <Column fillWidth gap="8">
-          {toolList.map(([key, tool]) => (
+          {toolList.map(([, tool]) => (
             <SmartLink
               key={tool.name}
               href={tool.sponsorPath}
@@ -138,7 +130,7 @@ export default async function LinksPage() {
                 <Column gap="2" flex={1}>
                   <Text variant="body-strong-m">{tool.name}</Text>
                   <Text variant="body-default-s" onBackground="neutral-weak">
-                    {t(TOOL_CAPTION_KEYS[key])}
+                    {t(tool.captionKey)}
                   </Text>
                 </Column>
                 <Icon name="arrowRight" onBackground="neutral-weak" />

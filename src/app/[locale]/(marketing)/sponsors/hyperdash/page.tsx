@@ -2,6 +2,7 @@ import { Badge, Button, Column, Heading, Row, Text, Meta, Schema } from "@once-u
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { baseURL } from "@/resources";
+import { SponsorsCarousel } from "@/components/SponsorsCarousel";
 
 const HYPERDASH_URL = "https://hyperdash.com/join/rokitg";
 const SPONSOR_PATH = "/sponsors/hyperdash";
@@ -83,6 +84,7 @@ export default async function HyperdashSponsorPage() {
         </Text>
         <Heading variant="heading-strong-m">{t("perkTitle")}</Heading>
       </Column>
+      <SponsorsCarousel current="hyperdash" />
     </Column>
   );
 }

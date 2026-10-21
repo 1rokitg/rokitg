@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { FiCheckCircle, FiSmartphone } from "react-icons/fi";
 import { Meta, Schema } from "@once-ui-system/core";
 import { baseURL } from "@/resources";
+import { SponsorsCarousel } from "@/components/SponsorsCarousel";
 import styles from "./page.module.scss";
 const FOMO_URL = "https://fomo.family/r/rokitg";
 const SPONSOR_PATH = "/sponsors/fomo";
@@ -98,6 +99,7 @@ export default async function FomoSponsorPage() {
           {t("finishCta")} <span aria-hidden="true">↗</span>
         </a>
       </section>
+      <SponsorsCarousel current="fomo" />
     </article>
   );
 }

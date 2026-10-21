@@ -22,7 +22,8 @@
     "propr": "Propr",
     "hyperdash": "Hyperdash",
     "tradingBot": "Trading Bot",
-    "login": "Log in"
+    "login": "Log in",
+    "sponsors": "Sponsors"
   },
   "FomoSponsorPage": {
     "metaTitle": "Download Fomo | RokitG",
@@ -173,5 +174,15 @@
     "step3Body": "Whop links your plan and adds you to the server.",
     "helpText": "Need help?",
     "helpLink": "Email me"
+  },
+  "SponsorsPage": {
+    "metaTitle": "Sponsors | RokitG",
+    "metaDescription": "The platforms and tools I use and recommend, with my referral links.",
+    "title": "Sponsors",
+    "subtitle": "The platforms and tools I actually use.",
+    "disclosure": "Some links are referral links."
+  },
+  "SponsorsCarousel": {
+    "title": "More Sponsors"
   }
 }

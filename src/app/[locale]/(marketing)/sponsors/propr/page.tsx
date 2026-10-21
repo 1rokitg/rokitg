@@ -2,6 +2,7 @@ import { Badge, Button, Column, Heading, Row, Text, Meta, Schema } from "@once-u
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { baseURL } from "@/resources";
+import { SponsorsCarousel } from "@/components/SponsorsCarousel";
 
 const PROPR_URL = "https://app.propr.xyz/r/ROKIT";
 const SPONSOR_PATH = "/sponsors/propr";
@@ -88,6 +89,7 @@ export default async function ProprSponsorPage() {
           </Column>
         ))}
       </Row>
+      <SponsorsCarousel current="propr" />
     </Column>
   );
 }
