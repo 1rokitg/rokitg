@@ -19,4 +19,14 @@ export const links = {
     refLink: "https://app.propr.xyz/r/ROKIT",
     sponsorPath: "/sponsors/propr",
   },
+  hyperdash: {
+    name: "Hyperdash",
+    description: "Trading platform: 10% off fees with my referral link.",
+    url: "https://hyperdash.com",
+    icon: "/images/hyperdash-logo.png",
+    color: "#ed3602",
+    caption: "10% off fees with my referral link.",
+    refLink: "https://hyperdash.com/join/rokitg",
+    sponsorPath: "/sponsors/hyperdash",
+  },
 };

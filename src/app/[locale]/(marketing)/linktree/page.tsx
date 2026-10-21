@@ -27,6 +27,7 @@ const SOCIAL_ORDER = ["Instagram", "TikTok", "YouTube", "Twitter", "Discord", "T
 const TOOL_CAPTION_KEYS: Record<string, string> = {
   fomo: "toolCaptionFomo",
   propr: "toolCaptionPropr",
+  hyperdash: "toolCaptionHyperdash",
 };
 
 export async function generateMetadata() {

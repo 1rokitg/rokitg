@@ -20,6 +20,7 @@
     "home": "Home",
     "fomo": "Fomo",
     "propr": "Propr",
+    "hyperdash": "Hyperdash",
     "tradingBot": "Trading Bot",
     "login": "Log in"
   },
@@ -67,6 +68,17 @@
     "step3Tag": "03",
     "step3Title": "Keep 80% of profits"
   },
+  "HyperdashSponsorPage": {
+    "brandLabel": "Hyperdash × RokitG",
+    "metaTitle": "Hyperdash: 10% Off Fees | RokitG",
+    "metaDescription": "Trade smarter with Hyperdash and get 10% off fees with RokitG's referral link.",
+    "title": "Trade smarter with Hyperdash",
+    "subtitle": "Sign up with my referral link and get 10% off fees.",
+    "cta": "Join Hyperdash",
+    "disclosure": "This is my referral link.",
+    "perkTag": "WITH MY LINK",
+    "perkTitle": "10% off fees"
+  },
   "TradingBotSponsorPage": {
     "brandLabel": "Based Bot",
     "metaTitle": "Trading Bot Overview | RokitG",
@@ -86,7 +98,8 @@
     "recommendedTools": "RECOMMENDED TOOLS",
     "toolCaptionFomo": "Use code ROKITG when you sign up.",
     "toolCaptionBasedbot": "Watch it in action before you set it up.",
-    "toolCaptionPropr": "Pass the challenge, get funded, keep 80% of profits."
+    "toolCaptionPropr": "Pass the challenge, get funded, keep 80% of profits.",
+    "toolCaptionHyperdash": "10% off fees with my referral link."
   },
   "SocialCapitalButton": {
     "label": "Join Social Capital"

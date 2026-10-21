@@ -20,6 +20,7 @@
     "home": "Inicio",
     "fomo": "Fomo",
     "propr": "Propr",
+    "hyperdash": "Hyperdash",
     "tradingBot": "Bot de Trading",
     "login": "Iniciar sesión"
   },
@@ -67,6 +68,17 @@
     "step3Tag": "03",
     "step3Title": "Quédate con el 80% de los beneficios"
   },
+  "HyperdashSponsorPage": {
+    "brandLabel": "Hyperdash × RokitG",
+    "metaTitle": "Hyperdash: 10% de Descuento en Comisiones | RokitG",
+    "metaDescription": "Opera mejor con Hyperdash y consigue un 10% de descuento en comisiones con el enlace de referido de RokitG.",
+    "title": "Opera mejor con Hyperdash",
+    "subtitle": "Regístrate con mi enlace de referido y consigue un 10% de descuento en comisiones.",
+    "cta": "Unirme a Hyperdash",
+    "disclosure": "Este es mi enlace de referido.",
+    "perkTag": "CON MI ENLACE",
+    "perkTitle": "10% de descuento en comisiones"
+  },
   "TradingBotSponsorPage": {
     "brandLabel": "Based Bot",
     "metaTitle": "Bot de Trading BasedBot | Video Resumen",
@@ -86,7 +98,8 @@
     "recommendedTools": "HERRAMIENTAS RECOMENDADAS",
     "toolCaptionFomo": "Usa el código ROKITG al registrarte.",
     "toolCaptionBasedbot": "Míralo en acción antes de configurarlo.",
-    "toolCaptionPropr": "Supera el desafío, consigue fondeo, quédate con el 80%."
+    "toolCaptionPropr": "Supera el desafío, consigue fondeo, quédate con el 80%.",
+    "toolCaptionHyperdash": "10% de descuento en comisiones con mi enlace."
   },
   "SocialCapitalButton": {
     "label": "Unirme al grupo"

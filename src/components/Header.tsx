@@ -160,6 +160,42 @@ export const Header = () => {
                   />
                 </Row>
               </>
+              <>
+                <Row s={{ hide: true }}>
+                  <ToggleButton
+                    className={styles.compactItem}
+                    href={href("/sponsors/hyperdash")}
+                    label={
+                      <Row gap="4" vertical="center">
+                        <Image
+                          src="/images/hyperdash-logo.png"
+                          alt=""
+                          width={16}
+                          height={16}
+                          style={{ borderRadius: "4px" }}
+                        />
+                        {t("hyperdash")}
+                      </Row>
+                    }
+                    selected={pathname.startsWith("/sponsors/hyperdash")}
+                  />
+                </Row>
+                <Row hide s={{ hide: false }}>
+                  <ToggleButton
+                    href={href("/sponsors/hyperdash")}
+                    label={
+                      <Image
+                        src="/images/hyperdash-logo.png"
+                        alt="Hyperdash"
+                        width={16}
+                        height={16}
+                        style={{ borderRadius: "4px" }}
+                      />
+                    }
+                    selected={pathname.startsWith("/sponsors/hyperdash")}
+                  />
+                </Row>
+              </>
               {routes["/work"] && (
                 <>
                   <Row s={{ hide: true }}>
