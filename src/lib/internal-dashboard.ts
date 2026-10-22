@@ -67,6 +67,18 @@ export function wholeWindow(series: MetricSeries): number | null {
   return series.totals[0]?.value ?? null;
 }
 
+/**
+ * Unique visitors for the window. Prefers Whop's own whole-window total; if Whop didn't send one,
+ * falls back to summing daily uniques, which counts a returning visitor once per day (approx).
+ */
+export function visitorsFrom(series: MetricSeries, fromTs: number): { value: number; approx: boolean } | null {
+  const total = wholeWindow(series);
+  if (total !== null) return { value: total, approx: false };
+  const inWindow = series.points.filter((point) => point.timestamp >= fromTs);
+  if (inWindow.length === 0) return null;
+  return { value: sumPoints(series, fromTs), approx: true };
+}
+
 export function breakdownTotals(series: MetricSeries): { name: string; value: number }[] {
   const merged = new Map<string, number>();
   if (series.totals.length > 0) {

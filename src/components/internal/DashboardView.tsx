@@ -4,6 +4,7 @@ import {
   breakdownTotals,
   lastValue,
   sumPoints,
+  visitorsFrom,
   wholeWindow,
   type DashboardData,
   type RangeKey,
@@ -274,7 +275,22 @@ export function DashboardView({ data, range }: { data: DashboardData; range: Ran
   const visits = periodSums(series.page_visits, windows.fromTs, days);
   const sales = periodSums(series.successful_payments, windows.fromTs, days);
 
-  const visitors = windowTotals.traffic_people.ok ? wholeWindow(windowTotals.traffic_people.data) : null;
+  const visitorsResult = windowTotals.traffic_people;
+  const sourceTotal = data.trafficBySource.ok
+    ? breakdownTotals(data.trafficBySource.data).reduce((sum, row) => sum + row.value, 0)
+    : 0;
+  const visitorInfo: { value: number; approx: boolean } | null =
+    (visitorsResult.ok ? visitorsFrom(visitorsResult.data, windows.fromTs) : null) ??
+    (sourceTotal > 0 ? { value: sourceTotal, approx: true } : null);
+  const visitors = visitorInfo?.value ?? null;
+
+  const funnelProblems = [
+    visitors === null
+      ? `visitors (${visitorsResult.ok ? "Whop returned no traffic data for this range" : visitorsResult.error})`
+      : null,
+    !users ? `new members (${series.new_users.ok ? "no data" : series.new_users.error})` : null,
+    !sales ? `payments (${series.successful_payments.ok ? "no data" : series.successful_payments.error})` : null,
+  ].filter((problem): problem is string => problem !== null);
   const snapshot = (key: keyof typeof snapshots) => {
     const result = snapshots[key];
     return result.ok ? lastValue(result.data) : null;
@@ -347,7 +363,7 @@ export function DashboardView({ data, range }: { data: DashboardData; range: Ran
           )}
           <Tile
             label="Unique visitors"
-            value={visitors === null ? "—" : count(visitors)}
+            value={visitors === null ? "—" : `${visitorInfo?.approx ? "~" : ""}${count(visitors)}`}
             sub={visits ? `${count(visits.current)} page views` : undefined}
             change={visits ? delta(visits.current, visits.previous) : undefined}
           />
@@ -376,6 +392,7 @@ export function DashboardView({ data, range }: { data: DashboardData; range: Ran
                     <div className={styles.barRow}>
                       <span className={styles.barName}>{step.label}</span>
                       <span className={styles.barValue}>
+                        {index === 0 && visitorInfo?.approx ? "~" : ""}
                         {count(step.value)}
                         {index > 0 && step.of > 0 ? ` · ${((step.value / step.of) * 100).toFixed(1)}%` : ""}
                       </span>
@@ -390,7 +407,7 @@ export function DashboardView({ data, range }: { data: DashboardData; range: Ran
                 ))}
               </ul>
             ) : (
-              <Unavailable error="traffic, members or payments failed to load" />
+              <Unavailable error={`missing ${funnelProblems.join("; ")}`} />
             )}
           </Card>
         </div>
