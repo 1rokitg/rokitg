@@ -3,6 +3,12 @@ import styles from "./InternalHome.module.scss";
 
 const TOOLS = [
   {
+    href: "/internal/dashboard",
+    label: "Dashboard",
+    description:
+      "Revenue, ad spend, members, traffic and campaign performance at a glance, with week-over-week deltas. Whop is the only data source.",
+  },
+  {
     href: "/internal/events",
     label: "Events",
     description:

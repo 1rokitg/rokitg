@@ -1,7 +1,7 @@
 import "server-only";
 
-const WHOP_API_BASE = "https://api.whop.com/api/v1";
-const WHOP_ACCOUNT_ID = "biz_ROKYKZdV9YGZP7";
+export const WHOP_API_BASE = "https://api.whop.com/api/v1";
+export const WHOP_ACCOUNT_ID = "biz_ROKYKZdV9YGZP7";
 
 type CheckoutConfiguration = {
   id: string;
