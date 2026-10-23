@@ -1,5 +1,5 @@
+import { notFound } from "next/navigation";
 import { isInternalAuthenticated } from "@/lib/internal-auth";
-import { InternalLoginForm } from "@/components/internal/InternalLoginForm";
 
 export const metadata = {
   title: "RokitG Internal",
@@ -9,13 +9,12 @@ export const metadata = {
 export default async function InternalRootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const authenticated = await isInternalAuthenticated();
+  // Anyone off the IP allowlist gets a plain 404, so the area doesn't advertise itself.
+  if (!(await isInternalAuthenticated())) notFound();
 
   return (
     <html lang="en">
-      <body style={{ margin: 0, background: "#000" }}>
-        {authenticated ? children : <InternalLoginForm />}
-      </body>
+      <body style={{ margin: 0, background: "#000" }}>{children}</body>
     </html>
   );
 }

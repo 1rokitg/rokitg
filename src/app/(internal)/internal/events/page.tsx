@@ -1,9 +1,12 @@
+import { isInternalAuthenticated } from "@/lib/internal-auth";
 import { mintTrackingAccessToken } from "@/lib/whop-api";
 import { EventsTerminalClient } from "@/components/internal/EventsTerminalClient";
 
 export const dynamic = "force-dynamic";
 
 export default async function InternalEventsPage() {
+  if (!(await isInternalAuthenticated())) return null;
+
   if (!process.env.WHOP_API_KEY) {
     return (
       <div style={{ padding: 40, color: "#fff", fontFamily: "Arial, sans-serif" }}>

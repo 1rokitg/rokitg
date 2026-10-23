@@ -1,9 +1,12 @@
+import { isInternalAuthenticated } from "@/lib/internal-auth";
 import { mintTrackingAccessToken } from "@/lib/whop-api";
 import { PeopleTerminalClient } from "@/components/internal/PeopleTerminalClient";
 
 export const dynamic = "force-dynamic";
 
 export default async function InternalPeoplePage() {
+  if (!(await isInternalAuthenticated())) return null;
+
   if (!process.env.WHOP_API_KEY) {
     return (
       <div style={{ padding: 40, color: "#fff", fontFamily: "Arial, sans-serif" }}>

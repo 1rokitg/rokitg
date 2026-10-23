@@ -1,4 +1,5 @@
 import { DashboardView } from "@/components/internal/DashboardView";
+import { isInternalAuthenticated } from "@/lib/internal-auth";
 import { loadDashboard, parseRange } from "@/lib/internal-dashboard";
 
 export const dynamic = "force-dynamic";
@@ -8,6 +9,8 @@ export default async function InternalDashboardPage({
 }: {
   searchParams: Promise<{ range?: string }>;
 }) {
+  if (!(await isInternalAuthenticated())) return null;
+
   if (!process.env.WHOP_API_KEY) {
     return (
       <div style={{ padding: 40, color: "#fff", fontFamily: "Arial, sans-serif" }}>
