@@ -80,6 +80,18 @@
     "perkTag": "WITH MY LINK",
     "perkTitle": "10% off fees"
   },
+  "ExtendedSponsorPage": {
+    "brandLabel": "Extended × RokitG",
+    "metaTitle": "Extended: 10% Fees Discount | RokitG",
+    "metaDescription": "Trade on Extended with RokitG's referral code and get a 5% points boost and a 10% fees discount.",
+    "title": "Trade on Extended",
+    "subtitle": "Sign up with my referral code ROKITG and get a 5% points boost and 10% off fees.",
+    "cta": "Join Extended",
+    "disclosure": "This is my referral link.",
+    "perkTag": "WITH CODE ROKITG",
+    "perk1Title": "5% points boost",
+    "perk2Title": "10% fees discount"
+  },
   "TradingBotSponsorPage": {
     "brandLabel": "Based Bot",
     "metaTitle": "Trading Bot Overview | RokitG",
@@ -100,7 +112,8 @@
     "toolCaptionFomo": "Use code ROKITG when you sign up.",
     "toolCaptionBasedbot": "Watch it in action before you set it up.",
     "toolCaptionPropr": "Pass the challenge, get funded, keep 80% of profits.",
-    "toolCaptionHyperdash": "10% off fees with my referral link."
+    "toolCaptionHyperdash": "10% off fees with my referral link.",
+    "toolCaptionExtended": "5% points boost and 10% fees discount with code ROKITG."
   },
   "SocialCapitalButton": {
     "label": "Join Social Capital"
@@ -183,6 +196,7 @@
     "disclosure": "Some links are referral links."
   },
   "SponsorsCarousel": {
-    "title": "More Sponsors"
+    "title": "More Sponsors",
+    "learnMore": "Learn more"
   }
 }

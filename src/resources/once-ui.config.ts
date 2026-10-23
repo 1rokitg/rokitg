@@ -33,6 +33,7 @@ const routes: RoutesConfig = {
   "/sponsors/fomo": true,
   "/sponsors/propr": true,
   "/sponsors/hyperdash": true,
+  "/sponsors/extended": true,
 };
 
 const display: DisplayConfig = {

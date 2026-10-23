@@ -80,6 +80,18 @@
     "perkTag": "CON MI ENLACE",
     "perkTitle": "10% de descuento en comisiones"
   },
+  "ExtendedSponsorPage": {
+    "brandLabel": "Extended × RokitG",
+    "metaTitle": "Extended: 10% de Descuento en Comisiones | RokitG",
+    "metaDescription": "Opera en Extended con el código de referido de RokitG y consigue un 5% extra de puntos y un 10% de descuento en comisiones.",
+    "title": "Opera en Extended",
+    "subtitle": "Regístrate con mi código de referido ROKITG y consigue un 5% extra de puntos y un 10% de descuento en comisiones.",
+    "cta": "Unirme a Extended",
+    "disclosure": "Este es mi enlace de referido.",
+    "perkTag": "CON EL CÓDIGO ROKITG",
+    "perk1Title": "5% extra de puntos",
+    "perk2Title": "10% de descuento en comisiones"
+  },
   "TradingBotSponsorPage": {
     "brandLabel": "Based Bot",
     "metaTitle": "Bot de Trading BasedBot | Video Resumen",
@@ -100,7 +112,8 @@
     "toolCaptionFomo": "Usa el código ROKITG al registrarte.",
     "toolCaptionBasedbot": "Míralo en acción antes de configurarlo.",
     "toolCaptionPropr": "Supera el desafío, consigue fondeo, quédate con el 80%.",
-    "toolCaptionHyperdash": "10% de descuento en comisiones con mi enlace."
+    "toolCaptionHyperdash": "10% de descuento en comisiones con mi enlace.",
+    "toolCaptionExtended": "5% extra de puntos y 10% de descuento en comisiones con el código ROKITG."
   },
   "SocialCapitalButton": {
     "label": "Unirme al grupo"
@@ -183,6 +196,7 @@
     "disclosure": "Algunos enlaces son enlaces de referido."
   },
   "SponsorsCarousel": {
-    "title": "Más patrocinadores"
+    "title": "Más patrocinadores",
+    "learnMore": "Ver más"
   }
 }

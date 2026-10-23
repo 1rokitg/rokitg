@@ -32,4 +32,15 @@ export const links = {
     refLink: "https://hyperdash.com/join/rokitg",
     sponsorPath: "/sponsors/hyperdash",
   },
+  extended: {
+    name: "Extended",
+    description: "Trading exchange: 5% points boost and 10% fees discount with my referral code.",
+    url: "https://app.extended.exchange",
+    icon: "/images/extended-logo.png",
+    color: "#22c98a",
+    caption: "5% points boost and 10% fees discount with code ROKITG.",
+    captionKey: "toolCaptionExtended",
+    refLink: "https://app.extended.exchange/join/ROKITG",
+    sponsorPath: "/sponsors/extended",
+  },
 };
