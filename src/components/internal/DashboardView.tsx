@@ -17,7 +17,7 @@ const PRODUCT_NAMES: Record<string, string> = {
   prod_fGgcg5TK7jvos: "Free Community",
 };
 
-const RANGE_LABELS: Record<RangeKey, string> = { today: "Today", "7d": "7 days", "30d": "30 days", "90d": "90 days" };
+const RANGE_LABELS: Record<RangeKey, string> = { today: "Today", "7d": "7 days", "30d": "30 days" };
 
 function usd(value: number): string {
   const digits = Math.abs(value) < 1000 ? 2 : 0;

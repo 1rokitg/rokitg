@@ -10,7 +10,7 @@ import {
   type Result,
 } from "@/lib/whop-stats";
 
-export const RANGES = { today: 1, "7d": 7, "30d": 30, "90d": 90 } as const;
+export const RANGES = { today: 1, "7d": 7, "30d": 30 } as const;
 export type RangeKey = keyof typeof RANGES;
 
 export function parseRange(value: string | undefined): RangeKey {
