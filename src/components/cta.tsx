@@ -2,16 +2,14 @@
 
 import { useTranslations } from "next-intl";
 import { newsletter } from "@/resources";
-import { trackWhopEvent, WHOP_EVENTS } from "@/lib/whop";
-import { WHOP_OFFERS } from "@/lib/whop-offers";
+import { captureAttribution, trackWhopEvent, WHOP_EVENTS } from "@/lib/whop";
+import { WHOP_OFFERS, whopPageUrl } from "@/lib/whop-offers";
 import { Button, Column, Text } from "@once-ui-system/core";
 import Image from "next/image";
 import { useState } from "react";
 
 interface CallToActionProps extends React.ComponentProps<typeof Column> {
   trustBadges: boolean;
-  onCheckout?: () => void;
-  onCommunityCheckout?: () => void;
 }
 
 const YOUTUBE_CHANNEL_URL =
@@ -19,8 +17,6 @@ const YOUTUBE_CHANNEL_URL =
 
 export const CallToAction: React.FC<CallToActionProps> = ({
   trustBadges,
-  onCheckout,
-  onCommunityCheckout,
   ...flex
 }) => {
   const t = useTranslations("HomeCta");
@@ -43,6 +39,10 @@ export const CallToAction: React.FC<CallToActionProps> = ({
 
   const closeVideo = () => setIsVideoOpen(false);
 
+  const goToProductPage = (productUrl: string) => {
+    window.location.assign(whopPageUrl(productUrl, captureAttribution()?.parameters));
+  };
+
   const handleCommunityClick = () => {
     trackWhopEvent(WHOP_EVENTS.freeCheckoutClicked, {
       source: "home_cta",
@@ -52,7 +52,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
       amount: WHOP_OFFERS.freeCommunity.amount,
     });
 
-    onCommunityCheckout?.();
+    goToProductPage(WHOP_OFFERS.freeCommunity.productUrl);
   };
 
   const handleYoutubeClick = () => {
@@ -75,7 +75,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
       amount: WHOP_OFFERS.paidProgram.amount,
     });
 
-    onCheckout?.();
+    goToProductPage(WHOP_OFFERS.paidProgram.productUrl);
   };
   if (newsletter.display === false) {
     return null;
@@ -425,7 +425,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
               transition: "transform 180ms ease, box-shadow 180ms ease",
             }}
           >
-            {t("joinFreeCta")} ↓
+            {t("joinFreeCta")} →
           </Button>
 
           <Button
