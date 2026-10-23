@@ -92,6 +92,21 @@
     "perk1Title": "5% extra de puntos",
     "perk2Title": "10% de descuento en comisiones"
   },
+  "KrakenSponsorPage": {
+    "brandLabel": "Kraken × RokitG",
+    "metaTitle": "Kraken: 30 € de Recompensa | RokitG",
+    "metaDescription": "Regístrate en Kraken con el enlace de invitación de RokitG, deposita y opera 200 € y consigue una recompensa de 30 €. Oferta disponible en las regiones que cumplan los requisitos.",
+    "title": "Únete a Kraken",
+    "subtitle": "Regístrate con mi enlace de invitación, deposita y opera 200 € y consigue 30 € de recompensa.",
+    "cta": "Unirme a Kraken",
+    "disclosure": "Este es mi enlace de referido. Oferta disponible en las regiones que cumplan los requisitos; se aplican términos y condiciones.",
+    "step1Tag": "01",
+    "step1Title": "Regístrate con mi enlace",
+    "step2Tag": "02",
+    "step2Title": "Deposita y opera 200 €",
+    "step3Tag": "03",
+    "step3Title": "Consigue tu recompensa de 30 €"
+  },
   "TradingBotSponsorPage": {
     "brandLabel": "Based Bot",
     "metaTitle": "Bot de Trading BasedBot | Video Resumen",
@@ -113,7 +128,8 @@
     "toolCaptionBasedbot": "Míralo en acción antes de configurarlo.",
     "toolCaptionPropr": "Supera el desafío, consigue fondeo, quédate con el 80%.",
     "toolCaptionHyperdash": "10% de descuento en comisiones con mi enlace.",
-    "toolCaptionExtended": "5% extra de puntos y 10% de descuento en comisiones con el código ROKITG."
+    "toolCaptionExtended": "5% extra de puntos y 10% de descuento en comisiones con el código ROKITG.",
+    "toolCaptionKraken": "Consigue 30 € al depositar y operar 200 €."
   },
   "SocialCapitalButton": {
     "label": "Unirme al grupo"

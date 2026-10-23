@@ -43,4 +43,15 @@ export const links = {
     refLink: "https://app.extended.exchange/join/ROKITG",
     sponsorPath: "/sponsors/extended",
   },
+  kraken: {
+    name: "Kraken",
+    description: "Crypto exchange: get a €30 reward when you deposit and trade €200 with my invite link.",
+    url: "https://www.kraken.com",
+    icon: "/images/kraken-logo.png",
+    color: "#7132f5",
+    caption: "Get €30 when you deposit and trade €200.",
+    captionKey: "toolCaptionKraken",
+    refLink: "https://invite.kraken.com/JDNW/x7hj92vs",
+    sponsorPath: "/sponsors/kraken",
+  },
 };

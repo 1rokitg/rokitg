@@ -92,6 +92,21 @@
     "perk1Title": "5% points boost",
     "perk2Title": "10% fees discount"
   },
+  "KrakenSponsorPage": {
+    "brandLabel": "Kraken × RokitG",
+    "metaTitle": "Kraken: €30 Welcome Reward | RokitG",
+    "metaDescription": "Sign up to Kraken with RokitG's invite link, deposit and trade €200, and get a €30 reward. Offer available in eligible regions.",
+    "title": "Join Kraken",
+    "subtitle": "Sign up with my invite link, deposit and trade €200, and get a €30 reward.",
+    "cta": "Join Kraken",
+    "disclosure": "This is my referral link. Offer available in eligible regions; terms apply.",
+    "step1Tag": "01",
+    "step1Title": "Sign up with my link",
+    "step2Tag": "02",
+    "step2Title": "Deposit and trade €200",
+    "step3Tag": "03",
+    "step3Title": "Get your €30 reward"
+  },
   "TradingBotSponsorPage": {
     "brandLabel": "Based Bot",
     "metaTitle": "Trading Bot Overview | RokitG",
@@ -113,7 +128,8 @@
     "toolCaptionBasedbot": "Watch it in action before you set it up.",
     "toolCaptionPropr": "Pass the challenge, get funded, keep 80% of profits.",
     "toolCaptionHyperdash": "10% off fees with my referral link.",
-    "toolCaptionExtended": "5% points boost and 10% fees discount with code ROKITG."
+    "toolCaptionExtended": "5% points boost and 10% fees discount with code ROKITG.",
+    "toolCaptionKraken": "Get €30 when you deposit and trade €200."
   },
   "SocialCapitalButton": {
     "label": "Join Social Capital"
