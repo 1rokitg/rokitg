@@ -90,7 +90,6 @@ export async function SocialProof() {
           </a>
         </p>
       ) : null}
-      <p className={styles.sub}>{t("disclaimer")}</p>
     </section>
   );
 }
