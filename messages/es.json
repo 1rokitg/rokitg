@@ -37,6 +37,11 @@
     "login": "Iniciar sesión",
     "sponsors": "Patrocinadores"
   },
+  "Footer": {
+    "disclaimerLabel": "Aviso legal:",
+    "risk": "Todo el contenido de este sitio tiene fines exclusivamente educativos e informativos y no constituye asesoramiento financiero, de inversión, legal ni fiscal. Operar e invertir en criptoactivos y otros mercados conlleva un alto riesgo de pérdida y puedes perder todo tu capital. La rentabilidad pasada no garantiza resultados futuros, y los resultados mostrados o mencionados no son típicos ni una promesa de ganancias. Haz tu propia investigación y consulta con un profesional autorizado antes de tomar decisiones financieras.",
+    "affiliate": "Algunos enlaces de este sitio son enlaces de afiliado o de referido: puedo recibir una comisión u otro beneficio si te registras o compras a través de ellos, sin coste adicional para ti. Las ofertas de plataformas de terceros pueden no estar disponibles en todas las regiones y están sujetas a sus propios términos."
+  },
   "FomoSponsorPage": {
     "metaTitle": "Descargar Fomo App | Código de Creador ROKITG",
     "metaDescription": "Descubre la app Fomo que uso a diario como creador de contenido. Descarga Fomo para iOS y usa mi código de creador ROKITG al registrarte.",
@@ -197,8 +202,7 @@
     "metaTitle": "Patrocinadores | RokitG",
     "metaDescription": "Las plataformas y herramientas que uso y recomiendo, con mis enlaces de referido.",
     "title": "Patrocinadores",
-    "subtitle": "Las plataformas y herramientas que uso de verdad.",
-    "disclosure": "Algunos enlaces son enlaces de referido."
+    "subtitle": "Las plataformas y herramientas que uso de verdad."
   },
   "SponsorsCarousel": {
     "title": "Más patrocinadores",

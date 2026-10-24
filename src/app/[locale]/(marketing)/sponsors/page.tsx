@@ -36,9 +36,6 @@ export default async function SponsorsPage() {
         <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
           {t("subtitle")}
         </Text>
-        <Text onBackground="neutral-weak" variant="body-default-xs">
-          {t("disclosure")}
-        </Text>
       </Column>
       <SponsorsGrid />
       <EmailCapture source="sponsors_hub" />

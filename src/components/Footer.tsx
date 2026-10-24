@@ -1,18 +1,14 @@
-import { Row, IconButton, SmartLink, Text } from "@once-ui-system/core";
+import { Column, Row, IconButton, Text } from "@once-ui-system/core";
+import { getTranslations } from "next-intl/server";
 import { person, social } from "@/resources";
 import styles from "./Footer.module.scss";
 
-export const Footer = () => {
+export const Footer = async () => {
+  const t = await getTranslations("Footer");
   const currentYear = new Date().getFullYear();
 
   return (
-    <Row
-      as="footer"
-      fillWidth
-      padding="8"
-      horizontal="center"
-      s={{ direction: "column" }}
-    >
+    <Column as="footer" fillWidth padding="8" horizontal="center">
       <Row
         className={styles.mobile}
         maxWidth="m"
@@ -47,7 +43,15 @@ export const Footer = () => {
           )}
         </Row>
       </Row>
+      <Column maxWidth="m" paddingX="16" paddingBottom="16" gap="8" horizontal="center" align="center">
+        <Text variant="body-default-xs" onBackground="neutral-weak" wrap="balance">
+          <strong>{t("disclaimerLabel")}</strong> {t("risk")}
+        </Text>
+        <Text variant="body-default-xs" onBackground="neutral-weak" wrap="balance">
+          {t("affiliate")}
+        </Text>
+      </Column>
       <Row height="80" hide s={{ hide: false }} />
-    </Row>
+    </Column>
   );
 };
