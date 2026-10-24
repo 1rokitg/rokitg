@@ -19,6 +19,10 @@ function clip(text: string): string {
   return clean.length > MAX_TEXT ? `${clean.slice(0, MAX_TEXT).trimEnd()}…` : clean;
 }
 
+// Seeded with an opaque id (never the reviewer's name), so no member names are sent to the avatar service.
+const avatarUrl = (review: WhopReview) =>
+  `https://avatar.vercel.sh/${encodeURIComponent(review.user?.id ?? review.id)}.png?size=64`;
+
 const imageOf = (review: WhopReview) => review.attachments.find((file) => file.content_type.startsWith("image/"));
 
 export async function SocialProof() {
@@ -50,7 +54,17 @@ export async function SocialProof() {
           <p className={styles.text}>{clip(review.description ?? "")}</p>
           {image ? <img className={styles.shot} src={image.url} alt="" loading="lazy" /> : null}
           <div className={styles.who}>
-            <span className={styles.name}>{name}</span>
+            <span className={styles.person}>
+              <img
+                className={styles.avatar}
+                src={avatarUrl(review)}
+                width={32}
+                height={32}
+                alt=""
+                referrerPolicy="no-referrer"
+              />
+              <span className={styles.name}>{name}</span>
+            </span>
             {review.paid_for_product ? <span className={styles.badge}>{t("paying")}</span> : null}
           </div>
         </article>

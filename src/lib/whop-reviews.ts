@@ -9,7 +9,7 @@ export type WhopReview = {
   paid_for_product: boolean | null;
   published_at: string | null;
   status: string;
-  user: { name: string | null; username: string } | null;
+  user: { id?: string | null; name: string | null; username: string } | null;
   attachments: { id: string; filename: string; content_type: string; url: string }[];
 };
 
