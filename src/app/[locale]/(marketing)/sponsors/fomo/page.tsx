@@ -1,7 +1,8 @@
+import { localizedMeta } from "@/lib/seo";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { FiCheckCircle, FiSmartphone } from "react-icons/fi";
-import { Meta, Schema } from "@once-ui-system/core";
+import { Schema } from "@once-ui-system/core";
 import { baseURL } from "@/resources";
 import { SponsorsCarousel } from "@/components/SponsorsCarousel";
 import styles from "./page.module.scss";
@@ -11,10 +12,9 @@ const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@1rokitg";
 
 export async function generateMetadata() {
   const t = await getTranslations("FomoSponsorPage");
-  return Meta.generate({
+  return localizedMeta({
     title: t("metaTitle"),
     description: t("metaDescription"),
-    baseURL: baseURL,
     path: SPONSOR_PATH,
     image: `/api/og/generate?title=${encodeURIComponent(t("metaTitle"))}`,
   });

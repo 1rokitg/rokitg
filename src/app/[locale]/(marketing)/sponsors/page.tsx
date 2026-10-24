@@ -1,16 +1,17 @@
-import { Column, Heading, Text, Meta, Schema } from "@once-ui-system/core";
+import { localizedMeta } from "@/lib/seo";
+import { Column, Heading, Text, Schema } from "@once-ui-system/core";
 import { getTranslations } from "next-intl/server";
 import { baseURL } from "@/resources";
 import { SponsorsGrid } from "@/components/SponsorsCarousel";
+import { EmailCapture } from "@/components/EmailCapture";
 
 const SPONSORS_PATH = "/sponsors";
 
 export async function generateMetadata() {
   const t = await getTranslations("SponsorsPage");
-  return Meta.generate({
+  return localizedMeta({
     title: t("metaTitle"),
     description: t("metaDescription"),
-    baseURL: baseURL,
     path: SPONSORS_PATH,
     image: `/api/og/generate?title=${encodeURIComponent(t("metaTitle"))}`,
   });
@@ -40,6 +41,7 @@ export default async function SponsorsPage() {
         </Text>
       </Column>
       <SponsorsGrid />
+      <EmailCapture source="sponsors_hub" />
     </Column>
   );
 }

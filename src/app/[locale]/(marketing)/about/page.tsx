@@ -1,3 +1,4 @@
+import { localizedMeta } from "@/lib/seo";
 import {
   Avatar,
   Button,
@@ -7,7 +8,6 @@ import {
   Media,
   Tag,
   Text,
-  Meta,
   Schema,
   Row,
   IconButton,
@@ -19,10 +19,9 @@ import styles from "@/components/about/about.module.scss";
 import React from "react";
 
 export async function generateMetadata() {
-  return Meta.generate({
+  return localizedMeta({
     title: about.title,
     description: about.description,
-    baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
     path: about.path,
   });

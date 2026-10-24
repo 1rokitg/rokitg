@@ -9,6 +9,8 @@ export const EVENTS = {
   videoPlayed: "Video Play",
   newsletterSubmitted: "Newsletter Submitted",
   fomoReferralClicked: "Fomo Referral Click",
+  sponsorReferralClicked: "Sponsor Referral Click",
+  emailSubscribed: "Email Signup",
   returnVisit: "Return Visit",
   toolInteracted: "Tool Interaction",
   pageViewed: "Page View",
@@ -40,12 +42,15 @@ export type OutboundEvent =
   | "Whop Click"
   | "Calendar Click"
   | "Fomo Referral Click"
+  | "Sponsor Referral Click"
   | "Instagram Click"
   | "TikTok Click"
   | "X Click";
 export type EventPayloads = Record<OutboundEvent, Outbound> & {
   "Video Play": Base & { content_id: string; content_type: "video"; interaction: "play" };
   "Newsletter Submitted": Base & { submission_id: string; interaction: "submit" };
+  /** The server sends the Whop lead (with the email); this only feeds the Meta bridge, so it never maps to a Whop standard event. */
+  "Email Signup": Base & { submission_id: string; interaction: "submit" };
   "Calendar Booking": Base & { booking_id: string; interaction: "confirmed" };
   "Tool Interaction": Base & {
     content_id: string;
@@ -63,7 +68,7 @@ export type EventName = keyof EventPayloads;
 export function eventCategory(name: EventName) {
   if (name === EVENTS.returnVisit) return "retention";
   if (name === EVENTS.calendarBooked) return "completion";
-  if (name === EVENTS.newsletterSubmitted) return "submission";
+  if (name === EVENTS.newsletterSubmitted || name === EVENTS.emailSubscribed) return "submission";
   return "interaction";
 }
 /** Whop's standard pixel taxonomy (docs.whop.com/developer/ads/pixel) — never include "purchase" here, Whop tracks its own checkouts automatically. */
@@ -84,7 +89,8 @@ export function standardEventFor(name: EventName): StandardEventName | undefined
   if (
     name === EVENTS.freeCheckoutClicked ||
     name === EVENTS.paidCheckoutClicked ||
-    name === EVENTS.fomoReferralClicked
+    name === EVENTS.fomoReferralClicked ||
+    name === EVENTS.sponsorReferralClicked
   )
     return STANDARD_EVENTS.addToCart;
   if (name === EVENTS.pageViewed) return STANDARD_EVENTS.viewContent;
@@ -101,14 +107,22 @@ export function metaEventFor(name: EventName): string | undefined {
   if (name === EVENTS.calendarBooked) return "Schedule";
   if (name === EVENTS.freeCheckoutClicked) return "Lead";
   if (name === EVENTS.paidCheckoutClicked) return "InitiateCheckout";
-  if (name === EVENTS.fomoReferralClicked) return "AddToCart";
+  if (name === EVENTS.fomoReferralClicked || name === EVENTS.sponsorReferralClicked) return "AddToCart";
+  if (name === EVENTS.emailSubscribed) return "Lead";
   if (name === EVENTS.pageViewed) return "PageView";
 }
 /** The pages that count as a "key page" for view_content — matches what ads actually point to. Keep in sync with the ad destinations in memory/project_rokitg_ads_naming.md. */
-export const KEY_PAGES = ["/", "/sponsors", "/sponsors/fomo", "/sponsors/propr", "/sponsors/hyperdash", "/sponsors/extended", "/sponsors/kraken", "/sponsors/bb", "/about", "/app", "/welcome", "/linktree"] as const;
+export const KEY_PAGES = ["/", "/sponsors", "/sponsors/fomo", "/sponsors/propr", "/sponsors/hyperdash", "/sponsors/extended", "/sponsors/kraken", "/about", "/app", "/welcome", "/linktree"] as const;
 export function isKeyPage(pathname: string): boolean {
   return (KEY_PAGES as readonly string[]).includes(pathname);
 }
+/** Partner referral links: a click here is the intent we report, the signup itself happens on the partner's site. */
+const SPONSOR_REFERRALS: { host: string; pathPrefix: string }[] = [
+  { host: "app.propr.xyz", pathPrefix: "/r/" },
+  { host: "hyperdash.com", pathPrefix: "/join/" },
+  { host: "app.extended.exchange", pathPrefix: "/join/" },
+  { host: "invite.kraken.com", pathPrefix: "/" },
+];
 export function classifyOutbound(url: URL): OutboundEvent | undefined {
   if (!/^https?:$/.test(url.protocol)) return;
   const host = url.hostname.toLowerCase().replace(/^www\./, "");
@@ -119,6 +133,8 @@ export function classifyOutbound(url: URL): OutboundEvent | undefined {
   if (host === "cal.com" || host === "calendly.com") return EVENTS.calendarClicked;
   if (host === "whop.com") return EVENTS.whopClicked;
   if (host === "fomo.family" && /^\/r\/[^/]+/.test(url.pathname)) return EVENTS.fomoReferralClicked;
+  if (SPONSOR_REFERRALS.some((s) => s.host === host && url.pathname.startsWith(s.pathPrefix)))
+    return EVENTS.sponsorReferralClicked;
   if (host === "instagram.com") return EVENTS.instagramClicked;
   if (host === "tiktok.com") return EVENTS.tiktokClicked;
   if (host === "x.com" || host === "twitter.com") return EVENTS.xClicked;

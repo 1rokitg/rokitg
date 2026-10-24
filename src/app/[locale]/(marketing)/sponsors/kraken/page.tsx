@@ -1,4 +1,5 @@
-import { Badge, Button, Column, Heading, Row, Text, Meta, Schema } from "@once-ui-system/core";
+import { localizedMeta } from "@/lib/seo";
+import { Badge, Button, Column, Heading, Row, Text, Schema } from "@once-ui-system/core";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { baseURL } from "@/resources";
@@ -9,10 +10,9 @@ const SPONSOR_PATH = "/sponsors/kraken";
 
 export async function generateMetadata() {
   const t = await getTranslations("KrakenSponsorPage");
-  return Meta.generate({
+  return localizedMeta({
     title: t("metaTitle"),
     description: t("metaDescription"),
-    baseURL: baseURL,
     path: SPONSOR_PATH,
     image: `/api/og/generate?title=${encodeURIComponent(t("metaTitle"))}`,
   });

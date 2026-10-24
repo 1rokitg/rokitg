@@ -1,9 +1,9 @@
+import { localizedMeta } from "@/lib/seo";
 import { getTranslations } from "next-intl/server";
 import { home, about, person, baseURL } from "@/resources";
 
 import {
   Column,
-  Meta,
   Schema,
   Badge,
   Row,
@@ -14,10 +14,9 @@ import {
 import { HomeCheckout } from "@/components/home-client";
 
 export async function generateMetadata() {
-  return Meta.generate({
+  return localizedMeta({
     title: home.title,
     description: home.description,
-    baseURL: baseURL,
     path: home.path,
     image: home.image,
   });

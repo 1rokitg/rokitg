@@ -14,7 +14,7 @@ import {
 import { home, person, social } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://rokitg.com";
+const baseURL: string = "https://www.rokitg.com";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -29,7 +29,6 @@ const routes: RoutesConfig = {
   "/app/courses": true,
   "/retention": true,
   "/sponsors": true,
-  "/sponsors/bb": true,
   "/sponsors/fomo": true,
   "/sponsors/propr": true,
   "/sponsors/hyperdash": true,

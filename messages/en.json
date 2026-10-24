@@ -16,12 +16,25 @@
     "youtubeCta": "SUBSCRIBE ON YOUTUBE",
     "footerNote": "Just starting out? Free community. Already trading and want the full system? Social Capital — not for beginners."
   },
+  "EmailCapture": {
+    "title": "Get updates by email",
+    "subtitle": "New guides, sponsor offers and market notes. No spam.",
+    "placeholder": "Your email",
+    "button": "Subscribe",
+    "sending": "Sending...",
+    "consent": "I agree to receive emails from RokitG. My data is processed by Whop and may be used to personalize ads. I can unsubscribe at any time.",
+    "errorEmail": "Please enter a valid email address.",
+    "errorConsent": "Please accept to subscribe.",
+    "errorGeneric": "Something went wrong. Please try again in a moment.",
+    "successTitle": "You're in!",
+    "successBody": "Thanks for subscribing. Want to hang out with the community too?",
+    "joinCta": "Join the free community"
+  },
   "Header": {
     "home": "Home",
     "fomo": "Fomo",
     "propr": "Propr",
     "hyperdash": "Hyperdash",
-    "tradingBot": "Trading Bot",
     "login": "Log in",
     "sponsors": "Sponsors"
   },
@@ -107,16 +120,6 @@
     "step3Tag": "03",
     "step3Title": "Get your €30 reward"
   },
-  "TradingBotSponsorPage": {
-    "brandLabel": "Based Bot",
-    "metaTitle": "Trading Bot Overview | RokitG",
-    "metaDescription": "Watch the Based Bot trading bot overview and see the platform in action.",
-    "title": "Trading Bot",
-    "subtitle": "Watch the trading bot overview to see the platform in action.",
-    "watchAriaLabel": "Watch the trading bot overview on YouTube",
-    "videoAlt": "Trading bot YouTube overview",
-    "watchCta": "WATCH THE TRADING BOT OVERVIEW"
-  },
   "LinktreePage": {
     "metaTitlePrefix": "Links",
     "metaDescription": "Every place to find {name} — main socials, the community, and the tools I actually use.",
@@ -125,7 +128,6 @@
     "mainSocials": "MAIN SOCIALS",
     "recommendedTools": "RECOMMENDED TOOLS",
     "toolCaptionFomo": "Use code ROKITG when you sign up.",
-    "toolCaptionBasedbot": "Watch it in action before you set it up.",
     "toolCaptionPropr": "Pass the challenge, get funded, keep 80% of profits.",
     "toolCaptionHyperdash": "10% off fees with my referral link.",
     "toolCaptionExtended": "5% points boost and 10% fees discount with code ROKITG.",

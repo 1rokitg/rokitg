@@ -1,3 +1,4 @@
+import { localizedMeta } from "@/lib/seo";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import {
@@ -9,7 +10,6 @@ import {
   Button,
   Icon,
   SmartLink,
-  Meta,
   Schema,
 } from "@once-ui-system/core";
 import { baseURL, person, social } from "@/resources";
@@ -26,10 +26,9 @@ export async function generateMetadata() {
   const t = await getTranslations("LinktreePage");
   const title = `${t("metaTitlePrefix")} – ${person.name}`;
   const description = t("metaDescription", { name: person.name });
-  return Meta.generate({
+  return localizedMeta({
     title,
     description,
-    baseURL: baseURL,
     path: LINKS_PATH,
     image: `/api/og/generate?title=${encodeURIComponent(title)}`,
   });

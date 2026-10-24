@@ -16,12 +16,25 @@
     "youtubeCta": "SUSCRIBIRME EN YOUTUBE",
     "footerNote": "¿Recién empiezas? Comunidad gratis. ¿Ya operas y quieres el sistema completo? Social Capital — no es para empezar de cero."
   },
+  "EmailCapture": {
+    "title": "Recibe novedades por email",
+    "subtitle": "Nuevas guías, ofertas de patrocinadores y notas de mercado. Sin spam.",
+    "placeholder": "Tu email",
+    "button": "Suscribirme",
+    "sending": "Enviando...",
+    "consent": "Acepto recibir emails de RokitG. Mis datos se tratan en Whop y pueden usarse para personalizar anuncios. Puedo darme de baja en cualquier momento.",
+    "errorEmail": "Introduce un email válido.",
+    "errorConsent": "Acepta para poder suscribirte.",
+    "errorGeneric": "Algo salió mal. Inténtalo de nuevo en un momento.",
+    "successTitle": "¡Listo, estás dentro!",
+    "successBody": "Gracias por suscribirte. ¿Quieres unirte también a la comunidad?",
+    "joinCta": "Unirme a la comunidad gratis"
+  },
   "Header": {
     "home": "Inicio",
     "fomo": "Fomo",
     "propr": "Propr",
     "hyperdash": "Hyperdash",
-    "tradingBot": "Bot de Trading",
     "login": "Iniciar sesión",
     "sponsors": "Patrocinadores"
   },
@@ -107,16 +120,6 @@
     "step3Tag": "03",
     "step3Title": "Consigue tu recompensa de 30 €"
   },
-  "TradingBotSponsorPage": {
-    "brandLabel": "Based Bot",
-    "metaTitle": "Bot de Trading BasedBot | Video Resumen",
-    "metaDescription": "Mira el resumen del bot de trading BasedBot y descubre cómo automatiza tus operaciones en la plataforma.",
-    "title": "Bot de Trading",
-    "subtitle": "Mira el resumen del bot de trading para ver la plataforma en acción.",
-    "watchAriaLabel": "Ver el resumen del bot de trading en YouTube",
-    "videoAlt": "Resumen en YouTube del bot de trading",
-    "watchCta": "VER EL RESUMEN DEL BOT DE TRADING"
-  },
   "LinktreePage": {
     "metaTitlePrefix": "Enlaces",
     "metaDescription": "Todos los lugares para encontrar a {name} — redes principales, la comunidad y las herramientas que realmente uso.",
@@ -125,7 +128,6 @@
     "mainSocials": "REDES PRINCIPALES",
     "recommendedTools": "HERRAMIENTAS RECOMENDADAS",
     "toolCaptionFomo": "Usa el código ROKITG al registrarte.",
-    "toolCaptionBasedbot": "Míralo en acción antes de configurarlo.",
     "toolCaptionPropr": "Supera el desafío, consigue fondeo, quédate con el 80%.",
     "toolCaptionHyperdash": "10% de descuento en comisiones con mi enlace.",
     "toolCaptionExtended": "5% extra de puntos y 10% de descuento en comisiones con el código ROKITG.",

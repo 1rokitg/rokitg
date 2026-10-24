@@ -21,6 +21,12 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: "/sponsors/bb", destination: "/sponsors", permanent: true },
+      { source: "/es/sponsors/bb", destination: "/es/sponsors", permanent: true },
+    ];
+  },
   sassOptions: {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
