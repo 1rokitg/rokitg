@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@once-ui-system/core";
 import { captureAttribution, trackWhopEvent, WHOP_EVENTS } from "@/lib/whop";
 import { WHOP_OFFERS, whopPageUrl } from "@/lib/whop-offers";
+import { features } from "@/resources/features";
 
 type Status = "idle" | "pending" | "done" | "error";
 
@@ -37,6 +38,11 @@ const fieldStyle = {
 } as const;
 
 export function EmailCapture({ source }: { source: string }) {
+  if (!features.emailCapture) return null;
+  return <EmailCaptureForm source={source} />;
+}
+
+function EmailCaptureForm({ source }: { source: string }) {
   const t = useTranslations("EmailCapture");
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);

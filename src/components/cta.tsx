@@ -5,6 +5,7 @@ import { newsletter } from "@/resources";
 import { captureAttribution, trackWhopEvent, WHOP_EVENTS } from "@/lib/whop";
 import { WHOP_OFFERS, whopPageUrl } from "@/lib/whop-offers";
 import { EmailCapture } from "@/components/EmailCapture";
+import { features } from "@/resources/features";
 import { Button, Column, Text } from "@once-ui-system/core";
 import Image from "next/image";
 import { useState } from "react";
@@ -474,9 +475,11 @@ export const CallToAction: React.FC<CallToActionProps> = ({
             {t("footerNote")}
           </Text>
 
-          <div style={{ width: "100%", marginTop: 12 }}>
-            <EmailCapture source="home_cta" />
-          </div>
+          {features.emailCapture && (
+            <div style={{ width: "100%", marginTop: 12 }}>
+              <EmailCapture source="home_cta" />
+            </div>
+          )}
         </Column>
       </Column>
     </Column>

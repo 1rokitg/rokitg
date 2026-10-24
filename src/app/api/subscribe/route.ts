@@ -2,6 +2,7 @@ import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
 import { getClientIp } from "@/lib/client-ip";
 import { sendWhopLead } from "@/lib/whop-events";
+import { features } from "@/resources/features";
 
 const ALLOWED_HOSTS = /(^|\.)rokitg\.com$|^localhost$/;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,6 +54,8 @@ function rateLimited(ip: string): boolean {
 }
 
 export async function POST(request: Request) {
+  if (!features.emailCapture) return NextResponse.json({ error: "disabled" }, { status: 404 });
+
   const parsed = parseBody(await request.json().catch(() => null));
   if (!parsed.ok) return NextResponse.json({ error: parsed.reason }, { status: 400 });
   const { email, submissionId, pageUrl, visitorId, website } = parsed.body;
