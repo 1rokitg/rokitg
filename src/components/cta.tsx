@@ -40,7 +40,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
   const closeVideo = () => setIsVideoOpen(false);
 
   const goToProductPage = (productUrl: string) => {
-    window.location.assign(whopPageUrl(productUrl, captureAttribution()?.parameters));
+    window.open(whopPageUrl(productUrl, captureAttribution()?.parameters), "_blank", "noopener");
   };
 
   const handleCommunityClick = () => {
