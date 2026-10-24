@@ -6,8 +6,6 @@ import styles from "./InternalShell.module.scss";
 
 const TABS = [
   { href: "/internal/dashboard", label: "Dashboard" },
-  { href: "/internal/events", label: "Events" },
-  { href: "/internal/people", label: "People" },
 ] as const;
 
 export function InternalShell({ children }: { children: React.ReactNode }) {

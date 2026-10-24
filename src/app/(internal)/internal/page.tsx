@@ -1,5 +1,5 @@
-import { InternalHome } from "@/components/internal/InternalHome";
+import { redirect } from "next/navigation";
 
 export default function InternalIndexPage() {
-  return <InternalHome />;
+  redirect("/internal/dashboard");
 }
