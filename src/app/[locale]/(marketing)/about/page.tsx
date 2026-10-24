@@ -1,4 +1,5 @@
 import { localizedMeta } from "@/lib/seo";
+import { getTranslations } from "next-intl/server";
 import {
   Avatar,
   Button,
@@ -19,15 +20,17 @@ import styles from "@/components/about/about.module.scss";
 import React from "react";
 
 export async function generateMetadata() {
+  const t = await getTranslations("AboutPage");
   return localizedMeta({
-    title: about.title,
-    description: about.description,
-    image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    image: `/api/og/generate?title=${encodeURIComponent(t("metaTitle"))}`,
     path: about.path,
   });
 }
 
-export default function About() {
+export default async function About() {
+  const t = await getTranslations("AboutPage");
   const structure = [
     {
       title: about.intro.title,
@@ -56,10 +59,10 @@ export default function About() {
       <Schema
         as="webPage"
         baseURL={baseURL}
-        title={about.title}
-        description={about.description}
+        title={t("metaTitle")}
+        description={t("metaDescription")}
         path={about.path}
-        image={`/api/og/generate?title=${encodeURIComponent(about.title)}`}
+        image={`/api/og/generate?title=${encodeURIComponent(t("metaTitle"))}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -100,12 +103,12 @@ export default function About() {
 
             <Row gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
+              {t("location")}
             </Row>
 
             {person.languages && person.languages.length > 0 && (
               <Row wrap gap="8">
-                {person.languages.map((language, index) => (
+                {[t("langEnglish"), t("langSpanish")].map((language, index) => (
                   <Tag key={index} size="l">
                     {language}
                   </Tag>
@@ -144,7 +147,7 @@ export default function About() {
                   onBackground="brand-weak"
                 />
 
-                <Row paddingX="8">Schedule a call</Row>
+                <Row paddingX="8">{t("scheduleCall")}</Row>
 
                 <TrackedCalendarButton href={about.calendar.link} />
               </Row>
@@ -159,7 +162,7 @@ export default function About() {
               variant="display-default-xs"
               onBackground="neutral-weak"
             >
-              {person.role}
+              {t("role")}
             </Text>
 
             {social.length > 0 && (
@@ -219,7 +222,7 @@ export default function About() {
               gap="m"
               marginBottom="xl"
             >
-              {about.intro.description}
+              {t("intro")}
             </Column>
           )}
         </Column>

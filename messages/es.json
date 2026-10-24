@@ -37,6 +37,16 @@
     "login": "Iniciar sesión",
     "sponsors": "Patrocinadores"
   },
+  "AboutPage": {
+    "metaTitle": "Sobre mí – Rokit G",
+    "metaDescription": "Conoce a Rokit G, ingeniero de software y trader en Madrid, y la comunidad que hay detrás de ROKITG.",
+    "scheduleCall": "Agendar una llamada",
+    "role": "Ingeniero de software",
+    "intro": "Soy Rokit, ingeniero de software en Madrid y parte del mundo del trading. Detrás de ROKITG hay una comunidad que estoy construyendo. ¿Quieres conocerme y formar parte de ella? Haz clic en Discord y únete gratis.",
+    "location": "Madrid, España",
+    "langEnglish": "Inglés",
+    "langSpanish": "Español"
+  },
   "Footer": {
     "disclaimerLabel": "Aviso legal:",
     "risk": "Todo el contenido de este sitio tiene fines exclusivamente educativos e informativos y no constituye asesoramiento financiero, de inversión, legal ni fiscal. Operar e invertir en criptoactivos y otros mercados conlleva un alto riesgo de pérdida y puedes perder todo tu capital. La rentabilidad pasada no garantiza resultados futuros, y los resultados mostrados o mencionados no son típicos ni una promesa de ganancias. Haz tu propia investigación y consulta con un profesional autorizado antes de tomar decisiones financieras.",

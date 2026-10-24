@@ -37,6 +37,16 @@
     "login": "Log in",
     "sponsors": "Sponsors"
   },
+  "AboutPage": {
+    "metaTitle": "About – Rokit G",
+    "metaDescription": "Meet Rokit G, a software engineer and trader based in Madrid, and the community behind ROKITG.",
+    "scheduleCall": "Schedule a call",
+    "role": "Software Engineer",
+    "intro": "I'm Rokit, a software engineer in Madrid and part of the trading world. Behind ROKITG there's a community I'm building. Want to get to know me and be part of it? Click Discord and join for free.",
+    "location": "Madrid, Spain",
+    "langEnglish": "English",
+    "langSpanish": "Spanish"
+  },
   "Footer": {
     "disclaimerLabel": "Disclaimer:",
     "risk": "Everything on this site is for educational and informational purposes only and is not financial, investment, legal or tax advice. Trading and investing in crypto assets and other markets carries a high risk of loss, and you can lose all of your capital. Past performance does not guarantee future results, and any results shown or mentioned are not typical or a promise of earnings. Do your own research and consult a licensed professional before making financial decisions.",
