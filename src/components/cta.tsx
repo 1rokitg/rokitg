@@ -41,8 +41,8 @@ export const CallToAction: React.FC<CallToActionProps> = ({
 
   const closeVideo = () => setIsVideoOpen(false);
 
-  const goToProductPage = (productUrl: string) => {
-    window.open(whopPageUrl(productUrl, captureAttribution()?.parameters), "_blank", "noopener");
+  const goToProductPage = (productUrl: string, options?: { affiliate?: boolean }) => {
+    window.open(whopPageUrl(productUrl, captureAttribution()?.parameters, options), "_blank", "noopener");
   };
 
   const handleCommunityClick = () => {
@@ -77,7 +77,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
       amount: WHOP_OFFERS.paidProgram.amount,
     });
 
-    goToProductPage(WHOP_OFFERS.paidProgram.productUrl);
+    goToProductPage(WHOP_OFFERS.paidProgram.ctaUrl, { affiliate: false });
   };
   if (newsletter.display === false) {
     return null;

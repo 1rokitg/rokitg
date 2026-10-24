@@ -10,6 +10,8 @@ export const WHOP_OFFERS = {
     name: "paid_program",
     planId: "plan_iKZZy75Zb7JlR",
     productUrl: "https://whop.com/rokitg/join-the-circle/",
+    /** Where the funnel's paid button sends people: the storefront, not the single product page. */
+    ctaUrl: "https://whop.com/rokitg",
     paymentType: "paid",
     amount: 97,
   },
@@ -18,9 +20,13 @@ export const WHOP_OFFERS = {
 const WHOP_AFFILIATE_CODE = "rokitg";
 
 /** whop.com page link; forwards the visitor's ad attribution (utm_*, ad ids) so it survives the redirect. */
-export function whopPageUrl(pageUrl: string, attribution: Record<string, string> = {}): string {
+export function whopPageUrl(
+  pageUrl: string,
+  attribution: Record<string, string> = {},
+  options: { affiliate?: boolean } = {},
+): string {
   const url = new URL(pageUrl);
-  url.searchParams.set("a", WHOP_AFFILIATE_CODE);
+  if (options.affiliate !== false) url.searchParams.set("a", WHOP_AFFILIATE_CODE);
   for (const [key, value] of Object.entries(attribution)) url.searchParams.set(key, value);
   return url.toString();
 }
