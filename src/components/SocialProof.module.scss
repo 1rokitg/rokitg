@@ -5,8 +5,36 @@
 .starsRow { color: #f5b301; letter-spacing: 2px; font-size: 16px; }
 .link { color: inherit; text-decoration: underline; text-underline-offset: 3px; &:hover { color: var(--neutral-on-background-strong); } }
 
-.reviews { display: flex; gap: 14px; margin: 0; padding: 4px 2px 16px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--neutral-alpha-strong) transparent; -webkit-overflow-scrolling: touch; }
-.review { flex: 0 0 min(300px, 84%); scroll-snap-align: start; display: flex; }
+$gap: 14px;
+
+// Endless auto-scrolling row. The list is rendered twice, so sliding it by exactly one copy (plus half a gap) loops without a visible jump.
+.marquee {
+  overflow: hidden;
+  padding: 4px 0 8px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.track { display: flex; gap: $gap; margin: 0; padding: 0; list-style: none; }
+
+.marquee .track {
+  width: max-content;
+  animation: slide calc(var(--count) * 7s) linear infinite;
+}
+
+.marquee:hover .track,
+.marquee:focus-within .track { animation-play-state: paused; }
+
+@keyframes slide {
+  to { transform: translateX(calc(-50% - #{$gap * 0.5})); }
+}
+
+// Too few reviews to loop cleanly: show them as a plain centered row.
+.static .track { flex-wrap: wrap; justify-content: center; }
+
+.review { flex: 0 0 300px; display: flex; }
+.static .review { flex: 0 1 300px; }
+
 .card { display: flex; flex-direction: column; gap: 10px; width: 100%; padding: 18px; border-radius: 16px; border: 1px solid var(--neutral-alpha-medium); background: var(--neutral-alpha-weak); }
 .cardTitle { margin: 0; font-weight: 700; font-size: 15px; color: var(--neutral-on-background-strong); }
 .text { margin: 0; font-size: 14px; line-height: 1.55; color: var(--neutral-on-background-medium); overflow-wrap: anywhere; }
@@ -18,3 +46,10 @@
 .wins { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 14px; }
 .win { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--neutral-alpha-medium); }
 .sub { margin: 0; text-align: center; font-size: 12px; line-height: 1.5; color: var(--neutral-on-background-weak); }
+
+// People who ask for less motion get a normal swipeable row, without the duplicate copy.
+@media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; scrollbar-width: thin; scrollbar-color: var(--neutral-alpha-strong) transparent; }
+  .marquee .track { animation: none; }
+  .duplicate { display: none; }
+}

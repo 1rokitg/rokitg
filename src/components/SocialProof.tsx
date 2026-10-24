@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { getTranslations } from "next-intl/server";
 import { Heading } from "@once-ui-system/core";
 import { listPublishedReviews, type WhopReview } from "@/lib/whop-reviews";
@@ -8,6 +9,8 @@ import styles from "./SocialProof.module.scss";
 const PRODUCT_ID = "prod_c1w81EBTtfHWs";
 const MAX_REVIEWS = 6;
 const MAX_TEXT = 240;
+// Fewer cards than this can't fill the row twice over, so they stay still instead of looping.
+const MIN_FOR_LOOP = 4;
 
 const stars = (count: number) => "★".repeat(count) + "☆".repeat(5 - count);
 
@@ -27,7 +30,33 @@ export async function SocialProof() {
   const shown = all
     .filter((review) => review.stars >= 4 && (review.description?.trim().length ?? 0) >= 20)
     .slice(0, MAX_REVIEWS);
+  const loops = shown.length >= MIN_FOR_LOOP;
   const productUrl = whopPageUrl(WHOP_OFFERS.paidProgram.productUrl);
+
+  const card = (review: WhopReview, duplicate: boolean) => {
+    const image = imageOf(review);
+    const name = review.user?.name?.trim() || review.user?.username || "";
+    return (
+      <li
+        key={`${review.id}${duplicate ? "-copy" : ""}`}
+        className={`${styles.review} ${duplicate ? styles.duplicate : ""}`}
+        aria-hidden={duplicate || undefined}
+      >
+        <article className={styles.card}>
+          <span className={styles.starsRow} role="img" aria-label={t("starsLabel", { rating: String(review.stars) })}>
+            {stars(review.stars)}
+          </span>
+          {review.title ? <h3 className={styles.cardTitle}>{review.title}</h3> : null}
+          <p className={styles.text}>{clip(review.description ?? "")}</p>
+          {image ? <img className={styles.shot} src={image.url} alt="" loading="lazy" /> : null}
+          <div className={styles.who}>
+            <span className={styles.name}>{name}</span>
+            {review.paid_for_product ? <span className={styles.badge}>{t("paying")}</span> : null}
+          </div>
+        </article>
+      </li>
+    );
+  };
 
   return (
     <section className={styles.section} aria-label={t("title")}>
@@ -46,28 +75,12 @@ export async function SocialProof() {
       </div>
 
       {shown.length > 0 ? (
-        <ul className={styles.reviews}>
-          {shown.map((review) => {
-            const image = imageOf(review);
-            const name = review.user?.name?.trim() || review.user?.username || "";
-            return (
-              <li key={review.id} className={styles.review}>
-                <article className={styles.card}>
-                  <span className={styles.starsRow} role="img" aria-label={t("starsLabel", { rating: String(review.stars) })}>
-                    {stars(review.stars)}
-                  </span>
-                  {review.title ? <h3 className={styles.cardTitle}>{review.title}</h3> : null}
-                  <p className={styles.text}>{clip(review.description ?? "")}</p>
-                  {image ? <img className={styles.shot} src={image.url} alt="" loading="lazy" /> : null}
-                  <div className={styles.who}>
-                    <span className={styles.name}>{name}</span>
-                    {review.paid_for_product ? <span className={styles.badge}>{t("paying")}</span> : null}
-                  </div>
-                </article>
-              </li>
-            );
-          })}
-        </ul>
+        <div className={loops ? styles.marquee : styles.static} style={{ "--count": shown.length } as CSSProperties}>
+          <ul className={styles.track}>
+            {shown.map((review) => card(review, false))}
+            {loops ? shown.map((review) => card(review, true)) : null}
+          </ul>
+        </div>
       ) : null}
 
       {wins.length > 0 ? (
