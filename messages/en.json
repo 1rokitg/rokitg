@@ -34,7 +34,6 @@
     "home": "Home",
     "fomo": "Fomo",
     "propr": "Propr",
-    "hyperdash": "Hyperdash",
     "login": "Log in",
     "sponsors": "Sponsors"
   },
@@ -82,17 +81,6 @@
     "step3Tag": "03",
     "step3Title": "Keep 80% of profits"
   },
-  "HyperdashSponsorPage": {
-    "brandLabel": "Hyperdash × RokitG",
-    "metaTitle": "Hyperdash: 10% Off Fees | RokitG",
-    "metaDescription": "Trade smarter with Hyperdash and get 10% off fees with RokitG's referral link.",
-    "title": "Trade smarter with Hyperdash",
-    "subtitle": "Sign up with my referral link and get 10% off fees.",
-    "cta": "Join Hyperdash",
-    "disclosure": "This is my referral link.",
-    "perkTag": "WITH MY LINK",
-    "perkTitle": "10% off fees"
-  },
   "ExtendedSponsorPage": {
     "brandLabel": "Extended × RokitG",
     "metaTitle": "Extended: 10% Fees Discount | RokitG",
@@ -129,7 +117,6 @@
     "recommendedTools": "RECOMMENDED TOOLS",
     "toolCaptionFomo": "Use code ROKITG when you sign up.",
     "toolCaptionPropr": "Pass the challenge, get funded, keep 80% of profits.",
-    "toolCaptionHyperdash": "10% off fees with my referral link.",
     "toolCaptionExtended": "5% points boost and 10% fees discount with code ROKITG.",
     "toolCaptionKraken": "Get €30 when you deposit and trade €200."
   },

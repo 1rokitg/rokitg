@@ -31,7 +31,6 @@ const routes: RoutesConfig = {
   "/sponsors": true,
   "/sponsors/fomo": true,
   "/sponsors/propr": true,
-  "/sponsors/hyperdash": true,
   "/sponsors/extended": true,
   "/sponsors/kraken": true,
 };

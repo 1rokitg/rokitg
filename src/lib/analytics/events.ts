@@ -112,14 +112,13 @@ export function metaEventFor(name: EventName): string | undefined {
   if (name === EVENTS.pageViewed) return "PageView";
 }
 /** The pages that count as a "key page" for view_content — matches what ads actually point to. Keep in sync with the ad destinations in memory/project_rokitg_ads_naming.md. */
-export const KEY_PAGES = ["/", "/sponsors", "/sponsors/fomo", "/sponsors/propr", "/sponsors/hyperdash", "/sponsors/extended", "/sponsors/kraken", "/about", "/app", "/welcome", "/linktree"] as const;
+export const KEY_PAGES = ["/", "/sponsors", "/sponsors/fomo", "/sponsors/propr", "/sponsors/extended", "/sponsors/kraken", "/about", "/app", "/welcome", "/linktree"] as const;
 export function isKeyPage(pathname: string): boolean {
   return (KEY_PAGES as readonly string[]).includes(pathname);
 }
 /** Partner referral links: a click here is the intent we report, the signup itself happens on the partner's site. */
 const SPONSOR_REFERRALS: { host: string; pathPrefix: string }[] = [
   { host: "app.propr.xyz", pathPrefix: "/r/" },
-  { host: "hyperdash.com", pathPrefix: "/join/" },
   { host: "app.extended.exchange", pathPrefix: "/join/" },
   { host: "invite.kraken.com", pathPrefix: "/" },
 ];

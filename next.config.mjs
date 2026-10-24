@@ -25,6 +25,8 @@ const nextConfig = {
     return [
       { source: "/sponsors/bb", destination: "/sponsors", permanent: true },
       { source: "/es/sponsors/bb", destination: "/es/sponsors", permanent: true },
+      { source: "/sponsors/hyperdash", destination: "/sponsors", permanent: true },
+      { source: "/es/sponsors/hyperdash", destination: "/es/sponsors", permanent: true },
     ];
   },
   sassOptions: {

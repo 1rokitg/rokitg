@@ -34,7 +34,6 @@
     "home": "Inicio",
     "fomo": "Fomo",
     "propr": "Propr",
-    "hyperdash": "Hyperdash",
     "login": "Iniciar sesión",
     "sponsors": "Patrocinadores"
   },
@@ -82,17 +81,6 @@
     "step3Tag": "03",
     "step3Title": "Quédate con el 80% de los beneficios"
   },
-  "HyperdashSponsorPage": {
-    "brandLabel": "Hyperdash × RokitG",
-    "metaTitle": "Hyperdash: 10% de Descuento en Comisiones | RokitG",
-    "metaDescription": "Opera mejor con Hyperdash y consigue un 10% de descuento en comisiones con el enlace de referido de RokitG.",
-    "title": "Opera mejor con Hyperdash",
-    "subtitle": "Regístrate con mi enlace de referido y consigue un 10% de descuento en comisiones.",
-    "cta": "Unirme a Hyperdash",
-    "disclosure": "Este es mi enlace de referido.",
-    "perkTag": "CON MI ENLACE",
-    "perkTitle": "10% de descuento en comisiones"
-  },
   "ExtendedSponsorPage": {
     "brandLabel": "Extended × RokitG",
     "metaTitle": "Extended: 10% de Descuento en Comisiones | RokitG",
@@ -129,7 +117,6 @@
     "recommendedTools": "HERRAMIENTAS RECOMENDADAS",
     "toolCaptionFomo": "Usa el código ROKITG al registrarte.",
     "toolCaptionPropr": "Supera el desafío, consigue fondeo, quédate con el 80%.",
-    "toolCaptionHyperdash": "10% de descuento en comisiones con mi enlace.",
     "toolCaptionExtended": "5% extra de puntos y 10% de descuento en comisiones con el código ROKITG.",
     "toolCaptionKraken": "Consigue 30 € al depositar y operar 200 €."
   },
