@@ -6,7 +6,6 @@ import {
   Column,
   Heading,
   Icon,
-  Media,
   Tag,
   Text,
   Schema,
@@ -14,7 +13,6 @@ import {
   IconButton,
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
-import TableOfContents from "@/components/about/TableOfContents";
 import TrackedCalendarButton from "./components/book-a-call";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
@@ -31,29 +29,6 @@ export async function generateMetadata() {
 
 export default async function About() {
   const t = await getTranslations("AboutPage");
-  const structure = [
-    {
-      title: about.intro.title,
-      display: about.intro.display,
-      items: [],
-    },
-    {
-      title: about.work.title,
-      display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
-    },
-    {
-      title: about.studies.title,
-      display: about.studies.display,
-      items: about.studies.institutions.map((institution) => institution.name),
-    },
-    {
-      title: about.technical.title,
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
-    },
-  ];
-
   return (
     <Column maxWidth="m">
       <Schema
@@ -69,19 +44,6 @@ export default async function About() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-
-      {about.tableOfContent.display && (
-        <Column
-          left="0"
-          style={{ top: "50%", transform: "translateY(-50%)" }}
-          position="fixed"
-          paddingLeft="24"
-          gap="32"
-          s={{ hide: true }}
-        >
-          <TableOfContents structure={structure} about={about} />
-        </Column>
-      )}
 
       <Row fillWidth s={{ direction: "column" }} horizontal="center">
         {about.avatar.display && (
