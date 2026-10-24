@@ -30,6 +30,15 @@
     "successBody": "Gracias por suscribirte. ¿Quieres unirte también a la comunidad?",
     "joinCta": "Unirme a la comunidad gratis"
   },
+  "SocialProof": {
+    "title": "Lo que dicen los miembros",
+    "rating": "{rating} según {count} reseñas en Whop",
+    "starsLabel": "{rating} de 5 estrellas",
+    "paying": "Miembro de pago",
+    "seeAll": "Ver todas las reseñas en Whop",
+    "winsTitle": "Logros de miembros",
+    "disclaimer": "Las reseñas las escriben miembros de Whop. Cada experiencia es distinta; los resultados no son típicos ni una promesa de ganancias."
+  },
   "Header": {
     "home": "Inicio",
     "fomo": "Fomo",

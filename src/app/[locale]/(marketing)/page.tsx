@@ -12,6 +12,7 @@ import {
   RevealFx,
 } from "@once-ui-system/core";
 import { HomeCheckout } from "@/components/home-client";
+import { SocialProof } from "@/components/SocialProof";
 
 export async function generateMetadata() {
   return localizedMeta({
@@ -100,6 +101,7 @@ export default async function Home() {
       </Column>
 
       <HomeCheckout />
+      <SocialProof />
     </Column>
   );
 }

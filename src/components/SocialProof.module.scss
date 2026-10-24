@@ -1,0 +1,20 @@
+.section { width: 100%; max-width: 950px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+.head { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.title { margin: 0; }
+.rating { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-size: 14px; color: var(--neutral-on-background-weak); }
+.starsRow { color: #f5b301; letter-spacing: 2px; font-size: 16px; }
+.link { color: inherit; text-decoration: underline; text-underline-offset: 3px; &:hover { color: var(--neutral-on-background-strong); } }
+
+.reviews { display: flex; gap: 14px; margin: 0; padding: 4px 2px 16px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--neutral-alpha-strong) transparent; -webkit-overflow-scrolling: touch; }
+.review { flex: 0 0 min(300px, 84%); scroll-snap-align: start; display: flex; }
+.card { display: flex; flex-direction: column; gap: 10px; width: 100%; padding: 18px; border-radius: 16px; border: 1px solid var(--neutral-alpha-medium); background: var(--neutral-alpha-weak); }
+.cardTitle { margin: 0; font-weight: 700; font-size: 15px; color: var(--neutral-on-background-strong); }
+.text { margin: 0; font-size: 14px; line-height: 1.55; color: var(--neutral-on-background-medium); overflow-wrap: anywhere; }
+.shot { width: 100%; max-height: 180px; object-fit: cover; border-radius: 10px; border: 1px solid var(--neutral-alpha-medium); }
+.who { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; font-size: 13px; color: var(--neutral-on-background-weak); }
+.name { font-weight: 600; color: var(--neutral-on-background-strong); }
+.badge { padding: 2px 8px; border-radius: 999px; border: 1px solid var(--neutral-alpha-medium); font-size: 11px; white-space: nowrap; }
+
+.wins { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 14px; }
+.win { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--neutral-alpha-medium); }
+.sub { margin: 0; text-align: center; font-size: 12px; line-height: 1.5; color: var(--neutral-on-background-weak); }

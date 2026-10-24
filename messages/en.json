@@ -30,6 +30,15 @@
     "successBody": "Thanks for subscribing. Want to hang out with the community too?",
     "joinCta": "Join the free community"
   },
+  "SocialProof": {
+    "title": "What members say",
+    "rating": "{rating} from {count} reviews on Whop",
+    "starsLabel": "{rating} out of 5 stars",
+    "paying": "Paying member",
+    "seeAll": "See all reviews on Whop",
+    "winsTitle": "Member wins",
+    "disclaimer": "Reviews are written by Whop members. Individual experiences vary; results are not typical and are not a promise of earnings."
+  },
   "Header": {
     "home": "Home",
     "fomo": "Fomo",
