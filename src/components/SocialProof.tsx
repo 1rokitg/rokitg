@@ -4,6 +4,7 @@ import { Heading } from "@once-ui-system/core";
 import { listPublishedReviews, type WhopReview } from "@/lib/whop-reviews";
 import { WHOP_OFFERS, whopPageUrl } from "@/lib/whop-offers";
 import { wins } from "@/resources/wins";
+import { MarqueeRow } from "./MarqueeRow";
 import styles from "./SocialProof.module.scss";
 
 const PRODUCT_ID = "prod_c1w81EBTtfHWs";
@@ -89,12 +90,18 @@ export async function SocialProof() {
       </div>
 
       {shown.length > 0 ? (
-        <div className={loops ? styles.marquee : styles.static} style={{ "--count": shown.length } as CSSProperties}>
-          <ul className={styles.track}>
-            {shown.map((review) => card(review, false))}
-            {loops ? shown.map((review) => card(review, true)) : null}
-          </ul>
-        </div>
+        loops ? (
+          <MarqueeRow className={styles.marquee} pausedClassName={styles.held} style={{ "--count": shown.length } as CSSProperties}>
+            <ul className={styles.track}>
+              {shown.map((review) => card(review, false))}
+              {shown.map((review) => card(review, true))}
+            </ul>
+          </MarqueeRow>
+        ) : (
+          <div className={styles.static}>
+            <ul className={styles.track}>{shown.map((review) => card(review, false))}</ul>
+          </div>
+        )
       ) : null}
 
       {wins.length > 0 ? (

@@ -22,8 +22,15 @@ $gap: 14px;
   animation: slide calc(var(--count) * 7s) linear infinite;
 }
 
-.marquee:hover .track,
-.marquee:focus-within .track { animation-play-state: paused; }
+.marquee .track { will-change: transform; }
+
+.marquee:focus-within .track,
+.marquee.held .track { animation-play-state: paused; }
+
+// Only real pointers hover; on touch screens :hover sticks after a tap and would freeze the row for good.
+@media (hover: hover) and (pointer: fine) {
+  .marquee:hover .track { animation-play-state: paused; }
+}
 
 @keyframes slide {
   to { transform: translateX(calc(-50% - #{$gap * 0.5})); }
