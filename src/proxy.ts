@@ -26,9 +26,9 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skips the academy (/app — not localized yet), internal dashboard, API
-  // routes, Next internals, and static files/assets.
+  // Skips the academy (/app — not localized yet), API routes, Next
+  // internals, and static files/assets.
   matcher: [
-    "/((?!api|app|internal|_next|images|trademarks|favicon.ico|sitemap.xml|robots.txt|.*\\..*).*)",
+    "/((?!api|app|_next|images|trademarks|favicon.ico|sitemap.xml|robots.txt|.*\\..*).*)",
   ],
 };
