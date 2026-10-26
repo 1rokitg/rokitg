@@ -55,7 +55,7 @@ const social: Social = [
   {
     name: "TikTok",
     icon: "tiktok",
-    link: "https://www.tiktok.com/@rokitg",
+    link: "https://www.tiktok.com/@rokitg.intern",
     essential: false,
   },
   {
