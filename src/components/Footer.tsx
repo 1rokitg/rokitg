@@ -1,6 +1,8 @@
 import { Column, Row, IconButton, Text } from "@once-ui-system/core";
 import { getTranslations } from "next-intl/server";
 import { person, social } from "@/resources";
+import { Link } from "@/i18n/navigation";
+import { CookieSettingsLink } from "@/components/CookieSettingsLink";
 import styles from "./Footer.module.scss";
 
 export const Footer = async () => {
@@ -50,6 +52,16 @@ export const Footer = async () => {
         <Text variant="body-default-xs" onBackground="neutral-weak" wrap="balance">
           {t("affiliate")}
         </Text>
+        <Row gap="16" horizontal="center">
+          <Text variant="body-default-xs" onBackground="neutral-weak">
+            <Link href="/privacy" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: 3 }}>
+              {t("privacy")}
+            </Link>
+          </Text>
+          <Text variant="body-default-xs" onBackground="neutral-weak">
+            <CookieSettingsLink label={t("cookieSettings")} />
+          </Text>
+        </Row>
       </Column>
       <Row height="80" hide s={{ hide: false }} />
     </Column>

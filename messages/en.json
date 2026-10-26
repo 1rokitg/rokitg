@@ -58,7 +58,9 @@
   "Footer": {
     "disclaimerLabel": "Disclaimer:",
     "risk": "For educational purposes only, not financial advice. Trading crypto and other markets is high risk and you can lose all your capital; past results don't guarantee future ones.",
-    "affiliate": "Some links are affiliate links: I may earn a commission at no extra cost to you."
+    "affiliate": "Some links are affiliate links: I may earn a commission at no extra cost to you.",
+    "privacy": "Privacy Policy",
+    "cookieSettings": "Cookie settings"
   },
   "FomoSponsorPage": {
     "metaTitle": "Download Fomo | RokitG",
@@ -225,5 +227,131 @@
   "SponsorsCarousel": {
     "title": "More Sponsors",
     "learnMore": "Learn more"
+  },
+  "CookieConsent": {
+    "title": "Cookies & privacy",
+    "body": "I use cookies to measure visits and the performance of my ads so I can improve this site. Essential cookies are always on. You choose the rest.",
+    "gpc": "Your browser sends a Global Privacy Control signal, so analytics and advertising cookies are off.",
+    "policy": "Read the privacy policy",
+    "accept": "Accept",
+    "reject": "Reject",
+    "close": "Close"
+  },
+  "PrivacyPage": {
+    "metaTitle": "Privacy Policy",
+    "metaDescription": "What data this site collects, why, who it is shared with and how to control it.",
+    "title": "Privacy Policy",
+    "updated": "Last updated: October 26, 2026",
+    "intro": "This policy explains what personal data {site} collects, why, who sees it and what choices you have. I keep it short and plain on purpose.",
+    "sections": [
+      {
+        "title": "Who is responsible",
+        "body": [
+          "This website is run by Rokit G (\"I\", \"me\"). I decide how the personal data described here is used.",
+          "Contact for anything about your data: {email}"
+        ]
+      },
+      {
+        "title": "What I collect",
+        "items": [
+          "Visit data: your IP address (used to work out your approximate country), browser and device type, language, the pages you view, the site you came from and any campaign tags in the link, such as UTM parameters.",
+          "Actions on the site: clicks on buttons and links, video plays and similar interactions, which I use to understand what works.",
+          "Data from Whop and Discord: when you join the free community or buy a plan, you do it on Whop. Whop handles your account and payment and shares with me, as the business owner, details such as your name or username, email address, Discord username, plan and payment status. Access to Discord is provided through Whop.",
+          "Messages you send me: if you email me or message me on Discord, Telegram or social media, I receive what you send and your account details on that platform.",
+          "Academy sign-in: if you use the academy, you sign in with your email through Privy, which provides the login service."
+        ]
+      },
+      {
+        "title": "Cookies and similar technologies",
+        "body": [
+          "Some are essential. Others measure traffic and advertising, and they are only used with your consent where the law requires it (for example in the EU, the EEA, the UK and Switzerland)."
+        ],
+        "items": [
+          "Essential: your language and theme choice and your cookie choice (the \"rokitg_consent\" cookie, kept for up to 6 months). These do not need consent.",
+          "Analytics and advertising (only with consent where required): Google Analytics, the Meta Pixel and Meta Conversions API, and the Whop pixel. They set cookies such as _ga, _fbp and _fbc and measure visits, ad performance and sign-ups or purchases.",
+          "Aggregate measurement: Vercel Web Analytics and Speed Insights count visits and page speed without cookies and without following you across sites.",
+          "Video: the free class opens a YouTube player, in YouTube's privacy-enhanced mode, only when you press play. YouTube's own policy then applies."
+        ],
+        "after": [
+          "You can change your choice at any time with \"Cookie settings\" in the footer. I also respect the Global Privacy Control signal from your browser: if it is on, analytics and advertising stay off."
+        ]
+      },
+      {
+        "title": "Why I use your data",
+        "items": [
+          "Your consent, for analytics and advertising cookies and tags. You can withdraw it at any time.",
+          "Contract, to give you what you sign up for, such as access to the community or a plan you buy. This is handled together with Whop.",
+          "Legitimate interests, to keep the site secure, prevent abuse, answer your messages and understand overall how the site is used."
+        ],
+        "after": [
+          "Where I use data for advertising, the goal is to show relevant ads and measure which ones work. I do not sell your personal data for money."
+        ]
+      },
+      {
+        "title": "Who I share data with",
+        "body": [
+          "I use services that process data for me or under their own policies:"
+        ],
+        "items": [
+          "Whop: checkout, community access, payments and its tracking pixel.",
+          "Discord: community chat, connected through Whop.",
+          "Meta: the Meta Pixel, Conversions API and ads.",
+          "Google: Google Analytics and YouTube.",
+          "Vercel: hosting and aggregate site analytics.",
+          "Privy: academy login.",
+          "Partners and sponsors: when you click a link to a partner site, that site's own policy applies."
+        ],
+        "after": [
+          "I may also disclose data when the law requires it. Some US state laws call sharing data for targeted advertising \"sharing\" or \"sale\". If that applies to you, you can opt out with \"Cookie settings\" in the footer or with the Global Privacy Control signal."
+        ]
+      },
+      {
+        "title": "Transfers outside your country",
+        "body": [
+          "Many of these providers are in the United States. When data leaves the EEA, the UK or Switzerland, it relies on safeguards such as the EU-US Data Privacy Framework or Standard Contractual Clauses, as offered by each provider."
+        ]
+      },
+      {
+        "title": "How long I keep data",
+        "body": [
+          "I keep personal data only as long as I need it for the purposes above. Your cookie choice is kept for up to 6 months. Analytics and advertising data follow each provider's retention settings. Customer and community records are kept while your account is active and as long as the law requires afterwards. Messages are kept while the conversation is relevant."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "body": [
+          "Depending on where you live, you may have the right to:"
+        ],
+        "items": [
+          "Access your data and get a copy of it.",
+          "Correct it or ask me to delete it.",
+          "Restrict or object to how it is used.",
+          "Withdraw consent at any time, without affecting what happened before.",
+          "Opt out of the sale or sharing of your data, and not be treated worse for using your rights (US state laws).",
+          "Complain to your data protection authority."
+        ],
+        "after": [
+          "To use any of these, email me at {email}. I may need to confirm it is you, and I will reply within one month. Data held by Whop, Meta, Google or other providers is also in their hands, so you can contact them too."
+        ]
+      },
+      {
+        "title": "Children",
+        "body": [
+          "This site is for adults (18 and over). I do not knowingly collect data from children. If you think a child has given me data, email me and I will delete it."
+        ]
+      },
+      {
+        "title": "Security",
+        "body": [
+          "I use reputable providers and reasonable technical measures, but no system is completely secure."
+        ]
+      },
+      {
+        "title": "Changes to this policy",
+        "body": [
+          "I may update this policy. The date at the top shows the latest version, and I will flag important changes on the site."
+        ]
+      }
+    ]
   }
 }

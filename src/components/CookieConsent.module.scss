@@ -1,0 +1,41 @@
+// Sits above the floating mobile nav; reject and accept share one style so neither is nudged.
+.banner {
+  position: fixed;
+  z-index: 1001;
+  left: 16px;
+  right: 16px;
+  bottom: 96px;
+  max-width: 420px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid var(--neutral-alpha-strong);
+  background: var(--page-background);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.title { margin: 0; font-size: 15px; font-weight: 700; color: var(--neutral-on-background-strong); }
+.text { margin: 0; font-size: 13px; line-height: 1.5; color: var(--neutral-on-background-medium); }
+.link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+.actions { display: flex; gap: 10px; margin-top: 4px; }
+.button {
+  flex: 1;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--neutral-alpha-strong);
+  background: var(--neutral-alpha-weak);
+  color: var(--neutral-on-background-strong);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover { background: var(--neutral-alpha-medium); }
+}
+
+@media (min-width: 768px) {
+  .banner { left: 20px; right: auto; bottom: 20px; }
+}

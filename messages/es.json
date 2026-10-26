@@ -58,7 +58,9 @@
   "Footer": {
     "disclaimerLabel": "Aviso legal:",
     "risk": "Solo con fines educativos, no es asesoramiento financiero. Operar con criptoactivos y otros mercados conlleva un alto riesgo y puedes perder todo tu capital; los resultados pasados no garantizan resultados futuros.",
-    "affiliate": "Algunos enlaces son de afiliado: puedo recibir una comisión sin coste adicional para ti."
+    "affiliate": "Algunos enlaces son de afiliado: puedo recibir una comisión sin coste adicional para ti.",
+    "privacy": "Política de privacidad",
+    "cookieSettings": "Ajustes de cookies"
   },
   "FomoSponsorPage": {
     "metaTitle": "Descargar Fomo App | Código de Creador ROKITG",
@@ -225,5 +227,131 @@
   "SponsorsCarousel": {
     "title": "Más patrocinadores",
     "learnMore": "Ver más"
+  },
+  "CookieConsent": {
+    "title": "Cookies y privacidad",
+    "body": "Uso cookies para medir las visitas y el rendimiento de mis anuncios y así mejorar este sitio. Las cookies esenciales siempre están activas. Tú eliges el resto.",
+    "gpc": "Tu navegador envía la señal Global Privacy Control, por lo que las cookies de analítica y publicidad están desactivadas.",
+    "policy": "Lee la política de privacidad",
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "close": "Cerrar"
+  },
+  "PrivacyPage": {
+    "metaTitle": "Política de privacidad",
+    "metaDescription": "Qué datos recoge este sitio, por qué, con quién se comparten y cómo controlarlos.",
+    "title": "Política de privacidad",
+    "updated": "Última actualización: 26 de octubre de 2026",
+    "intro": "Esta política explica qué datos personales recoge {site}, por qué, quién los ve y qué opciones tienes. La mantengo corta y clara a propósito.",
+    "sections": [
+      {
+        "title": "Quién es el responsable",
+        "body": [
+          "Este sitio web lo gestiona Rokit G (\"yo\"). Yo decido cómo se usan los datos personales descritos aquí.",
+          "Contacto para cualquier asunto sobre tus datos: {email}"
+        ]
+      },
+      {
+        "title": "Qué datos recojo",
+        "items": [
+          "Datos de visita: tu dirección IP (que uso para saber tu país aproximado), tipo de navegador y dispositivo, idioma, las páginas que ves, el sitio desde el que llegaste y las etiquetas de campaña del enlace, como los parámetros UTM.",
+          "Acciones en el sitio: clics en botones y enlaces, reproducciones de vídeo e interacciones similares, que uso para entender qué funciona.",
+          "Datos de Whop y Discord: cuando te unes a la comunidad gratuita o compras un plan, lo haces en Whop. Whop gestiona tu cuenta y el pago y me comparte, como propietario del negocio, datos como tu nombre o usuario, correo electrónico, usuario de Discord, plan y estado del pago. El acceso a Discord se da a través de Whop.",
+          "Mensajes que me envías: si me escribes por correo o por Discord, Telegram o redes sociales, recibo lo que envías y los datos de tu cuenta en esa plataforma.",
+          "Acceso a la academia: si usas la academia, inicias sesión con tu correo a través de Privy, que ofrece el servicio de acceso."
+        ]
+      },
+      {
+        "title": "Cookies y tecnologías similares",
+        "body": [
+          "Algunas son esenciales. Otras miden el tráfico y la publicidad, y solo se usan con tu consentimiento cuando la ley lo exige (por ejemplo, en la UE, el EEE, el Reino Unido y Suiza)."
+        ],
+        "items": [
+          "Esenciales: tu idioma, tu tema y tu elección sobre cookies (la cookie \"rokitg_consent\", que se guarda hasta 6 meses). No necesitan consentimiento.",
+          "Analítica y publicidad (solo con consentimiento cuando se exige): Google Analytics, el Píxel de Meta y la API de Conversiones de Meta, y el píxel de Whop. Instalan cookies como _ga, _fbp y _fbc y miden visitas, rendimiento de anuncios y registros o compras.",
+          "Medición agregada: Vercel Web Analytics y Speed Insights cuentan visitas y velocidad de página sin cookies y sin seguirte entre sitios.",
+          "Vídeo: la clase gratuita abre un reproductor de YouTube, en su modo de privacidad mejorada, solo cuando pulsas reproducir. Entonces se aplica la política de YouTube."
+        ],
+        "after": [
+          "Puedes cambiar tu elección en cualquier momento con \"Ajustes de cookies\" en el pie de página. También respeto la señal Global Privacy Control de tu navegador: si está activada, la analítica y la publicidad permanecen desactivadas."
+        ]
+      },
+      {
+        "title": "Por qué uso tus datos",
+        "items": [
+          "Tu consentimiento, para las cookies y etiquetas de analítica y publicidad. Puedes retirarlo en cualquier momento.",
+          "Contrato, para darte lo que contratas, como el acceso a la comunidad o un plan que compras. Esto se gestiona junto con Whop.",
+          "Intereses legítimos, para mantener el sitio seguro, evitar abusos, responder a tus mensajes y entender cómo se usa el sitio en general."
+        ],
+        "after": [
+          "Cuando uso datos para publicidad, el objetivo es mostrar anuncios relevantes y medir cuáles funcionan. No vendo tus datos personales a cambio de dinero."
+        ]
+      },
+      {
+        "title": "Con quién comparto datos",
+        "body": [
+          "Uso servicios que tratan datos por mi cuenta o bajo sus propias políticas:"
+        ],
+        "items": [
+          "Whop: pago, acceso a la comunidad, cobros y su píxel de seguimiento.",
+          "Discord: chat de la comunidad, conectado a través de Whop.",
+          "Meta: el Píxel de Meta, la API de Conversiones y los anuncios.",
+          "Google: Google Analytics y YouTube.",
+          "Vercel: alojamiento y analítica agregada del sitio.",
+          "Privy: acceso a la academia.",
+          "Socios y patrocinadores: cuando pulsas un enlace a un sitio de un socio, se aplica la política de ese sitio."
+        ],
+        "after": [
+          "También puedo revelar datos cuando la ley lo exija. Algunas leyes de estados de EE. UU. llaman \"compartir\" o \"vender\" a compartir datos para publicidad dirigida. Si esto te aplica, puedes optar por no participar con \"Ajustes de cookies\" en el pie de página o con la señal Global Privacy Control."
+        ]
+      },
+      {
+        "title": "Transferencias fuera de tu país",
+        "body": [
+          "Muchos de estos proveedores están en Estados Unidos. Cuando los datos salen del EEE, el Reino Unido o Suiza, se apoyan en garantías como el Marco de Privacidad de Datos UE-EE. UU. o las Cláusulas Contractuales Tipo, según ofrezca cada proveedor."
+        ]
+      },
+      {
+        "title": "Cuánto tiempo conservo los datos",
+        "body": [
+          "Conservo los datos personales solo el tiempo que los necesito para los fines anteriores. Tu elección sobre cookies se guarda hasta 6 meses. Los datos de analítica y publicidad siguen los plazos de cada proveedor. Los registros de clientes y de la comunidad se conservan mientras tu cuenta esté activa y el tiempo que exija la ley después. Los mensajes se conservan mientras la conversación sea relevante."
+        ]
+      },
+      {
+        "title": "Tus derechos",
+        "body": [
+          "Según dónde vivas, puedes tener derecho a:"
+        ],
+        "items": [
+          "Acceder a tus datos y obtener una copia.",
+          "Corregirlos o pedirme que los elimine.",
+          "Limitar su uso u oponerte a él.",
+          "Retirar el consentimiento en cualquier momento, sin afectar a lo anterior.",
+          "No participar en la venta o el uso compartido de tus datos y no recibir un trato peor por ejercer tus derechos (leyes de estados de EE. UU.).",
+          "Presentar una reclamación ante tu autoridad de protección de datos."
+        ],
+        "after": [
+          "Para ejercer cualquiera de ellos, escríbeme a {email}. Puede que necesite confirmar que eres tú, y responderé en un plazo de un mes. Los datos que tienen Whop, Meta, Google u otros proveedores también están en sus manos, así que puedes contactarlos a ellos."
+        ]
+      },
+      {
+        "title": "Menores",
+        "body": [
+          "Este sitio es para adultos (mayores de 18 años). No recojo datos de menores de forma consciente. Si crees que un menor me ha dado datos, escríbeme y los eliminaré."
+        ]
+      },
+      {
+        "title": "Seguridad",
+        "body": [
+          "Uso proveedores reconocidos y medidas técnicas razonables, pero ningún sistema es completamente seguro."
+        ]
+      },
+      {
+        "title": "Cambios en esta política",
+        "body": [
+          "Puedo actualizar esta política. La fecha de arriba indica la última versión, y avisaré de los cambios importantes en el sitio."
+        ]
+      }
+    ]
   }
 }

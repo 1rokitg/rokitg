@@ -33,6 +33,7 @@ import { InteractionTracker } from "@/components/InteractionTracker";
 import { WhopPixelScripts } from "@/components/WhopPixelScripts";
 import { MetaPixelScripts } from "@/components/MetaPixelScripts";
 import { MetaCapiBridge } from "@/components/MetaCapiBridge";
+import { CookieConsent } from "@/components/CookieConsent";
 import { getWhopPixelContext } from "@/lib/whop-pixel";
 
 export function generateStaticParams() {
@@ -61,7 +62,7 @@ export default async function RootLayout({
   setRequestLocale(locale as AppLocale);
   const messages = await getMessages();
 
-  const { loadWhop, shouldTrack, whopContext } = await getWhopPixelContext();
+  const { loadWhop, shouldTrack, whopContext, consent } = await getWhopPixelContext();
   const siteUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : "http://localhost:3000";
@@ -82,20 +83,24 @@ export default async function RootLayout({
       )}
     >
       <head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-H28CF56TD1"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+        {consent.allowed && (
+          <>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-H28CF56TD1"
+            ></script>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-H28CF56TD1');
           `,
-          }}
-        />
+              }}
+            />
+          </>
+        )}
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
@@ -227,6 +232,7 @@ export default async function RootLayout({
             </Flex>
           </Flex>
           <Footer />
+          <CookieConsent mode={consent.mode} choice={consent.choice} gpc={consent.gpc} />
         </Column>
       </Providers>
       </NextIntlClientProvider>

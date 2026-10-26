@@ -1,5 +1,6 @@
 import "server-only";
 import { headers } from "next/headers";
+import { getConsentState } from "@/lib/consent-server";
 
 function getRequestIp(requestHeaders: Headers) {
   const forwardedFor = requestHeaders.get("x-forwarded-for");
@@ -18,9 +19,12 @@ function shouldLoadWhop(requestHeaders: Headers) {
 /** Shared between the marketing and academy root layouts so both get real, deduped Whop pixel tracking. */
 export async function getWhopPixelContext() {
   const requestHeaders = await headers();
-  const analyticsEnabled = shouldLoadWhop(requestHeaders);
+  const consent = await getConsentState();
+  // Without consent (where it's required) nothing loads and nothing is tracked, same as an excluded IP.
+  const analyticsEnabled = shouldLoadWhop(requestHeaders) && consent.allowed;
   const analyticsLive = process.env.VERCEL_ENV === "production";
   return {
+    consent,
     loadWhop: analyticsEnabled && analyticsLive,
     shouldTrack: analyticsEnabled || !analyticsLive,
     whopContext: {

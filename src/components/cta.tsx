@@ -388,7 +388,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
                 ✕
               </button>
               <iframe
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+                src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`}
                 title={t("videoTitle")}
                 allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen

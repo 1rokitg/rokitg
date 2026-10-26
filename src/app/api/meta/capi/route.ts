@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendMetaEvent } from "@/lib/meta-capi";
+import { getConsentState } from "@/lib/consent-server";
 
 export async function POST(request: NextRequest) {
+  // Conversion events are only forwarded to Meta when the visitor's consent allows tracking.
+  if (!(await getConsentState()).allowed) {
+    return NextResponse.json({ ok: false, skipped: "no-consent" }, { status: 202 });
+  }
+
   const { name, eventId, url, fbp, fbc } = (await request.json()) as {
     name?: string;
     eventId?: string;
