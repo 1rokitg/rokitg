@@ -8,10 +8,12 @@ import { EmailCapture } from "@/components/EmailCapture";
 import { features } from "@/resources/features";
 import { Button, Column, Text } from "@once-ui-system/core";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 interface CallToActionProps extends React.ComponentProps<typeof Column> {
   trustBadges: boolean;
+  /** Replaces the video cover when provided (e.g. member reviews); the video stays available behind a link. */
+  hero?: ReactNode;
 }
 
 const YOUTUBE_CHANNEL_URL =
@@ -19,6 +21,7 @@ const YOUTUBE_CHANNEL_URL =
 
 export const CallToAction: React.FC<CallToActionProps> = ({
   trustBadges,
+  hero,
   ...flex
 }) => {
   const t = useTranslations("HomeCta");
@@ -120,7 +123,8 @@ export const CallToAction: React.FC<CallToActionProps> = ({
           />
         )}
 
-        {/* VIDEO */}
+        {/* VIDEO COVER (used when there is no hero to show instead) */}
+        {hero ?? (
         <button
           type="button"
           onClick={handleVideoClick}
@@ -338,6 +342,8 @@ export const CallToAction: React.FC<CallToActionProps> = ({
           </div>
         </button>
 
+        )}
+
         {isVideoOpen && (
           <div
             role="dialog"
@@ -463,6 +469,28 @@ export const CallToAction: React.FC<CallToActionProps> = ({
           >
             {t("youtubeCta")}
           </Button>
+
+          {hero && (
+            <button
+              type="button"
+              onClick={handleVideoClick}
+              aria-label={t("videoAriaLabel")}
+              style={{
+                background: "none",
+                border: 0,
+                padding: "6px 4px",
+                cursor: "pointer",
+                color: "inherit",
+                fontSize: 14,
+                fontWeight: 600,
+                opacity: 0.8,
+                textDecoration: "underline",
+                textUnderlineOffset: 4,
+              }}
+            >
+              ▶ {t("watchClass")}
+            </button>
+          )}
 
           <Text
             onBackground="neutral-weak"

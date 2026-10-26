@@ -13,6 +13,9 @@ import {
 } from "@once-ui-system/core";
 import { HomeCheckout } from "@/components/home-client";
 import { SocialProof } from "@/components/SocialProof";
+import { ProofHero } from "@/components/ProofHero";
+import { listPublishedReviews } from "@/lib/whop-reviews";
+import { REVIEWS_PRODUCT_ID, averageStars, pickReviews } from "@/lib/reviews-view";
 
 export async function generateMetadata() {
   return localizedMeta({
@@ -25,6 +28,14 @@ export async function generateMetadata() {
 
 export default async function Home() {
   const t = await getTranslations("HomePage");
+  // Member reviews replace the video cover; without any reviews the page keeps the video cover.
+  const reviews = await listPublishedReviews(REVIEWS_PRODUCT_ID);
+  const { hero } = pickReviews(reviews);
+  const proof =
+    hero.length > 0 ? (
+      <ProofHero reviews={hero} average={averageStars(reviews)} count={reviews.length} />
+    ) : null;
+
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
@@ -100,7 +111,7 @@ export default async function Home() {
         </Column>
       </Column>
 
-      <HomeCheckout />
+      <HomeCheckout hero={proof} />
       <SocialProof />
     </Column>
   );
