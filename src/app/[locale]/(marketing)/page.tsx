@@ -13,6 +13,9 @@ import {
 } from "@once-ui-system/core";
 import { HomeCheckout } from "@/components/home-client";
 import { SocialProof } from "@/components/SocialProof";
+import { DiscordPreview } from "@/components/DiscordPreview";
+import { getDiscordServer } from "@/lib/discord-invite";
+import { DISCORD_INVITE_CODE, previewChannels } from "@/resources/discord";
 
 export async function generateMetadata() {
   return localizedMeta({
@@ -25,6 +28,10 @@ export async function generateMetadata() {
 
 export default async function Home() {
   const t = await getTranslations("HomePage");
+  // The live Discord card replaces the video cover; if Discord can't be reached the page keeps the video cover.
+  const discord = await getDiscordServer(DISCORD_INVITE_CODE);
+  const preview = discord ? <DiscordPreview server={discord} channels={previewChannels} /> : null;
+
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
@@ -100,7 +107,7 @@ export default async function Home() {
         </Column>
       </Column>
 
-      <HomeCheckout />
+      <HomeCheckout hero={preview} />
       <SocialProof />
     </Column>
   );
