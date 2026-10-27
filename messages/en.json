@@ -4,6 +4,16 @@
     "sublineLine1": "I'm {name}, a software engineer turned <b>trader.</b>",
     "sublineLine2": "Now I've decided to share my knowledge with everyone."
   },
+  "FreeCheckout": {
+    "title": "Join the free community",
+    "loading": "Loading secure sign-up…",
+    "close": "Close",
+    "trouble": "Form not loading?",
+    "openOnWhop": "Open it on Whop",
+    "doneTitle": "You're in!",
+    "doneBody": "Last step: claim your access to connect Discord and unlock your role in the server.",
+    "doneCta": "Connect Discord"
+  },
   "HomeCta": {
     "videoAriaLabel": "Join the free community",
     "videoThumbnailAlt": "Free ecommerce class",

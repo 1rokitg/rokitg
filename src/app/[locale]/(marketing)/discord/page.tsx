@@ -3,10 +3,9 @@ import { getTranslations } from "next-intl/server";
 import { FaDiscord } from "react-icons/fa";
 import { FiArrowUpRight } from "react-icons/fi";
 import { baseURL } from "@/resources";
+import { DISCORD_ACCESS_URL } from "@/lib/whop-offers";
 import styles from "./page.module.scss";
 
-// Both Whop experiences are included in Free Community and Social Capital.
-const DISCORD_ACCESS_URL = "https://whop.com/rokitg/exp_DSkH2hqtsdeM39/app/";
 const DISCORD_PATH = "/discord";
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -15,6 +15,7 @@ export const EVENTS = {
   toolInteracted: "Tool Interaction",
   pageViewed: "Page View",
   freeCheckoutClicked: "Checkout - Free Community",
+  freeCommunityJoined: "Free Community Joined",
   paidCheckoutClicked: "Checkout - Social Capital",
   instagramClicked: "Instagram Click",
   tiktokClicked: "TikTok Click",
@@ -62,12 +63,14 @@ export type EventPayloads = Record<OutboundEvent, Outbound> & {
   /** Only fire this for a client-side route change (not the initial page load) — the initial load is already counted by Whop's own pixel auto-tracking, and firing it again here would double-count. */
   "Page View": Base & { path: string };
   "Checkout - Free Community": Checkout;
+  /** The on-page sign-up finished and the membership exists. */
+  "Free Community Joined": Checkout;
   "Checkout - Social Capital": Checkout;
 };
 export type EventName = keyof EventPayloads;
 export function eventCategory(name: EventName) {
   if (name === EVENTS.returnVisit) return "retention";
-  if (name === EVENTS.calendarBooked) return "completion";
+  if (name === EVENTS.calendarBooked || name === EVENTS.freeCommunityJoined) return "completion";
   if (name === EVENTS.newsletterSubmitted || name === EVENTS.emailSubscribed) return "submission";
   return "interaction";
 }
@@ -86,6 +89,7 @@ export type StandardEventName = (typeof STANDARD_EVENTS)[keyof typeof STANDARD_E
 export function standardEventFor(name: EventName): StandardEventName | undefined {
   if (name === EVENTS.newsletterSubmitted) return STANDARD_EVENTS.lead;
   if (name === EVENTS.calendarBooked) return STANDARD_EVENTS.schedule;
+  if (name === EVENTS.freeCommunityJoined) return STANDARD_EVENTS.completeRegistration;
   if (
     name === EVENTS.freeCheckoutClicked ||
     name === EVENTS.paidCheckoutClicked ||
@@ -105,6 +109,7 @@ export function standardEventFor(name: EventName): StandardEventName | undefined
 export function metaEventFor(name: EventName): string | undefined {
   if (name === EVENTS.newsletterSubmitted) return "Lead";
   if (name === EVENTS.calendarBooked) return "Schedule";
+  if (name === EVENTS.freeCommunityJoined) return "CompleteRegistration";
   if (name === EVENTS.freeCheckoutClicked) return "Lead";
   if (name === EVENTS.paidCheckoutClicked) return "InitiateCheckout";
   if (name === EVENTS.fomoReferralClicked || name === EVENTS.sponsorReferralClicked) return "AddToCart";

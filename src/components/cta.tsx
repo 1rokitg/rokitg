@@ -5,6 +5,7 @@ import { newsletter } from "@/resources";
 import { captureAttribution, trackWhopEvent, WHOP_EVENTS } from "@/lib/whop";
 import { WHOP_OFFERS, whopPageUrl } from "@/lib/whop-offers";
 import { EmailCapture } from "@/components/EmailCapture";
+import { FreeCommunityCheckout } from "@/components/FreeCommunityCheckout";
 import { features } from "@/resources/features";
 import { Button, Column, Text } from "@once-ui-system/core";
 import Image from "next/image";
@@ -23,6 +24,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
 }) => {
   const t = useTranslations("HomeCta");
   const [isHovered, setIsHovered] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   const videoId = "kZjEPUCnZ80";
   const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
@@ -31,7 +33,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
     window.open(whopPageUrl(productUrl, captureAttribution()?.parameters, options), "_blank", "noopener");
   };
 
-  const joinCommunity = (source: "home_cta" | "home_thumbnail") => {
+  const trackFreeCheckoutClick = (source: "home_cta" | "home_thumbnail") => {
     trackWhopEvent(WHOP_EVENTS.freeCheckoutClicked, {
       source,
       offer: WHOP_OFFERS.freeCommunity.name,
@@ -39,12 +41,19 @@ export const CallToAction: React.FC<CallToActionProps> = ({
       payment_type: WHOP_OFFERS.freeCommunity.paymentType,
       amount: WHOP_OFFERS.freeCommunity.amount,
     });
+  };
 
+  const handleCommunityClick = () => {
+    trackFreeCheckoutClick("home_cta");
     goToProductPage(WHOP_OFFERS.freeCommunity.productUrl);
   };
 
-  const handleCommunityClick = () => joinCommunity("home_cta");
-  const handleThumbnailClick = () => joinCommunity("home_thumbnail");
+  // The thumbnail signs people up right here on the page instead of sending them to Whop.
+  const handleThumbnailClick = () => {
+    trackFreeCheckoutClick("home_thumbnail");
+    setIsHovered(false);
+    setIsCheckoutOpen(true);
+  };
 
   const handleYoutubeClick = () => {
     trackWhopEvent(WHOP_EVENTS.youtubeClicked, {
@@ -109,7 +118,10 @@ export const CallToAction: React.FC<CallToActionProps> = ({
           />
         )}
 
-        {/* THUMBNAIL: goes straight to the free community */}
+        {/* THUMBNAIL: opens the free community sign-up in place */}
+        {isCheckoutOpen ? (
+          <FreeCommunityCheckout onClose={() => setIsCheckoutOpen(false)} />
+        ) : (
         <button
           type="button"
           onClick={handleThumbnailClick}
@@ -326,6 +338,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
             </div>
           </div>
         </button>
+        )}
 
         {/* =========================================================
             CTA

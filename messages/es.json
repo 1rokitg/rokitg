@@ -4,6 +4,16 @@
     "sublineLine1": "Soy {name}, un ingeniero de software convertido en <b>trader.</b>",
     "sublineLine2": "Ahora he decidido compartir lo que sé con todos."
   },
+  "FreeCheckout": {
+    "title": "Únete a la comunidad gratis",
+    "loading": "Cargando el registro seguro…",
+    "close": "Cerrar",
+    "trouble": "¿No carga el formulario?",
+    "openOnWhop": "Ábrelo en Whop",
+    "doneTitle": "¡Ya estás dentro!",
+    "doneBody": "Último paso: reclama tu acceso para conectar Discord y activar tu rol en el servidor.",
+    "doneCta": "Conectar Discord"
+  },
   "HomeCta": {
     "videoAriaLabel": "Unirme a la comunidad gratis",
     "videoThumbnailAlt": "Clase gratuita de ecommerce",
