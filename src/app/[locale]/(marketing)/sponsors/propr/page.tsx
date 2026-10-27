@@ -66,9 +66,6 @@ export default async function ProprSponsorPage() {
         >
           {t("cta")}
         </Button>
-        <Text onBackground="neutral-weak" variant="body-default-xs">
-          {t("disclosure")}
-        </Text>
       </Column>
 
       <Row fillWidth gap="12" s={{ direction: "column" }}>
