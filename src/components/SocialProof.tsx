@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import { getTranslations } from "next-intl/server";
 import { Heading } from "@once-ui-system/core";
 import { listPublishedReviews, type WhopReview } from "@/lib/whop-reviews";
@@ -91,7 +90,7 @@ export async function SocialProof() {
 
       {shown.length > 0 ? (
         loops ? (
-          <MarqueeRow className={styles.marquee} pausedClassName={styles.held} style={{ "--count": shown.length } as CSSProperties}>
+          <MarqueeRow className={styles.marquee}>
             <ul className={styles.track}>
               {shown.map((review) => card(review, false))}
               {shown.map((review) => card(review, true))}
