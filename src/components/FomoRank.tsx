@@ -11,6 +11,27 @@ type FomoRankResponse = {
 const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
 const COUNT_UP_DURATION_MS = 700;
 
+// Windows has no flag emoji glyphs (🇪🇸 renders as the letters "ES"), so draw it.
+function SpainFlag() {
+  return (
+    <svg
+      role="img"
+      aria-label="España"
+      viewBox="0 0 3 2"
+      width="1.25em"
+      height="0.83em"
+      style={{
+        display: "inline-block",
+        verticalAlign: "-0.1em",
+        borderRadius: "2px",
+      }}
+    >
+      <rect width="3" height="2" fill="#AA151B" />
+      <rect y="0.5" width="3" height="1" fill="#F1BF00" />
+    </svg>
+  );
+}
+
 export function FomoRank() {
   const [rank, setRank] = useState<number | null>(null);
   const [displayRank, setDisplayRank] = useState(0);
@@ -73,7 +94,7 @@ export function FomoRank() {
 
   return (
     <Text as="span" aria-live="polite">
-      #{displayRank} Finanzas gratis 🇪🇸
+      #{displayRank} Finanzas gratis <SpainFlag />
     </Text>
   );
 }
