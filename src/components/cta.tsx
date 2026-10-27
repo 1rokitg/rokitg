@@ -23,31 +23,17 @@ export const CallToAction: React.FC<CallToActionProps> = ({
 }) => {
   const t = useTranslations("HomeCta");
   const [isHovered, setIsHovered] = useState(false);
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const videoId = "kZjEPUCnZ80";
   const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-
-  const handleVideoClick = () => {
-    trackWhopEvent(WHOP_EVENTS.videoPlayed, {
-      source: "home_cta",
-      content_id: videoId,
-      content_type: "video",
-      interaction: "play",
-    });
-
-    setIsVideoOpen(true);
-  };
-
-  const closeVideo = () => setIsVideoOpen(false);
 
   const goToProductPage = (productUrl: string, options?: { affiliate?: boolean }) => {
     window.open(whopPageUrl(productUrl, captureAttribution()?.parameters, options), "_blank", "noopener");
   };
 
-  const handleCommunityClick = () => {
+  const joinCommunity = (source: "home_cta" | "home_thumbnail") => {
     trackWhopEvent(WHOP_EVENTS.freeCheckoutClicked, {
-      source: "home_cta",
+      source,
       offer: WHOP_OFFERS.freeCommunity.name,
       plan_id: WHOP_OFFERS.freeCommunity.planId,
       payment_type: WHOP_OFFERS.freeCommunity.paymentType,
@@ -56,6 +42,9 @@ export const CallToAction: React.FC<CallToActionProps> = ({
 
     goToProductPage(WHOP_OFFERS.freeCommunity.productUrl);
   };
+
+  const handleCommunityClick = () => joinCommunity("home_cta");
+  const handleThumbnailClick = () => joinCommunity("home_thumbnail");
 
   const handleYoutubeClick = () => {
     trackWhopEvent(WHOP_EVENTS.youtubeClicked, {
@@ -120,10 +109,10 @@ export const CallToAction: React.FC<CallToActionProps> = ({
           />
         )}
 
-        {/* VIDEO */}
+        {/* THUMBNAIL: goes straight to the free community */}
         <button
           type="button"
-          onClick={handleVideoClick}
+          onClick={handleThumbnailClick}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onFocus={() => setIsHovered(true)}
@@ -337,66 +326,6 @@ export const CallToAction: React.FC<CallToActionProps> = ({
             </div>
           </div>
         </button>
-
-        {isVideoOpen && (
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label={t("videoTitle")}
-            onClick={closeVideo}
-            style={{
-              position: "fixed",
-              inset: 0,
-              zIndex: 1000,
-              background: "rgba(0,0,0,0.85)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: 24,
-            }}
-          >
-            <div
-              onClick={(event) => event.stopPropagation()}
-              style={{
-                position: "relative",
-                width: "100%",
-                maxWidth: 950,
-                aspectRatio: "16 / 9",
-                borderRadius: 16,
-                overflow: "hidden",
-                boxShadow: "0 24px 70px rgba(0,0,0,0.55)",
-              }}
-            >
-              <button
-                type="button"
-                onClick={closeVideo}
-                aria-label={t("closeVideo")}
-                style={{
-                  position: "absolute",
-                  top: -44,
-                  right: 0,
-                  width: 36,
-                  height: 36,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  background: "rgba(0,0,0,0.5)",
-                  color: "#fff",
-                  fontSize: 18,
-                  cursor: "pointer",
-                }}
-              >
-                ✕
-              </button>
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`}
-                title={t("videoTitle")}
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
-                style={{ width: "100%", height: "100%", border: 0 }}
-              />
-            </div>
-          </div>
-        )}
 
         {/* =========================================================
             CTA

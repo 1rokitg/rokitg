@@ -5,12 +5,11 @@
     "sublineLine2": "Ahora he decidido compartir lo que sé con todos."
   },
   "HomeCta": {
-    "videoAriaLabel": "Ver la clase gratis en YouTube",
+    "videoAriaLabel": "Unirme a la comunidad gratis",
     "videoThumbnailAlt": "Clase gratuita de ecommerce",
     "videoBadge": "CLASE GRATIS",
     "videoTitle": "Cómo empecé desde cero",
-    "watchNow": "Ver ahora",
-    "closeVideo": "Cerrar video",
+    "watchNow": "Entrar gratis",
     "joinFreeCta": "UNIRME A LA COMUNIDAD GRATIS",
     "paidCta": "YA ESTOY LISTO — QUIERO ENTRAR",
     "youtubeCta": "SUSCRIBIRME EN YOUTUBE",
@@ -241,7 +240,7 @@
     "metaTitle": "Política de privacidad",
     "metaDescription": "Qué datos recoge este sitio, por qué, con quién se comparten y cómo controlarlos.",
     "title": "Política de privacidad",
-    "updated": "Última actualización: 26 de octubre de 2026",
+    "updated": "Última actualización: 27 de octubre de 2026",
     "intro": "Esta política explica qué datos personales recoge {site}, por qué, quién los ve y qué opciones tienes. La mantengo corta y clara a propósito.",
     "sections": [
       {
@@ -270,7 +269,7 @@
           "Esenciales: tu idioma, tu tema y tu elección sobre cookies (la cookie \"rokitg_consent\", que se guarda hasta 6 meses). No necesitan consentimiento.",
           "Analítica y publicidad (solo con consentimiento cuando se exige): Google Analytics, el Píxel de Meta y la API de Conversiones de Meta, y el píxel de Whop. Instalan cookies como _ga, _fbp y _fbc y miden visitas, rendimiento de anuncios y registros o compras.",
           "Medición agregada: Vercel Web Analytics y Speed Insights cuentan visitas y velocidad de página sin cookies y sin seguirte entre sitios.",
-          "Vídeo: la clase gratuita abre un reproductor de YouTube, en su modo de privacidad mejorada, solo cuando pulsas reproducir. Entonces se aplica la política de YouTube."
+          "Imágenes: la miniatura de la clase gratuita de la página de inicio se carga desde los servidores de YouTube, por lo que YouTube puede ver tu dirección IP al cargar la página. A esa petición se aplica la política de YouTube."
         ],
         "after": [
           "Puedes cambiar tu elección en cualquier momento con \"Ajustes de cookies\" en el pie de página. También respeto la señal Global Privacy Control de tu navegador: si está activada, la analítica y la publicidad permanecen desactivadas."

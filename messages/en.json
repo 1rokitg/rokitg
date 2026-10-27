@@ -5,12 +5,11 @@
     "sublineLine2": "Now I've decided to share my knowledge with everyone."
   },
   "HomeCta": {
-    "videoAriaLabel": "Watch the free class on YouTube",
+    "videoAriaLabel": "Join the free community",
     "videoThumbnailAlt": "Free ecommerce class",
     "videoBadge": "FREE CLASS",
     "videoTitle": "How I started from scratch",
-    "watchNow": "Watch now",
-    "closeVideo": "Close video",
+    "watchNow": "Join free",
     "joinFreeCta": "JOIN THE FREE COMMUNITY",
     "paidCta": "I'M READY — COUNT ME IN",
     "youtubeCta": "SUBSCRIBE ON YOUTUBE",
@@ -241,7 +240,7 @@
     "metaTitle": "Privacy Policy",
     "metaDescription": "What data this site collects, why, who it is shared with and how to control it.",
     "title": "Privacy Policy",
-    "updated": "Last updated: October 26, 2026",
+    "updated": "Last updated: October 27, 2026",
     "intro": "This policy explains what personal data {site} collects, why, who sees it and what choices you have. I keep it short and plain on purpose.",
     "sections": [
       {
@@ -270,7 +269,7 @@
           "Essential: your language and theme choice and your cookie choice (the \"rokitg_consent\" cookie, kept for up to 6 months). These do not need consent.",
           "Analytics and advertising (only with consent where required): Google Analytics, the Meta Pixel and Meta Conversions API, and the Whop pixel. They set cookies such as _ga, _fbp and _fbc and measure visits, ad performance and sign-ups or purchases.",
           "Aggregate measurement: Vercel Web Analytics and Speed Insights count visits and page speed without cookies and without following you across sites.",
-          "Video: the free class opens a YouTube player, in YouTube's privacy-enhanced mode, only when you press play. YouTube's own policy then applies."
+          "Images: the free class thumbnail on the home page is loaded from YouTube's servers, so YouTube can see your IP address when the page loads. YouTube's own policy applies to that request."
         ],
         "after": [
           "You can change your choice at any time with \"Cookie settings\" in the footer. I also respect the Global Privacy Control signal from your browser: if it is on, analytics and advertising stay off."
