@@ -15,9 +15,6 @@ interface CallToActionProps extends React.ComponentProps<typeof Column> {
   trustBadges: boolean;
 }
 
-const YOUTUBE_CHANNEL_URL =
-  "https://www.youtube.com/@1rokitg?sub_confirmation=1";
-
 export const CallToAction: React.FC<CallToActionProps> = ({
   trustBadges,
   ...flex
@@ -33,7 +30,9 @@ export const CallToAction: React.FC<CallToActionProps> = ({
     window.open(whopPageUrl(productUrl, captureAttribution()?.parameters, options), "_blank", "noopener");
   };
 
-  const trackFreeCheckoutClick = (source: "home_cta" | "home_thumbnail") => {
+  const trackFreeCheckoutClick = (
+    source: "home_cta" | "home_thumbnail" | "home_discord",
+  ) => {
     trackWhopEvent(WHOP_EVENTS.freeCheckoutClicked, {
       source,
       offer: WHOP_OFFERS.freeCommunity.name,
@@ -55,15 +54,11 @@ export const CallToAction: React.FC<CallToActionProps> = ({
     setIsCheckoutOpen(true);
   };
 
-  const handleYoutubeClick = () => {
-    trackWhopEvent(WHOP_EVENTS.youtubeClicked, {
-      source: "home_cta",
-      interaction: "subscribe",
-      link_label: "Suscribirme en YouTube",
-      destination: YOUTUBE_CHANNEL_URL,
-    });
-
-    window.location.assign(YOUTUBE_CHANNEL_URL);
+  // Same in-page signup as the thumbnail; the free community is the way into the Discord.
+  const handleDiscordClick = () => {
+    trackFreeCheckoutClick("home_discord");
+    setIsHovered(false);
+    setIsCheckoutOpen(true);
   };
 
   const handlePurchaseClick = () => {
@@ -389,12 +384,12 @@ export const CallToAction: React.FC<CallToActionProps> = ({
           </Button>
           <Button
             type="button"
-            onClick={handleYoutubeClick}
+            onClick={handleDiscordClick}
             size="l"
             variant="secondary"
-            prefixIcon="youtube"
+            prefixIcon="discord"
             style={{
-              background: "#ed1238",
+              background: "#5865F2",
               color: "#fff",
               width: "100%",
               minHeight: 56,
@@ -403,7 +398,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
               fontWeight: 700,
             }}
           >
-            {t("youtubeCta")}
+            {t("discordCta")}
           </Button>
 
           <Text
