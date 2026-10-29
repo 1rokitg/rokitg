@@ -20,6 +20,7 @@ export const WHOP_OFFERS = {
 export const WHOP_AFFILIATE_CODE = "rokitg";
 
 /** Where a new member claims their access and connects Discord (included in the free community and Social Capital). */
+export const DISCORD_INVITE_URL = "https://discord.gg/aUpw4cpMXc";
 export const DISCORD_ACCESS_URL = "https://whop.com/rokitg/exp_DSkH2hqtsdeM39/app/";
 
 /** whop.com page link; forwards the visitor's ad attribution (utm_*, ad ids) so it survives the redirect. */

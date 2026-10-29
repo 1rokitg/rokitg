@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { newsletter } from "@/resources";
 import { captureAttribution, trackWhopEvent, WHOP_EVENTS } from "@/lib/whop";
-import { WHOP_OFFERS, whopPageUrl } from "@/lib/whop-offers";
+import { DISCORD_INVITE_URL, WHOP_OFFERS, whopPageUrl } from "@/lib/whop-offers";
 import { EmailCapture } from "@/components/EmailCapture";
 import { FreeCommunityCheckout } from "@/components/FreeCommunityCheckout";
 import { features } from "@/resources/features";
@@ -31,7 +31,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
   };
 
   const trackFreeCheckoutClick = (
-    source: "home_cta" | "home_thumbnail" | "home_discord",
+    source: "home_cta" | "home_thumbnail",
   ) => {
     trackWhopEvent(WHOP_EVENTS.freeCheckoutClicked, {
       source,
@@ -54,11 +54,15 @@ export const CallToAction: React.FC<CallToActionProps> = ({
     setIsCheckoutOpen(true);
   };
 
-  // Same in-page signup as the thumbnail; the free community is the way into the Discord.
   const handleDiscordClick = () => {
-    trackFreeCheckoutClick("home_discord");
-    setIsHovered(false);
-    setIsCheckoutOpen(true);
+    trackWhopEvent(WHOP_EVENTS.discordClicked, {
+      source: "home_cta",
+      interaction: "open",
+      link_label: "Unirme al Discord",
+      destination: DISCORD_INVITE_URL,
+    });
+
+    window.open(DISCORD_INVITE_URL, "_blank", "noopener");
   };
 
   const handlePurchaseClick = () => {
