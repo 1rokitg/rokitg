@@ -94,7 +94,7 @@ export function FomoRank() {
 
   return (
     <Text as="span" aria-live="polite">
-      #{displayRank} Finanzas gratis <SpainFlag />
+      #{displayRank} Finanzas <SpainFlag />
     </Text>
   );
 }
