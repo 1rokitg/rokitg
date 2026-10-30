@@ -30,9 +30,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({
     window.open(whopPageUrl(productUrl, captureAttribution()?.parameters, options), "_blank", "noopener");
   };
 
-  const trackFreeCheckoutClick = (
-    source: "home_cta" | "home_thumbnail",
-  ) => {
+  const trackFreeCheckoutClick = (source: "home_thumbnail") => {
     trackWhopEvent(WHOP_EVENTS.freeCheckoutClicked, {
       source,
       offer: WHOP_OFFERS.freeCommunity.name,
@@ -40,11 +38,6 @@ export const CallToAction: React.FC<CallToActionProps> = ({
       payment_type: WHOP_OFFERS.freeCommunity.paymentType,
       amount: WHOP_OFFERS.freeCommunity.amount,
     });
-  };
-
-  const handleCommunityClick = () => {
-    trackFreeCheckoutClick("home_cta");
-    goToProductPage(WHOP_OFFERS.freeCommunity.productUrl);
   };
 
   // The thumbnail signs people up right here on the page instead of sending them to Whop.
@@ -354,9 +347,10 @@ export const CallToAction: React.FC<CallToActionProps> = ({
         >
           <Button
             type="button"
-            onClick={handleCommunityClick}
+            onClick={handleDiscordClick}
             size="l"
             variant="primary"
+            prefixIcon="discord"
             style={{
               width: "100%",
               minHeight: 64,
@@ -386,25 +380,6 @@ export const CallToAction: React.FC<CallToActionProps> = ({
           >
             {t("paidCta")}
           </Button>
-          <Button
-            type="button"
-            onClick={handleDiscordClick}
-            size="l"
-            variant="secondary"
-            prefixIcon="discord"
-            style={{
-              background: "#5865F2",
-              color: "#fff",
-              width: "100%",
-              minHeight: 56,
-              borderRadius: 10,
-              fontSize: "clamp(15px, 1.8vw, 18px)",
-              fontWeight: 700,
-            }}
-          >
-            {t("discordCta")}
-          </Button>
-
           <Text
             onBackground="neutral-weak"
             style={{
