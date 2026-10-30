@@ -83,7 +83,7 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: "ROKITG.COM",
-  description: `Learn how unprofitable traders are becoming the top 2%`,
+  description: `You don't need to be an expert. You need the right edge.`,
   featured: {
     display: true,
     title: (
